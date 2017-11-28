@@ -59,5 +59,25 @@ namespace wfBiblio.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_basics_15_296819 {
+            get {
+                object obj = ResourceManager.GetObject("if_basics-15_296819", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_basics_16_296818 {
+            get {
+                object obj = ResourceManager.GetObject("if_basics-16_296818", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

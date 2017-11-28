@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>if_book_173163.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Csv, Version=1.0.21.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Csv.1.0.12\lib\net40\Csv.dll</HintPath>
@@ -66,13 +69,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ctrlChoixLecteur.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlChoixLecteur.Designer.cs">
+      <DependentUpon>ctrlChoixLecteur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ctrlCirculation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlCirculation.Designer.cs">
+      <DependentUpon>ctrlCirculation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ctrlPret.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlPret.Designer.cs">
+      <DependentUpon>ctrlPret.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data.cs" />
-    <Compile Include="ImportNoticeExemplaires.cs">
+    <Compile Include="frmrExemplaire.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ImportNoticeExemplaires.Designer.cs">
-      <DependentUpon>ImportNoticeExemplaires.cs</DependentUpon>
+    <Compile Include="frmrExemplaire.Designer.cs">
+      <DependentUpon>frmrExemplaire.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAjouterNotice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAjouterNotice.Designer.cs">
+      <DependentUpon>frmAjouterNotice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportNoticeExemplaires.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,8 +115,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ImportNoticeExemplaires.resx">
-      <DependentUpon>ImportNoticeExemplaires.cs</DependentUpon>
+    <EmbeddedResource Include="ctrlChoixLecteur.resx">
+      <DependentUpon>ctrlChoixLecteur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctrlCirculation.resx">
+      <DependentUpon>ctrlCirculation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ctrlPret.resx">
+      <DependentUpon>ctrlPret.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmrExemplaire.resx">
+      <DependentUpon>frmrExemplaire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAjouterNotice.resx">
+      <DependentUpon>frmAjouterNotice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -124,6 +164,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="if_book_173163.ico" />
+    <None Include="Resources\if_basics-15_296819.ico" />
+    <None Include="Resources\if_basics-16_296818.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

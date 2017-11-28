@@ -10,18 +10,12 @@ using System.Windows.Forms;
 
 namespace wfBiblio
 {
-    public partial class ImportNoticeExemplaires : Form
+    public class Import
     {
-        public ImportNoticeExemplaires()
-        {
-            InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        public static void Importer()
         {
             var lines = Csv.CsvReader.ReadFromStream(new System.IO.StreamReader(@"I:\Dropbox\Public\Mediathèque2000\Cocteau\biblio.csv", Encoding.UTF8).BaseStream);
             var collNotice = new MongoDB.Driver.MongoClient().GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
-            var collExemplaire = new MongoDB.Driver.MongoClient().GetDatabase("wfBiblio").GetCollection<Exemplaire>("Exemplaire");
             foreach (var line in lines)
             {
                 string isbn = "";
@@ -51,15 +45,37 @@ namespace wfBiblio
                     collection = line["Collection"],
                     isbn = isbn,
                     @public = line["Public"],
+                    exemplaires = new List<Exemplaire>()
+                    {
+                        new Exemplaire()
+                        {
+                            _id = MongoDB.Bson.ObjectId.GenerateNewId(),
+                            codeBarre = isbn
+                        }
+                    }
                 };
                 collNotice.InsertOne(notice);
+            }
 
-                Exemplaire ex = new Exemplaire()
+            lines = Csv.CsvReader.ReadFromStream(new System.IO.StreamReader(@"I:\Dropbox\Public\Mediathèque2000\Cocteau\adhérents.csv", Encoding.UTF8).BaseStream);
+            var collLecteur = new MongoDB.Driver.MongoClient().GetDatabase("wfBiblio").GetCollection<Lecteur>("Lecteur");
+            foreach (var line in lines)
+            {
+                Lecteur lecteur = new Lecteur()
                 {
-                    noticeId = notice._id,
-                    codeBarre = notice.isbn
+                    nom = line["Nom"],
+                    prénom = line["Prenom"],
+                    adresse = line["No"] + " " + line["Rue"],
+                    codePostal = line["Code"],
+                    ville = line["Ville"],
+                    type = line["Codefamille"],
+                    téléphone = line["Tel Pers"],
+                    mail = line["Email"],
+                    débutAdhésion = DateTime.Now,
+                    finAdhésion = DateTime.Now.AddYears(1),
+                    localisation = "Cocteau"
                 };
-                collExemplaire.InsertOne(ex);
+                collLecteur.InsertOne(lecteur);
             }
         }
     }

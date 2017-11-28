@@ -13,6 +13,8 @@ namespace wfBiblio
         [STAThread]
         static void Main()
         {
+            //Import.Importer();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Main());
