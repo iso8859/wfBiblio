@@ -1,7 +1,12 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="wfBiblio.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MongoDB" Type="System.String" Scope="User">
+      <Value Profile="(Default)">mongodb://127.0.0.1</Value>
+    </Setting>
+    <Setting Name="Localisation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Centre Social Cocteau</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

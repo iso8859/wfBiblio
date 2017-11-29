@@ -22,5 +22,29 @@ namespace wfBiblio.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("mongodb://127.0.0.1")]
+        public string MongoDB {
+            get {
+                return ((string)(this["MongoDB"]));
+            }
+            set {
+                this["MongoDB"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Centre Social Cocteau")]
+        public string Localisation {
+            get {
+                return ((string)(this["Localisation"]));
+            }
+            set {
+                this["Localisation"] = value;
+            }
+        }
     }
 }

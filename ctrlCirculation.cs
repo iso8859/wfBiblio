@@ -23,22 +23,20 @@ namespace wfBiblio
         public void Init(ObjectId lecteurId)
         {
             m_lecteurId = lecteurId;
-            var collLecteur = new MongoDB.Driver.MongoClient().GetDatabase("wfBiblio").GetCollection<Lecteur>("Lecteur");
-            List<Lecteur> lecteurs = collLecteur.Find(new BsonDocument("_id", lecteurId)).ToList();
-            if( lecteurs!=null && lecteurs.Count>0)
-            {
-                lblNom.Text = lecteurs[0].nom;
-                lblPrenom.Text = lecteurs[0].prénom;
-            }
+            LecteurResult lr = Lecteur.TrouverLecteurParId(lecteurId);
+            lblNom.Text = lr.infoLecteur.nom;
+            lblPrenom.Text = lr.infoLecteur.prénom;
+            lblTitre.Text = lr.lecteur.titre;
             FillPrêts();
+            timer1.Start();
         }
 
         void FillPrêts()
         {
             flowLayoutPanel1.Controls.Clear();
             // Retrouver les prêts en cours du lecteur
-            var collNotice = new MongoDB.Driver.MongoClient().GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
-            var collEmprunt = new MongoDB.Driver.MongoClient().GetDatabase("wfBiblio").GetCollection<Emprunt>("Emprunt");
+            var collNotice = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
+            var collEmprunt = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Emprunt>("Emprunt");
             List<Emprunt> emprunts = collEmprunt.Find(
                     Builders<Emprunt>.Filter.And(
                         Builders<Emprunt>.Filter.Eq(a => a.idLecteur, m_lecteurId),
@@ -71,8 +69,8 @@ namespace wfBiblio
         private void btnOK_Click(object sender, EventArgs e)
         {
             // Ajouter ou supprimer un exemplaire
-            var collNotice = new MongoDB.Driver.MongoClient().GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
-            var collEmprunt = new MongoDB.Driver.MongoClient().GetDatabase("wfBiblio").GetCollection<Emprunt>("Emprunt");
+            var collNotice = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
+            var collEmprunt = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Emprunt>("Emprunt");
             List<Notice> tmp = collNotice.Find(new BsonDocument("exemplaires.codeBarre", txtNewExplaire.Text)).ToList();
             if (tmp!=null && tmp.Count==1)
             {
@@ -110,12 +108,27 @@ namespace wfBiblio
                     else
                     {
                         // Retrouver le lecteur
-                        var collLecteur = new MongoDB.Driver.MongoClient().GetDatabase("wfBiblio").GetCollection<Lecteur>("Lecteur");
-                        var lecteurs = collLecteur.Find(new BsonDocument("_id", emprunts[0].idLecteur)).ToList();
-                        if (lecteurs != null && lecteurs.Count > 0)
-                            MessageBox.Show($"Ce document est déjà emprunté par {lecteurs[0].nom} {lecteurs[0].prénom}");
+                        LecteurResult lr = Lecteur.TrouverLecteurParId(emprunts[0].idLecteur);
+                        if (lr != null)
+                            MessageBox.Show($"Ce document est déjà emprunté par {lr.infoLecteur.nom} {lr.infoLecteur.prénom} ({lr.lecteur.titre})");
                     }
                 }
+            }
+            txtNewExplaire.SelectAll();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            txtNewExplaire.Focus();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            using (frmLecteur l = new frmLecteur())
+            {
+                l.Init(m_lecteurId);
+                l.ShowDialog();
             }
         }
     }

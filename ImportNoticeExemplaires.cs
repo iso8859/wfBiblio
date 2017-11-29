@@ -15,7 +15,7 @@ namespace wfBiblio
         public static void Importer()
         {
             var lines = Csv.CsvReader.ReadFromStream(new System.IO.StreamReader(@"I:\Dropbox\Public\Mediathèque2000\Cocteau\biblio.csv", Encoding.UTF8).BaseStream);
-            var collNotice = new MongoDB.Driver.MongoClient().GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
+            var collNotice = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
             foreach (var line in lines)
             {
                 string isbn = "";
@@ -58,25 +58,74 @@ namespace wfBiblio
             }
 
             lines = Csv.CsvReader.ReadFromStream(new System.IO.StreamReader(@"I:\Dropbox\Public\Mediathèque2000\Cocteau\adhérents.csv", Encoding.UTF8).BaseStream);
-            var collLecteur = new MongoDB.Driver.MongoClient().GetDatabase("wfBiblio").GetCollection<Lecteur>("Lecteur");
+            var db = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio");
+            Dictionary<string, List<InfoLecteur>> tmp = new Dictionary<string, List<InfoLecteur>>();
+            Dictionary<string, Lecteur> lecteurs = new Dictionary<string, Lecteur>();
             foreach (var line in lines)
             {
-                Lecteur lecteur = new Lecteur()
+                string Codefamille = line["Codefamille"];
+                if (Codefamille.StartsWith("Calmette"))
                 {
-                    nom = line["Nom"],
-                    prénom = line["Prenom"],
-                    adresse = line["No"] + " " + line["Rue"],
-                    codePostal = line["Code"],
-                    ville = line["Ville"],
-                    type = line["Codefamille"],
-                    téléphone = line["Tel Pers"],
-                    mail = line["Email"],
-                    débutAdhésion = DateTime.Now,
-                    finAdhésion = DateTime.Now.AddYears(1),
-                    localisation = "Cocteau"
-                };
-                collLecteur.InsertOne(lecteur);
+                    if (!lecteurs.ContainsKey(Codefamille))
+                        lecteurs[Codefamille] = new Lecteur()
+                        {
+                            titre = line["Codefamille"],
+                            adresse = line["No"] + " " + line["Rue"],
+                            codePostal = line["Code"],
+                            ville = line["Ville"],
+                            téléphone = line["Tel Pers"],
+                            mail = line["Email"],
+                            débutAdhésion = DateTime.Now,
+                            finAdhésion = DateTime.Now.AddYears(1),
+                            localisation = Properties.Settings.Default.Localisation
+                        };
+                    if (!tmp.ContainsKey(Codefamille))
+                        tmp[Codefamille] = new List<InfoLecteur>();
+                    tmp[Codefamille].Add(
+                            new InfoLecteur()
+                            {
+                                nom = line["Nom"],
+                                prénom = line["Prenom"],
+                                localisation = Properties.Settings.Default.Localisation
+                            }
+                        );
+                }
+                else
+                {
+                    Lecteur lecteur = new Lecteur()
+                    {
+                        titre = line["Codefamille"],
+                        adresse = line["No"] + " " + line["Rue"],
+                        codePostal = line["Code"],
+                        ville = line["Ville"],
+                        téléphone = line["Tel Pers"],
+                        mail = line["Email"],
+                        débutAdhésion = DateTime.Now,
+                        finAdhésion = DateTime.Now.AddYears(1),
+                        localisation = Properties.Settings.Default.Localisation
+                    };
+                    db.GetCollection<Lecteur>("Lecteur").InsertOne(lecteur);
+                    InfoLecteur infoLecteur = new InfoLecteur()
+                    {
+                        lecteurId = lecteur._id,
+                        nom = line["Nom"],
+                        prénom = line["Prenom"],
+                        localisation = Properties.Settings.Default.Localisation
+                    };
+                    db.GetCollection<InfoLecteur>("InfoLecteur").InsertOne(infoLecteur);
+                }
             }
+
+            foreach (var key in lecteurs)
+            {
+                db.GetCollection<Lecteur>("Lecteur").InsertOne(key.Value);
+                foreach (InfoLecteur il in tmp[key.Key])
+                {
+                    il.lecteurId = key.Value._id;
+                    db.GetCollection<InfoLecteur>("InfoLecteur").InsertOne(il);
+                }
+            }
+
         }
     }
 }

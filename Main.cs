@@ -27,7 +27,7 @@ namespace wfBiblio
 
         private void btnSearchNotices_Click(object sender, EventArgs e)
         {
-            var coll = new MongoDB.Driver.MongoClient().GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
+            var coll = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
             dgvResultNotice.DataSource = null;
             var cursor = coll.Find(
                 Builders<Notice>.Filter.Or(
@@ -62,16 +62,15 @@ namespace wfBiblio
             Notice notice = ctrlNotices1.GetNotice();
             if (notice != null)
             {
-                var coll = new MongoDB.Driver.MongoClient().GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
+                var coll = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
                 coll.ReplaceOne(Builders<Notice>.Filter.Eq(a => a._id, notice._id), notice);
             }
         }
 
         private void btnCirculation_Click(object sender, EventArgs e)
         {
-            var collNotice = new MongoDB.Driver.MongoClient().GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
-            var collEmprunt = new MongoDB.Driver.MongoClient().GetDatabase("wfBiblio").GetCollection<Emprunt>("Emprunt");
-            var collLecteur = new MongoDB.Driver.MongoClient().GetDatabase("wfBiblio").GetCollection<Lecteur>("Lecteur");
+            var collNotice = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
+            var collEmprunt = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Emprunt>("Emprunt");
             // Chercher lecteur ou exemplaire emprunté
             if (txtSearchCirculation.Text.All(char.IsDigit))
             {
@@ -104,20 +103,15 @@ namespace wfBiblio
             else
             {
                 // Cherche le lecteur
-                List<Lecteur> lecteurs = collLecteur.Find(
-                    Builders<Lecteur>.Filter.Or(
-                        Builders<Lecteur>.Filter.Regex(a => a.nom, new MongoDB.Bson.BsonRegularExpression(txtSearchCirculation.Text, "/i")),
-                        Builders<Lecteur>.Filter.Regex(a => a.prénom, new MongoDB.Bson.BsonRegularExpression(txtSearchCirculation.Text, "/i"))
-                        )
-                    ).ToList();
-                if (lecteurs != null)
+                List<LecteurResult> lr = Lecteur.TrouverLecteursParSearch(txtSearchCirculation.Text);
+                if (lr.Count>0)
                 {
-                    if (lecteurs.Count == 1)
-                        AffichageLecteur(lecteurs[0]._id);
+                    if (lr.Count == 1)
+                        AffichageLecteur(lr[0].infoLecteur._id);
                     else
                     {
                         ctrlChoixLecteur choix = new ctrlChoixLecteur() { Dock = DockStyle.Fill };
-                        choix.Init(lecteurs);
+                        choix.Init(lr);
                         choix.ChoixLecteurEvent += Choix_ChoixLecteurEvent;
                         pnlCirculation.Controls.Clear();
                         pnlCirculation.Controls.Add(choix);
@@ -126,11 +120,12 @@ namespace wfBiblio
                 else
                     MessageBox.Show("Pas de lecteur à ce nom");
             }
+            txtSearchCirculation.SelectAll();
         }
 
-        private void Choix_ChoixLecteurEvent(Lecteur lecteur)
+        private void Choix_ChoixLecteurEvent(LecteurResult lecteur)
         {
-            AffichageLecteur(lecteur._id);
+            AffichageLecteur(lecteur.infoLecteur._id);
         }
 
         private void AffichageLecteur(ObjectId lecteurId)
@@ -145,6 +140,12 @@ namespace wfBiblio
         {
             if (e.KeyChar == (char)13)
                 btnCirculation_Click(null, null);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            txtSearchCirculation.Focus();
         }
     }
 }

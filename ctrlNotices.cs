@@ -70,7 +70,7 @@ namespace wfBiblio
             Notice notice = GetNotice();
             if (notice != null)
             {
-                var coll = new MongoDB.Driver.MongoClient().GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
+                var coll = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
                 coll.ReplaceOne(Builders<Notice>.Filter.Eq(a => a._id, notice._id), notice);
             }
         }

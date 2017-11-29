@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.pnlCirculation = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnCirculation = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,8 +58,7 @@
             this.btnSearchNotices = new System.Windows.Forms.Button();
             this.txtNotice = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.pnlCirculation = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -74,7 +74,6 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -93,6 +92,14 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Circulation";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // pnlCirculation
+            // 
+            this.pnlCirculation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlCirculation.Location = new System.Drawing.Point(3, 66);
+            this.pnlCirculation.Name = "pnlCirculation";
+            this.pnlCirculation.Size = new System.Drawing.Size(1273, 613);
+            this.pnlCirculation.TabIndex = 5;
             // 
             // panel4
             // 
@@ -328,25 +335,14 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Chercher par titre, auteur....";
             // 
-            // tabPage4
+            // timer1
             // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 29);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1279, 682);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Emprunteurs";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // pnlCirculation
-            // 
-            this.pnlCirculation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCirculation.Location = new System.Drawing.Point(3, 66);
-            this.pnlCirculation.Name = "pnlCirculation";
-            this.pnlCirculation.Size = new System.Drawing.Size(1273, 613);
-            this.pnlCirculation.TabIndex = 5;
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Main
             // 
+            this.AcceptButton = this.btnCirculation;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1287, 715);
@@ -376,7 +372,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TextBox txtSearchCirculation;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvResultNotice;
@@ -402,6 +397,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btnCirculation;
         private System.Windows.Forms.Panel pnlCirculation;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
