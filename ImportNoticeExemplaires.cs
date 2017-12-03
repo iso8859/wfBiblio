@@ -50,6 +50,7 @@ namespace wfBiblio
                         new Exemplaire()
                         {
                             _id = MongoDB.Bson.ObjectId.GenerateNewId(),
+                            localisation = Properties.Settings.Default.Localisation,
                             codeBarre = isbn
                         }
                     }
