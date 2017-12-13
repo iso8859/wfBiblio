@@ -44,7 +44,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(918, 60);
+            this.panel1.Size = new System.Drawing.Size(1056, 60);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -69,7 +69,7 @@
             this.dgvNotices.RowHeadersVisible = false;
             this.dgvNotices.RowTemplate.Height = 30;
             this.dgvNotices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvNotices.Size = new System.Drawing.Size(918, 621);
+            this.dgvNotices.Size = new System.Drawing.Size(1056, 621);
             this.dgvNotices.TabIndex = 1;
             this.dgvNotices.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNotices_CellDoubleClick);
             // 
@@ -81,11 +81,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(918, 681);
+            this.ClientSize = new System.Drawing.Size(1056, 681);
             this.Controls.Add(this.dgvNotices);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "frmResultSearch";
             this.Text = "Resultats recherche";
