@@ -19,14 +19,13 @@ namespace wfBiblio
             InitializeComponent();
         }
 
-        ObjectId m_lecteurId;
-        public void Init(ObjectId lecteurId)
+        LecteurResult m_lecteur;
+        public void Init(LecteurResult lecteur)
         {
-            m_lecteurId = lecteurId;
-            LecteurResult lr = Lecteur.TrouverLecteurParId(lecteurId);
-            lblNom.Text = lr.infoLecteur.nom;
-            lblPrenom.Text = lr.infoLecteur.prénom;
-            lblTitre.Text = lr.lecteur.titre;
+            m_lecteur = lecteur;
+            lblNom.Text = lecteur.infoLecteur.nom;
+            lblPrenom.Text = lecteur.infoLecteur.prénom;
+            lblTitre.Text = lecteur.lecteur.titre;
             FillPrêts();
             timer1.Start();
         }
@@ -39,7 +38,7 @@ namespace wfBiblio
             var collEmprunt = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Emprunt>("Emprunt");
             List<Emprunt> emprunts = collEmprunt.Find(
                     Builders<Emprunt>.Filter.And(
-                        Builders<Emprunt>.Filter.Eq(a => a.idLecteur, m_lecteurId),
+                        Builders<Emprunt>.Filter.Eq(a => a.idLecteur, m_lecteur.infoLecteur._id),
                         Builders<Emprunt>.Filter.Eq(a => a.etat, 1)
                         )
                 ).ToList();
@@ -55,9 +54,17 @@ namespace wfBiblio
                     p.txtDatepret.Text = e.dateEmprunt.ToString("dd/MM/yyyy");
                     p.txtDateRetour.Text = e.dateRetourPrévue.ToString("dd/MM/yyyy");
                     p.Tag = tmp[0];
+                    p.RetourEvent += P_RetourEvent;
                     flowLayoutPanel1.Controls.Add(p);
                 }
             }
+        }
+
+        private void P_RetourEvent(ctrlPret ctrl)
+        {
+            Notice notice = ctrl.Tag as Notice;
+            txtNewExplaire.Text = notice.isbn;
+            btnOK_Click(null, null);
         }
 
         private void txtNewExplaire_KeyPress(object sender, KeyPressEventArgs e)
@@ -86,7 +93,7 @@ namespace wfBiblio
                     // L'ajouter pour ce lecteur
                     Emprunt emprunt = new Emprunt()
                     {
-                        idLecteur = m_lecteurId,
+                        idLecteur = m_lecteur.infoLecteur._id,
                         IdExemplaire = tmp[0].exemplaires.Find(a => a.codeBarre == txtNewExplaire.Text)._id,
                         etat = 1,
                         dateEmprunt = DateTime.Now,
@@ -98,7 +105,7 @@ namespace wfBiblio
                 else if (emprunts.Count > 0)
                 {
                     // Est-ce le lecteur en cours
-                    if (emprunts[0].idLecteur == m_lecteurId)
+                    if (emprunts[0].idLecteur == m_lecteur.infoLecteur._id)
                     {
                         // Le supprimer de la liste des emprunts de ce lecteur
                         collEmprunt.UpdateOne(Builders<Emprunt>.Filter.Eq(a => a._id, emprunts[0]._id),
@@ -127,7 +134,7 @@ namespace wfBiblio
         {
             using (frmLecteur l = new frmLecteur())
             {
-                l.Init(m_lecteurId);
+                l.Init(m_lecteur);
                 l.ShowDialog();
             }
         }

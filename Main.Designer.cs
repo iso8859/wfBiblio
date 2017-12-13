@@ -76,19 +76,21 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1287, 715);
+            this.tabControl1.Size = new System.Drawing.Size(1924, 1061);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.pnlCirculation);
             this.tabPage1.Controls.Add(this.panel4);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Location = new System.Drawing.Point(4, 40);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1279, 682);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tabPage1.Size = new System.Drawing.Size(1916, 1017);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Circulation";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -96,9 +98,11 @@
             // pnlCirculation
             // 
             this.pnlCirculation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCirculation.Location = new System.Drawing.Point(3, 66);
+            this.pnlCirculation.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnlCirculation.Location = new System.Drawing.Point(5, 103);
+            this.pnlCirculation.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.pnlCirculation.Name = "pnlCirculation";
-            this.pnlCirculation.Size = new System.Drawing.Size(1273, 613);
+            this.pnlCirculation.Size = new System.Drawing.Size(1906, 909);
             this.pnlCirculation.TabIndex = 5;
             // 
             // panel4
@@ -108,16 +112,18 @@
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.txtSearchCirculation);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(3, 3);
+            this.panel4.Location = new System.Drawing.Point(5, 5);
+            this.panel4.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1273, 63);
+            this.panel4.Size = new System.Drawing.Size(1906, 98);
             this.panel4.TabIndex = 4;
             // 
             // btnCirculation
             // 
-            this.btnCirculation.Location = new System.Drawing.Point(641, 13);
+            this.btnCirculation.Location = new System.Drawing.Point(1140, 20);
+            this.btnCirculation.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnCirculation.Name = "btnCirculation";
-            this.btnCirculation.Size = new System.Drawing.Size(75, 27);
+            this.btnCirculation.Size = new System.Drawing.Size(133, 42);
             this.btnCirculation.TabIndex = 2;
             this.btnCirculation.Text = "OK";
             this.btnCirculation.UseVisualStyleBackColor = true;
@@ -126,17 +132,19 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 17);
+            this.label1.Location = new System.Drawing.Point(46, 26);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(244, 20);
+            this.label1.Size = new System.Drawing.Size(422, 31);
             this.label1.TabIndex = 0;
             this.label1.Text = "Rechercher lecteur, exemplaire....";
             // 
             // txtSearchCirculation
             // 
-            this.txtSearchCirculation.Location = new System.Drawing.Point(331, 14);
+            this.txtSearchCirculation.Location = new System.Drawing.Point(588, 22);
+            this.txtSearchCirculation.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.txtSearchCirculation.Name = "txtSearchCirculation";
-            this.txtSearchCirculation.Size = new System.Drawing.Size(282, 26);
+            this.txtSearchCirculation.Size = new System.Drawing.Size(498, 38);
             this.txtSearchCirculation.TabIndex = 1;
             this.txtSearchCirculation.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchCirculation_KeyPress);
             // 
@@ -145,10 +153,11 @@
             this.tabPage2.Controls.Add(this.dgvResultNotice);
             this.tabPage2.Controls.Add(this.panel2);
             this.tabPage2.Controls.Add(this.panel1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Location = new System.Drawing.Point(4, 40);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1279, 682);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tabPage2.Size = new System.Drawing.Size(1916, 1017);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Notices";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -171,12 +180,14 @@
             this.isbnDataGridViewTextBoxColumn});
             this.dgvResultNotice.DataSource = this.noticeBindingSource;
             this.dgvResultNotice.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvResultNotice.Location = new System.Drawing.Point(3, 75);
+            this.dgvResultNotice.Location = new System.Drawing.Point(5, 117);
+            this.dgvResultNotice.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.dgvResultNotice.Name = "dgvResultNotice";
             this.dgvResultNotice.ReadOnly = true;
             this.dgvResultNotice.RowHeadersVisible = false;
+            this.dgvResultNotice.RowTemplate.Height = 50;
             this.dgvResultNotice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvResultNotice.Size = new System.Drawing.Size(760, 604);
+            this.dgvResultNotice.Size = new System.Drawing.Size(994, 895);
             this.dgvResultNotice.TabIndex = 1;
             this.dgvResultNotice.SelectionChanged += new System.EventHandler(this.dgvResultNotice_SelectionChanged);
             // 
@@ -252,25 +263,28 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.ctrlNotices1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(763, 75);
+            this.panel2.Location = new System.Drawing.Point(999, 117);
+            this.panel2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(513, 604);
+            this.panel2.Size = new System.Drawing.Size(912, 895);
             this.panel2.TabIndex = 3;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.btnEnregistrerNotice);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 542);
+            this.panel3.Location = new System.Drawing.Point(0, 799);
+            this.panel3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(513, 62);
+            this.panel3.Size = new System.Drawing.Size(912, 96);
             this.panel3.TabIndex = 0;
             // 
             // btnEnregistrerNotice
             // 
-            this.btnEnregistrerNotice.Location = new System.Drawing.Point(398, 13);
+            this.btnEnregistrerNotice.Location = new System.Drawing.Point(708, 20);
+            this.btnEnregistrerNotice.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnEnregistrerNotice.Name = "btnEnregistrerNotice";
-            this.btnEnregistrerNotice.Size = new System.Drawing.Size(100, 34);
+            this.btnEnregistrerNotice.Size = new System.Drawing.Size(178, 53);
             this.btnEnregistrerNotice.TabIndex = 4;
             this.btnEnregistrerNotice.Text = "Enregistrer";
             this.btnEnregistrerNotice.UseVisualStyleBackColor = true;
@@ -281,9 +295,9 @@
             this.ctrlNotices1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ctrlNotices1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ctrlNotices1.Location = new System.Drawing.Point(0, 0);
-            this.ctrlNotices1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctrlNotices1.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.ctrlNotices1.Name = "ctrlNotices1";
-            this.ctrlNotices1.Size = new System.Drawing.Size(513, 604);
+            this.ctrlNotices1.Size = new System.Drawing.Size(912, 895);
             this.ctrlNotices1.TabIndex = 2;
             // 
             // panel1
@@ -293,16 +307,18 @@
             this.panel1.Controls.Add(this.txtNotice);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(5, 5);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1273, 72);
+            this.panel1.Size = new System.Drawing.Size(1906, 112);
             this.panel1.TabIndex = 0;
             // 
             // btnAddNotice
             // 
-            this.btnAddNotice.Location = new System.Drawing.Point(720, 16);
+            this.btnAddNotice.Location = new System.Drawing.Point(1280, 25);
+            this.btnAddNotice.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnAddNotice.Name = "btnAddNotice";
-            this.btnAddNotice.Size = new System.Drawing.Size(100, 34);
+            this.btnAddNotice.Size = new System.Drawing.Size(178, 53);
             this.btnAddNotice.TabIndex = 3;
             this.btnAddNotice.Text = "Ajouter";
             this.btnAddNotice.UseVisualStyleBackColor = true;
@@ -310,9 +326,10 @@
             // 
             // btnSearchNotices
             // 
-            this.btnSearchNotices.Location = new System.Drawing.Point(583, 16);
+            this.btnSearchNotices.Location = new System.Drawing.Point(1036, 25);
+            this.btnSearchNotices.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnSearchNotices.Name = "btnSearchNotices";
-            this.btnSearchNotices.Size = new System.Drawing.Size(100, 34);
+            this.btnSearchNotices.Size = new System.Drawing.Size(178, 53);
             this.btnSearchNotices.TabIndex = 2;
             this.btnSearchNotices.Text = "Chercher";
             this.btnSearchNotices.UseVisualStyleBackColor = true;
@@ -320,18 +337,20 @@
             // 
             // txtNotice
             // 
-            this.txtNotice.Location = new System.Drawing.Point(227, 20);
+            this.txtNotice.Location = new System.Drawing.Point(404, 31);
+            this.txtNotice.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.txtNotice.Name = "txtNotice";
-            this.txtNotice.Size = new System.Drawing.Size(339, 26);
+            this.txtNotice.Size = new System.Drawing.Size(600, 38);
             this.txtNotice.TabIndex = 1;
             this.txtNotice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNotice_KeyPress);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 20);
+            this.label3.Location = new System.Drawing.Point(34, 31);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(202, 20);
+            this.label3.Size = new System.Drawing.Size(349, 31);
             this.label3.TabIndex = 0;
             this.label3.Text = "Chercher par titre, auteur....";
             // 
@@ -342,16 +361,16 @@
             // 
             // Main
             // 
-            this.AcceptButton = this.btnCirculation;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1287, 715);
+            this.ClientSize = new System.Drawing.Size(1924, 1061);
             this.Controls.Add(this.tabControl1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.Name = "Main";
             this.Text = "wfBiblio";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);

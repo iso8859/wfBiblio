@@ -39,6 +39,7 @@
             System.Windows.Forms.Label téléphoneLabel;
             System.Windows.Forms.Label titreLabel;
             System.Windows.Forms.Label villeLabel;
+            System.Windows.Forms.Label duréeEmpruntsLabel;
             this.adresseTextBox = new System.Windows.Forms.TextBox();
             this.codePostalTextBox = new System.Windows.Forms.TextBox();
             this.commentairesTextBox = new System.Windows.Forms.TextBox();
@@ -50,17 +51,18 @@
             this.titreTextBox = new System.Windows.Forms.TextBox();
             this.villeTextBox = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.duréeEmpruntsTextBox = new System.Windows.Forms.TextBox();
             this.infoLecteurDataGridView = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnOK = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnListeEmprunts = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnOK = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.infoLecteurBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lecteurBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             adresseLabel = new System.Windows.Forms.Label();
             codePostalLabel = new System.Windows.Forms.Label();
             commentairesLabel = new System.Windows.Forms.Label();
@@ -71,6 +73,7 @@
             téléphoneLabel = new System.Windows.Forms.Label();
             titreLabel = new System.Windows.Forms.Label();
             villeLabel = new System.Windows.Forms.Label();
+            duréeEmpruntsLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infoLecteurDataGridView)).BeginInit();
             this.panel2.SuspendLayout();
@@ -178,6 +181,15 @@
             villeLabel.TabIndex = 21;
             villeLabel.Text = "ville:";
             // 
+            // duréeEmpruntsLabel
+            // 
+            duréeEmpruntsLabel.AutoSize = true;
+            duréeEmpruntsLabel.Location = new System.Drawing.Point(16, 196);
+            duréeEmpruntsLabel.Name = "duréeEmpruntsLabel";
+            duréeEmpruntsLabel.Size = new System.Drawing.Size(127, 20);
+            duréeEmpruntsLabel.TabIndex = 22;
+            duréeEmpruntsLabel.Text = "durée Emprunts:";
+            // 
             // adresseTextBox
             // 
             this.adresseTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lecteurBindingSource, "adresse", true));
@@ -203,7 +215,7 @@
             this.commentairesTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.commentairesTextBox.Multiline = true;
             this.commentairesTextBox.Name = "commentairesTextBox";
-            this.commentairesTextBox.Size = new System.Drawing.Size(241, 79);
+            this.commentairesTextBox.Size = new System.Drawing.Size(241, 101);
             this.commentairesTextBox.TabIndex = 6;
             // 
             // débutAdhésionDateTimePicker
@@ -271,6 +283,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(duréeEmpruntsLabel);
+            this.panel1.Controls.Add(this.duréeEmpruntsTextBox);
             this.panel1.Controls.Add(this.titreTextBox);
             this.panel1.Controls.Add(dernierEmpruntLabel);
             this.panel1.Controls.Add(commentairesLabel);
@@ -294,8 +308,16 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(913, 213);
+            this.panel1.Size = new System.Drawing.Size(916, 257);
             this.panel1.TabIndex = 23;
+            // 
+            // duréeEmpruntsTextBox
+            // 
+            this.duréeEmpruntsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lecteurBindingSource, "duréeEmprunts", true));
+            this.duréeEmpruntsTextBox.Location = new System.Drawing.Point(149, 193);
+            this.duréeEmpruntsTextBox.Name = "duréeEmpruntsTextBox";
+            this.duréeEmpruntsTextBox.Size = new System.Drawing.Size(100, 26);
+            this.duréeEmpruntsTextBox.TabIndex = 23;
             // 
             // infoLecteurDataGridView
             // 
@@ -307,22 +329,52 @@
             this.dataGridViewTextBoxColumn5});
             this.infoLecteurDataGridView.DataSource = this.infoLecteurBindingSource;
             this.infoLecteurDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.infoLecteurDataGridView.Location = new System.Drawing.Point(0, 213);
+            this.infoLecteurDataGridView.Location = new System.Drawing.Point(0, 257);
             this.infoLecteurDataGridView.Name = "infoLecteurDataGridView";
-            this.infoLecteurDataGridView.Size = new System.Drawing.Size(913, 200);
+            this.infoLecteurDataGridView.Size = new System.Drawing.Size(916, 311);
             this.infoLecteurDataGridView.TabIndex = 23;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btnListeEmprunts);
             this.panel2.Controls.Add(this.btnDelete);
             this.panel2.Controls.Add(this.btnCancel);
             this.panel2.Controls.Add(this.btnOK);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 413);
+            this.panel2.Location = new System.Drawing.Point(0, 568);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(913, 74);
+            this.panel2.Size = new System.Drawing.Size(916, 74);
             this.panel2.TabIndex = 24;
+            // 
+            // btnListeEmprunts
+            // 
+            this.btnListeEmprunts.Location = new System.Drawing.Point(607, 20);
+            this.btnListeEmprunts.Name = "btnListeEmprunts";
+            this.btnListeEmprunts.Size = new System.Drawing.Size(158, 32);
+            this.btnListeEmprunts.TabIndex = 3;
+            this.btnListeEmprunts.Text = "Editer les emprunts";
+            this.btnListeEmprunts.UseVisualStyleBackColor = true;
+            this.btnListeEmprunts.Click += new System.EventHandler(this.btnListeEmprunts_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(771, 20);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(125, 32);
+            this.btnDelete.TabIndex = 2;
+            this.btnDelete.Text = "Supprimer";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(159, 20);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(125, 32);
+            this.btnCancel.TabIndex = 1;
+            this.btnCancel.Text = "Annuler";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnOK
             // 
@@ -333,24 +385,6 @@
             this.btnOK.Text = "Enregistrer";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(159, 20);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(125, 32);
-            this.btnCancel.TabIndex = 1;
-            this.btnCancel.Text = "Annuler";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(771, 20);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(125, 32);
-            this.btnDelete.TabIndex = 2;
-            this.btnDelete.Text = "Supprimer";
-            this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -382,20 +416,11 @@
             // 
             this.lecteurBindingSource.DataSource = typeof(wfBiblio.Lecteur);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(607, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(158, 32);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Editer les emprunts";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // frmLecteur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 487);
+            this.ClientSize = new System.Drawing.Size(916, 642);
             this.Controls.Add(this.infoLecteurDataGridView);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -437,6 +462,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnListeEmprunts;
+        private System.Windows.Forms.TextBox duréeEmpruntsTextBox;
     }
 }
