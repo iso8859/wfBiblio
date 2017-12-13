@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using MongoDB.Driver;
+using MongoDB.Bson;
 
 namespace wfBiblio
 {
@@ -70,8 +71,13 @@ namespace wfBiblio
             Notice notice = GetNotice();
             if (notice != null)
             {
+                if (notice.exemplaires == null)
+                    notice.exemplaires = new List<Exemplaire>();
+                if (notice.exemplaires.Count == 0)
+                    notice.exemplaires.Add(new Exemplaire() { _id = MongoDB.Bson.ObjectId.GenerateNewId(), codeBarre = notice.isbn, localisation = Properties.Settings.Default.Localisation });
+
                 var coll = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
-                coll.ReplaceOne(Builders<Notice>.Filter.Eq(a => a._id, notice._id), notice);
+                coll.ReplaceOne(a => a._id == notice._id, notice, new UpdateOptions() { IsUpsert = true });
             }
         }
 
@@ -80,33 +86,36 @@ namespace wfBiblio
             timer1.Stop();
             var notice = GetNotice();
             string search = notice.isbn;
-            if (search.Length < 8)
-                search = notice.titre;
-            try
+            if (!string.IsNullOrEmpty(search))
             {
-                var req = HttpWebRequest.Create("https://www.googleapis.com/books/v1/volumes?q=" + WebUtility.UrlEncode(search));
-                using (var resp = req.GetResponse())
+                if (search.Length < 8)
+                    search = notice.titre;
+                try
                 {
-                    var results = new System.IO.StreamReader(resp.GetResponseStream()).ReadToEnd();
-                    dynamic result = Newtonsoft.Json.Linq.JObject.Parse(results);
-                    if (result.items.Count > 0)
+                    var req = HttpWebRequest.Create("https://www.googleapis.com/books/v1/volumes?q=" + WebUtility.UrlEncode(search));
+                    using (var resp = req.GetResponse())
                     {
-                        string tmp = result.items[0].volumeInfo.imageLinks.smallThumbnail;
-                        pictureBox1.Load(tmp);
+                        var results = new System.IO.StreamReader(resp.GetResponseStream()).ReadToEnd();
+                        dynamic result = Newtonsoft.Json.Linq.JObject.Parse(results);
+                        if (result.items.Count > 0)
+                        {
+                            string tmp = result.items[0].volumeInfo.imageLinks.smallThumbnail;
+                            pictureBox1.Load(tmp);
+                        }
                     }
                 }
+                catch { }
             }
-            catch { }
         }
 
         private void btnAjouterExemplaire_Click(object sender, EventArgs e)
         {
-            using (var frm = new frmrExemplaire())
+            using (var frm = new frmrExemplaire() { Text = "Ajouter un exemplaire" })
             {
-                frm.SetExemplaire(new Exemplaire() { _id = MongoDB.Bson.ObjectId.GenerateNewId() });
-                if (frm.ShowDialog()== DialogResult.OK)
+                Notice notice = GetNotice();
+                frm.SetExemplaire(new Exemplaire() { _id = MongoDB.Bson.ObjectId.GenerateNewId(), localisation = Properties.Settings.Default.Localisation, codeBarre = notice.isbn });
+                if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    Notice notice = GetNotice();
                     if (notice.exemplaires == null)
                         notice.exemplaires = new List<Exemplaire>();
                     notice.exemplaires.Add(frm.GetExemplaire());
@@ -138,7 +147,7 @@ namespace wfBiblio
                 Notice notice = GetNotice();
                 if (notice.exemplaires == null)
                     notice.exemplaires = new List<Exemplaire>();
-                using (var frm = new frmrExemplaire())
+                using (var frm = new frmrExemplaire() { Text = "Modifier un exemplaire" })
                 {
                     MongoDB.Bson.ObjectId id = MongoDB.Bson.ObjectId.Parse(dgvExemplaires.SelectedRows[0].Cells["id"].Value.ToString());
                     frm.SetExemplaire(notice.exemplaires.Find(a => a._id == id));

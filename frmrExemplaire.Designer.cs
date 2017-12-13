@@ -98,7 +98,7 @@
             this.codeBarreTextBox.Location = new System.Drawing.Point(156, 37);
             this.codeBarreTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.codeBarreTextBox.Name = "codeBarreTextBox";
-            this.codeBarreTextBox.Size = new System.Drawing.Size(148, 26);
+            this.codeBarreTextBox.Size = new System.Drawing.Size(337, 26);
             this.codeBarreTextBox.TabIndex = 1;
             // 
             // commentairesTextBox
@@ -118,7 +118,7 @@
             this.coteTextBox.Location = new System.Drawing.Point(156, 77);
             this.coteTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.coteTextBox.Name = "coteTextBox";
-            this.coteTextBox.Size = new System.Drawing.Size(148, 26);
+            this.coteTextBox.Size = new System.Drawing.Size(337, 26);
             this.coteTextBox.TabIndex = 2;
             // 
             // localisationTextBox
@@ -127,7 +127,7 @@
             this.localisationTextBox.Location = new System.Drawing.Point(156, 117);
             this.localisationTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.localisationTextBox.Name = "localisationTextBox";
-            this.localisationTextBox.Size = new System.Drawing.Size(148, 26);
+            this.localisationTextBox.Size = new System.Drawing.Size(337, 26);
             this.localisationTextBox.TabIndex = 3;
             // 
             // btnOK

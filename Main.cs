@@ -27,6 +27,7 @@ namespace wfBiblio
 
         private void btnSearchNotices_Click(object sender, EventArgs e)
         {
+            lblResult.Text = "";
             var coll = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
             dgvResultNotice.DataSource = null;
             var cursor = coll.Find(
@@ -35,9 +36,15 @@ namespace wfBiblio
                     Builders<Notice>.Filter.Regex(a => a.titre, new MongoDB.Bson.BsonRegularExpression(txtNotice.Text, "/i")),
                     new BsonDocument("exemplaires.codeBarre", txtNotice.Text)
                     )
-                );
+                ).Limit(100);
             if (cursor != null)
-                dgvResultNotice.DataSource = cursor.ToList();
+            {
+                var tmp = cursor.ToList();
+                dgvResultNotice.DataSource = tmp;
+                lblResult.Text = $"{tmp.Count} réponse(s)";
+            }
+            else
+                lblResult.Text = "Aucune réponse";
 
             dgvResultNotice.AutoResizeColumns();
             txtNotice.SelectAll();
@@ -146,6 +153,20 @@ namespace wfBiblio
         {
             timer1.Stop();
             txtSearchCirculation.Focus();
+        }
+
+        private void btnChercherNotice_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabPage2;
+        }
+
+        private void btnAddLecteur_Click(object sender, EventArgs e)
+        {
+            using (frmLecteur lecteur = new frmLecteur())
+            {
+                lecteur.Init(new LecteurResult() { lecteur = new Lecteur() { _id = ObjectId.GenerateNewId(), débutAdhésion = DateTime.Now, finAdhésion = DateTime.Now.AddYears(1), dernierEmprunt = new DateTime(2000, 1, 1), duréeEmprunts = 21 } });
+                lecteur.ShowDialog();
+            }
         }
     }
 }

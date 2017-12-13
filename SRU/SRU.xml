@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<srw:searchRetrieveResponse xmlns:srw="http://www.loc.gov/zing/srw/" xmlns="http://catalogue.bnf.fr/namespaces/InterXMarc" xmlns:ixm="http://catalogue.bnf.fr/namespaces/InterXMarc" xmlns:mn="http://catalogue.bnf.fr/namespaces/motsnotices" xmlns:sd="http://www.loc.gov/zing/srw/diagnostic/">
+  <srw:version>1.2</srw:version>
+  <srw:echoedSearchRetrieveRequest>
+    <srw:version>1.2</srw:version>
+    <srw:query>bib.title all "Quand sort la recluse"</srw:query>
+  </srw:echoedSearchRetrieveRequest>
+  <srw:numberOfRecords>3</srw:numberOfRecords>
+  <srw:records>
+    <srw:record>
+      <srw:recordSchema>marcxchange</srw:recordSchema>
+      <srw:recordPacking>xml</srw:recordPacking>
+      <srw:recordData>
+        <mxc:record xmlns:mxc="info:lc/xmlns/marcxchange-v2" format="UNIMARC" id="ark:/12148/cb453768103" type="Bibliographic">
+          <mxc:leader>     njm  22        450 </mxc:leader>
+          <mxc:controlfield tag="001">FRBNF453768100000004</mxc:controlfield>
+          <mxc:controlfield tag="003">http://catalogue.bnf.fr/ark:/12148/cb453768103</mxc:controlfield>
+          <mxc:datafield tag="071" ind1="0" ind2="1">
+            <mxc:subfield code="b">Audiolib</mxc:subfield>
+            <mxc:subfield code="a">1874546</mxc:subfield>
+            <mxc:subfield code="c">boîte</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="073" ind1=" " ind2="0">
+            <mxc:subfield code="a">9782367625454</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="100" ind1=" " ind2=" ">
+            <mxc:subfield code="a">20171023d        u  y0frey50      ba</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="101" ind1="0" ind2=" ">
+            <mxc:subfield code="a">fre</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="102" ind1=" " ind2=" ">
+            <mxc:subfield code="a">FR</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="181" ind1=" " ind2="0">
+            <mxc:subfield code="6">01</mxc:subfield>
+            <mxc:subfield code="a">d </mxc:subfield>
+            <mxc:subfield code="b">bxxa  </mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="181" ind1=" " ind2=" ">
+            <mxc:subfield code="6">02</mxc:subfield>
+            <mxc:subfield code="c">prm</mxc:subfield>
+            <mxc:subfield code="2">rdacontent</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="182" ind1=" " ind2="0">
+            <mxc:subfield code="6">01</mxc:subfield>
+            <mxc:subfield code="a">a</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="182" ind1=" " ind2=" ">
+            <mxc:subfield code="6">02</mxc:subfield>
+            <mxc:subfield code="c">s</mxc:subfield>
+            <mxc:subfield code="2">rdamedia</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="200" ind1="1" ind2=" ">
+            <mxc:subfield code="a">Quand sort la recluse</mxc:subfield>
+            <mxc:subfield code="b">Enregistrement sonore</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="210" ind1=" " ind2=" ">
+            <mxc:subfield code="c">Audiolib / Hachette livre</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="215" ind1=" " ind2=" ">
+            <mxc:subfield code="a">1 CD MP3</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="716" ind1=" " ind2=" ">
+            <mxc:subfield code="a">Audiolib</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="801" ind1=" " ind2="0">
+            <mxc:subfield code="a">FR</mxc:subfield>
+            <mxc:subfield code="b">FR-751131015</mxc:subfield>
+            <mxc:subfield code="c">20171023</mxc:subfield>
+            <mxc:subfield code="g">AFNOR</mxc:subfield>
+            <mxc:subfield code="h">FRBNF453768100000004</mxc:subfield>
+            <mxc:subfield code="2">intermrc</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="930" ind1=" " ind2=" ">
+            <mxc:subfield code="5">FR-759999999:45376810001001</mxc:subfield>
+            <mxc:subfield code="a">SDC 12-329865</mxc:subfield>
+            <mxc:subfield code="b">759999999</mxc:subfield>
+            <mxc:subfield code="c">Tolbiac - Rez de Jardin - Audiovisuel - Magasin</mxc:subfield>
+            <mxc:subfield code="d">O</mxc:subfield>
+          </mxc:datafield>
+        </mxc:record>
+      </srw:recordData>
+      <srw:recordIdentifier>ark:/12148/cb453768103</srw:recordIdentifier>
+      <srw:recordPosition>1</srw:recordPosition>
+      <srw:extraRecordData>
+        <ixm:attr name="CreationDate">20171023</ixm:attr>
+        <ixm:attr name="LastValidationDate">20171023</ixm:attr>
+        <mn:score>8.675252</mn:score>
+      </srw:extraRecordData>
+    </srw:record>
+    <srw:record>
+      <srw:recordSchema>marcxchange</srw:recordSchema>
+      <srw:recordPacking>xml</srw:recordPacking>
+      <srw:recordData>
+        <mxc:record xmlns:mxc="info:lc/xmlns/marcxchange-v2" format="UNIMARC" id="ark:/12148/cb452841999" type="Bibliographic">
+          <mxc:leader>     cam  22        450 </mxc:leader>
+          <mxc:controlfield tag="001">FRBNF452841990000004</mxc:controlfield>
+          <mxc:controlfield tag="003">http://catalogue.bnf.fr/ark:/12148/cb452841999</mxc:controlfield>
+          <mxc:datafield tag="010" ind1=" " ind2=" ">
+            <mxc:subfield code="a">978-2-08-141314-6</mxc:subfield>
+            <mxc:subfield code="b">br.</mxc:subfield>
+            <mxc:subfield code="d">21 EUR</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="020" ind1=" " ind2=" ">
+            <mxc:subfield code="a">FR</mxc:subfield>
+            <mxc:subfield code="b">01739100</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="073" ind1=" " ind2="0">
+            <mxc:subfield code="a">9782081413146</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="100" ind1=" " ind2=" ">
+            <mxc:subfield code="a">20170602d2017    m  y0frey50      ba</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="101" ind1="0" ind2=" ">
+            <mxc:subfield code="a">fre</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="102" ind1=" " ind2=" ">
+            <mxc:subfield code="a">FR</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="105" ind1=" " ind2=" ">
+            <mxc:subfield code="a">||||z   00|a|</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="106" ind1=" " ind2=" ">
+            <mxc:subfield code="a">r</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="181" ind1=" " ind2="0">
+            <mxc:subfield code="6">01</mxc:subfield>
+            <mxc:subfield code="a">i </mxc:subfield>
+            <mxc:subfield code="b">xxxe  </mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="181" ind1=" " ind2=" ">
+            <mxc:subfield code="6">02</mxc:subfield>
+            <mxc:subfield code="c">txt</mxc:subfield>
+            <mxc:subfield code="2">rdacontent</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="182" ind1=" " ind2="0">
+            <mxc:subfield code="6">01</mxc:subfield>
+            <mxc:subfield code="a">n</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="182" ind1=" " ind2=" ">
+            <mxc:subfield code="6">02</mxc:subfield>
+            <mxc:subfield code="c">n</mxc:subfield>
+            <mxc:subfield code="2">rdamedia</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="200" ind1="1" ind2=" ">
+            <mxc:subfield code="a">Quand sort la recluse</mxc:subfield>
+            <mxc:subfield code="b">Texte imprimé</mxc:subfield>
+            <mxc:subfield code="f">Fred Vargas</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="210" ind1=" " ind2=" ">
+            <mxc:subfield code="a">[Paris]</mxc:subfield>
+            <mxc:subfield code="c">Flammarion</mxc:subfield>
+            <mxc:subfield code="d">DL 2017</mxc:subfield>
+            <mxc:subfield code="e">53-Mayenne</mxc:subfield>
+            <mxc:subfield code="g">Impr. Floch</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="215" ind1=" " ind2=" ">
+            <mxc:subfield code="a">1 vol. (477 p.)</mxc:subfield>
+            <mxc:subfield code="d">20 cm</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="686" ind1=" " ind2=" ">
+            <mxc:subfield code="a">803</mxc:subfield>
+            <mxc:subfield code="2">Cadre de classement de la Bibliographie nationale française</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="700" ind1=" " ind2="|">
+            <mxc:subfield code="3">12058359</mxc:subfield>
+            <mxc:subfield code="o">ISNI0000000120300340</mxc:subfield>
+            <mxc:subfield code="a">Vargas</mxc:subfield>
+            <mxc:subfield code="b">Fred</mxc:subfield>
+            <mxc:subfield code="f">1957-....</mxc:subfield>
+            <mxc:subfield code="4">070</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="801" ind1=" " ind2="0">
+            <mxc:subfield code="a">FR</mxc:subfield>
+            <mxc:subfield code="b">FR-751131015</mxc:subfield>
+            <mxc:subfield code="c">20170602</mxc:subfield>
+            <mxc:subfield code="g">AFNOR</mxc:subfield>
+            <mxc:subfield code="h">FRBNF452841990000004</mxc:subfield>
+            <mxc:subfield code="2">intermrc</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="930" ind1=" " ind2=" ">
+            <mxc:subfield code="5">FR-751131010:45284199001001</mxc:subfield>
+            <mxc:subfield code="a">POL84 VARG 4 quan</mxc:subfield>
+            <mxc:subfield code="b">759999999</mxc:subfield>
+            <mxc:subfield code="c">Tolbiac - Haut de Jardin - Littérature et art - Salle H - Libre accès</mxc:subfield>
+            <mxc:subfield code="d">N</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="930" ind1=" " ind2=" ">
+            <mxc:subfield code="5">FR-751131010:45284199001002</mxc:subfield>
+            <mxc:subfield code="a">2017-135296</mxc:subfield>
+            <mxc:subfield code="b">759999999</mxc:subfield>
+            <mxc:subfield code="c">Tolbiac - Rez de Jardin - Littérature et art - Magasin</mxc:subfield>
+            <mxc:subfield code="d">O</mxc:subfield>
+          </mxc:datafield>
+        </mxc:record>
+      </srw:recordData>
+      <srw:recordIdentifier>ark:/12148/cb452841999</srw:recordIdentifier>
+      <srw:recordPosition>2</srw:recordPosition>
+      <srw:extraRecordData>
+        <ixm:attr name="CreationDate">20170602</ixm:attr>
+        <ixm:attr name="LastValidationDate">20170720</ixm:attr>
+        <mn:score>8.669866</mn:score>
+      </srw:extraRecordData>
+    </srw:record>
+    <srw:record>
+      <srw:recordSchema>marcxchange</srw:recordSchema>
+      <srw:recordPacking>xml</srw:recordPacking>
+      <srw:recordData>
+        <mxc:record xmlns:mxc="info:lc/xmlns/marcxchange-v2" format="UNIMARC" id="ark:/12148/cb45329791b" type="Bibliographic">
+          <mxc:leader>     cam  22        450 </mxc:leader>
+          <mxc:controlfield tag="001">FRBNF453297910000002</mxc:controlfield>
+          <mxc:controlfield tag="003">http://catalogue.bnf.fr/ark:/12148/cb45329791b</mxc:controlfield>
+          <mxc:datafield tag="010" ind1=" " ind2=" ">
+            <mxc:subfield code="a">978-2-36360-426-2</mxc:subfield>
+            <mxc:subfield code="b">br.</mxc:subfield>
+            <mxc:subfield code="d">24 EUR</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="020" ind1=" " ind2=" ">
+            <mxc:subfield code="a">FR</mxc:subfield>
+            <mxc:subfield code="b">01749867</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="073" ind1=" " ind2="0">
+            <mxc:subfield code="a">9782363604262</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="100" ind1=" " ind2=" ">
+            <mxc:subfield code="a">20170810d2017    m  y0frey50      ba</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="101" ind1="0" ind2=" ">
+            <mxc:subfield code="a">fre</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="102" ind1=" " ind2=" ">
+            <mxc:subfield code="a">FR</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="105" ind1=" " ind2=" ">
+            <mxc:subfield code="a">||||z   00|a|</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="106" ind1=" " ind2=" ">
+            <mxc:subfield code="a">d</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="181" ind1=" " ind2="0">
+            <mxc:subfield code="6">01</mxc:subfield>
+            <mxc:subfield code="a">i </mxc:subfield>
+            <mxc:subfield code="b">xxxe  </mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="181" ind1=" " ind2=" ">
+            <mxc:subfield code="6">02</mxc:subfield>
+            <mxc:subfield code="c">txt</mxc:subfield>
+            <mxc:subfield code="2">rdacontent</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="182" ind1=" " ind2="0">
+            <mxc:subfield code="6">01</mxc:subfield>
+            <mxc:subfield code="a">n</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="182" ind1=" " ind2=" ">
+            <mxc:subfield code="6">02</mxc:subfield>
+            <mxc:subfield code="c">n</mxc:subfield>
+            <mxc:subfield code="2">rdamedia</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="200" ind1="1" ind2=" ">
+            <mxc:subfield code="a">Quand sort la recluse</mxc:subfield>
+            <mxc:subfield code="b">Texte imprimé</mxc:subfield>
+            <mxc:subfield code="f">Fred Vargas</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="205" ind1=" " ind2=" ">
+            <mxc:subfield code="a">Éd. en gros caractères</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="210" ind1=" " ind2=" ">
+            <mxc:subfield code="a">Versailles</mxc:subfield>
+            <mxc:subfield code="c">Feryane</mxc:subfield>
+            <mxc:subfield code="d">DL 2017</mxc:subfield>
+            <mxc:subfield code="e">impr. en Grande-Bretagne</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="215" ind1=" " ind2=" ">
+            <mxc:subfield code="a">1 vol. (493 p.)</mxc:subfield>
+            <mxc:subfield code="d">25 cm</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="225" ind1="|" ind2=" ">
+            <mxc:subfield code="a">Policier</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="410" ind1=" " ind2="0">
+            <mxc:subfield code="0">34290357</mxc:subfield>
+            <mxc:subfield code="t">Policier (Versailles)</mxc:subfield>
+            <mxc:subfield code="x">1959-3317</mxc:subfield>
+            <mxc:subfield code="d">2017</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="686" ind1=" " ind2=" ">
+            <mxc:subfield code="a">803</mxc:subfield>
+            <mxc:subfield code="2">Cadre de classement de la Bibliographie nationale française</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="700" ind1=" " ind2="|">
+            <mxc:subfield code="3">12058359</mxc:subfield>
+            <mxc:subfield code="o">ISNI0000000120300340</mxc:subfield>
+            <mxc:subfield code="a">Vargas</mxc:subfield>
+            <mxc:subfield code="b">Fred</mxc:subfield>
+            <mxc:subfield code="f">1957-....</mxc:subfield>
+            <mxc:subfield code="4">070</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="801" ind1=" " ind2="0">
+            <mxc:subfield code="a">FR</mxc:subfield>
+            <mxc:subfield code="b">FR-751131015</mxc:subfield>
+            <mxc:subfield code="c">20170810</mxc:subfield>
+            <mxc:subfield code="g">AFNOR</mxc:subfield>
+            <mxc:subfield code="h">FRBNF453297910000002</mxc:subfield>
+            <mxc:subfield code="2">intermrc</mxc:subfield>
+          </mxc:datafield>
+          <mxc:datafield tag="930" ind1=" " ind2=" ">
+            <mxc:subfield code="5">FR-751131010:45329791001001</mxc:subfield>
+            <mxc:subfield code="a">2017-189303</mxc:subfield>
+            <mxc:subfield code="b">759999999</mxc:subfield>
+            <mxc:subfield code="c">Tolbiac - Rez de Jardin - Littérature et art - Magasin</mxc:subfield>
+            <mxc:subfield code="d">O</mxc:subfield>
+          </mxc:datafield>
+        </mxc:record>
+      </srw:recordData>
+      <srw:recordIdentifier>ark:/12148/cb45329791b</srw:recordIdentifier>
+      <srw:recordPosition>3</srw:recordPosition>
+      <srw:extraRecordData>
+        <ixm:attr name="CreationDate">20170810</ixm:attr>
+        <ixm:attr name="LastValidationDate">20170914</ixm:attr>
+        <mn:score>4.351091</mn:score>
+      </srw:extraRecordData>
+    </srw:record>
+  </srw:records>
+</srw:searchRetrieveResponse>

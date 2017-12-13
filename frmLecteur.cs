@@ -25,6 +25,9 @@ namespace wfBiblio
             infoLecteurBindingSource.DataSource = db.GetCollection<InfoLecteur>("InfoLecteur").Find(a => a.lecteurId == lr.lecteur._id).ToList();
             lecteurBindingSource.DataSource = new List<Lecteur>() { lr.lecteur };
             lecteurBindingSource.Position = 0;
+            titreComboBox.DataSource = db.GetCollection<Lecteur>("Lecteur").Distinct<string>("titre", "{}").ToList();
+            villeComboBox.DataSource = db.GetCollection<Lecteur>("Lecteur").Distinct<string>("ville", "{}").ToList();
+            codePostalComboBox.DataSource = db.GetCollection<Lecteur>("Lecteur").Distinct<string>("codePostal", "{}").ToList();
         }
 
         private void infoLecteurBindingSource_AddingNew(object sender, AddingNewEventArgs e)
@@ -59,12 +62,12 @@ namespace wfBiblio
 
         private void btnListeEmprunts_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Cela ne fonctionne pas encore");
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Cela ne fonctionne pas encore");
         }
     }
 }

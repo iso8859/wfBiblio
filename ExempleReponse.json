@@ -1,0 +1,80 @@
+﻿{
+  "?xml": {
+    "@version": "1.0",
+    "@encoding": "UTF-8"
+  },
+  "srw:searchRetrieveResponse": {
+    "@xmlns:srw": "http://www.loc.gov/zing/srw/",
+    "@xmlns": "http://catalogue.bnf.fr/namespaces/InterXMarc",
+    "@xmlns:ixm": "http://catalogue.bnf.fr/namespaces/InterXMarc",
+    "@xmlns:mn": "http://catalogue.bnf.fr/namespaces/motsnotices",
+    "@xmlns:sd": "http://www.loc.gov/zing/srw/diagnostic/",
+    "srw:version": "1.2",
+    "srw:echoedSearchRetrieveRequest": {
+      "srw:version": "1.2",
+      "srw:query": "bib.isbn all \"9782081413146\""
+    },
+    "srw:numberOfRecords": "1",
+    "srw:records": {
+      "srw:record": {
+        "srw:recordSchema": "dc",
+        "srw:recordPacking": "xml",
+        "srw:recordData": {
+          "oai_dc:dc": {
+            "@xmlns:oai_dc": "http://www.openarchives.org/OAI/2.0/oai_dc/",
+            "@xmlns:dc": "http://purl.org/dc/elements/1.1/",
+            "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+            "@xsi:schemaLocation": "http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd",
+            "dc:identifier": [ "http://catalogue.bnf.fr/ark:/12148/cb452841999", "ISBN 9782081413146" ],
+            "dc:title": "Quand sort la recluse / Fred Vargas",
+            "dc:creator": "Vargas, Fred (1957-....). Auteur du texte",
+            "dc:publisher": "Flammarion (Paris)",
+            "dc:date": "2017",
+            "dc:description": "Code à barres commercial : EAN 9782081413146",
+            "dc:format": "1 vol. (477 p.) ; 20 cm",
+            "dc:language": [ "fre", "français" ],
+            "dc:type": [
+              {
+                "@xml:lang": "fre",
+                "#text": "texte imprimé"
+              },
+              {
+                "@xml:lang": "eng",
+                "#text": "printed text"
+              },
+              {
+                "@xml:lang": "eng",
+                "#text": "text"
+              }
+            ],
+            "dc:rights": [
+              {
+                "@xml:lang": "fre",
+                "#text": "Catalogue en ligne de la Bibliothèque nationale de France"
+              },
+              {
+                "@xml:lang": "eng",
+                "#text": "French National Library online Catalog"
+              }
+            ]
+          }
+        },
+        "srw:recordIdentifier": "ark:/12148/cb452841999",
+        "srw:recordPosition": "1",
+        "srw:extraRecordData": {
+          "ixm:attr": [
+            {
+              "@name": "CreationDate",
+              "#text": "20170602"
+            },
+            {
+              "@name": "LastValidationDate",
+              "#text": "20170720"
+            }
+          ],
+          "mn:score": "6.2701726"
+        }
+      }
+    }
+  }
+}

@@ -23,9 +23,9 @@ namespace wfBiblio
         public void Init(LecteurResult lecteur)
         {
             m_lecteur = lecteur;
+            lblGroupe.Text = lecteur.lecteur.titre;
             lblNom.Text = lecteur.infoLecteur.nom;
             lblPrenom.Text = lecteur.infoLecteur.prénom;
-            lblTitre.Text = lecteur.lecteur.titre;
             FillPrêts();
             timer1.Start();
         }

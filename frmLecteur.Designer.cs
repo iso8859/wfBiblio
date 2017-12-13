@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label adresseLabel;
-            System.Windows.Forms.Label codePostalLabel;
             System.Windows.Forms.Label commentairesLabel;
             System.Windows.Forms.Label débutAdhésionLabel;
             System.Windows.Forms.Label dernierEmpruntLabel;
@@ -38,18 +37,16 @@
             System.Windows.Forms.Label mailLabel;
             System.Windows.Forms.Label téléphoneLabel;
             System.Windows.Forms.Label titreLabel;
-            System.Windows.Forms.Label villeLabel;
             System.Windows.Forms.Label duréeEmpruntsLabel;
+            System.Windows.Forms.Label villeLabel;
+            System.Windows.Forms.Label codePostalLabel;
             this.adresseTextBox = new System.Windows.Forms.TextBox();
-            this.codePostalTextBox = new System.Windows.Forms.TextBox();
             this.commentairesTextBox = new System.Windows.Forms.TextBox();
             this.débutAdhésionDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.dernierEmpruntDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.finAdhésionDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.mailTextBox = new System.Windows.Forms.TextBox();
             this.téléphoneTextBox = new System.Windows.Forms.TextBox();
-            this.titreTextBox = new System.Windows.Forms.TextBox();
-            this.villeTextBox = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.duréeEmpruntsTextBox = new System.Windows.Forms.TextBox();
             this.infoLecteurDataGridView = new System.Windows.Forms.DataGridView();
@@ -58,13 +55,15 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
+            this.titreComboBox = new System.Windows.Forms.ComboBox();
+            this.villeComboBox = new System.Windows.Forms.ComboBox();
+            this.codePostalComboBox = new System.Windows.Forms.ComboBox();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.infoLecteurBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lecteurBindingSource = new System.Windows.Forms.BindingSource(this.components);
             adresseLabel = new System.Windows.Forms.Label();
-            codePostalLabel = new System.Windows.Forms.Label();
             commentairesLabel = new System.Windows.Forms.Label();
             débutAdhésionLabel = new System.Windows.Forms.Label();
             dernierEmpruntLabel = new System.Windows.Forms.Label();
@@ -72,8 +71,9 @@
             mailLabel = new System.Windows.Forms.Label();
             téléphoneLabel = new System.Windows.Forms.Label();
             titreLabel = new System.Windows.Forms.Label();
-            villeLabel = new System.Windows.Forms.Label();
             duréeEmpruntsLabel = new System.Windows.Forms.Label();
+            villeLabel = new System.Windows.Forms.Label();
+            codePostalLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infoLecteurDataGridView)).BeginInit();
             this.panel2.SuspendLayout();
@@ -90,16 +90,6 @@
             adresseLabel.Size = new System.Drawing.Size(70, 20);
             adresseLabel.TabIndex = 1;
             adresseLabel.Text = "adresse:";
-            // 
-            // codePostalLabel
-            // 
-            codePostalLabel.AutoSize = true;
-            codePostalLabel.Location = new System.Drawing.Point(16, 90);
-            codePostalLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            codePostalLabel.Name = "codePostalLabel";
-            codePostalLabel.Size = new System.Drawing.Size(96, 20);
-            codePostalLabel.TabIndex = 3;
-            codePostalLabel.Text = "code Postal:";
             // 
             // commentairesLabel
             // 
@@ -167,19 +157,9 @@
             titreLabel.Location = new System.Drawing.Point(16, 18);
             titreLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             titreLabel.Name = "titreLabel";
-            titreLabel.Size = new System.Drawing.Size(40, 20);
+            titreLabel.Size = new System.Drawing.Size(63, 20);
             titreLabel.TabIndex = 19;
-            titreLabel.Text = "titre:";
-            // 
-            // villeLabel
-            // 
-            villeLabel.AutoSize = true;
-            villeLabel.Location = new System.Drawing.Point(267, 90);
-            villeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            villeLabel.Name = "villeLabel";
-            villeLabel.Size = new System.Drawing.Size(38, 20);
-            villeLabel.TabIndex = 21;
-            villeLabel.Text = "ville:";
+            titreLabel.Text = "groupe:";
             // 
             // duréeEmpruntsLabel
             // 
@@ -199,15 +179,6 @@
             this.adresseTextBox.Size = new System.Drawing.Size(343, 26);
             this.adresseTextBox.TabIndex = 2;
             // 
-            // codePostalTextBox
-            // 
-            this.codePostalTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lecteurBindingSource, "codePostal", true));
-            this.codePostalTextBox.Location = new System.Drawing.Point(150, 86);
-            this.codePostalTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.codePostalTextBox.Name = "codePostalTextBox";
-            this.codePostalTextBox.Size = new System.Drawing.Size(97, 26);
-            this.codePostalTextBox.TabIndex = 4;
-            // 
             // commentairesTextBox
             // 
             this.commentairesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lecteurBindingSource, "commentaires", true));
@@ -216,7 +187,7 @@
             this.commentairesTextBox.Multiline = true;
             this.commentairesTextBox.Name = "commentairesTextBox";
             this.commentairesTextBox.Size = new System.Drawing.Size(241, 101);
-            this.commentairesTextBox.TabIndex = 6;
+            this.commentairesTextBox.TabIndex = 11;
             // 
             // débutAdhésionDateTimePicker
             // 
@@ -243,7 +214,7 @@
             this.finAdhésionDateTimePicker.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.finAdhésionDateTimePicker.Name = "finAdhésionDateTimePicker";
             this.finAdhésionDateTimePicker.Size = new System.Drawing.Size(241, 26);
-            this.finAdhésionDateTimePicker.TabIndex = 12;
+            this.finAdhésionDateTimePicker.TabIndex = 9;
             // 
             // mailTextBox
             // 
@@ -252,7 +223,7 @@
             this.mailTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.mailTextBox.Name = "mailTextBox";
             this.mailTextBox.Size = new System.Drawing.Size(343, 26);
-            this.mailTextBox.TabIndex = 16;
+            this.mailTextBox.TabIndex = 6;
             // 
             // téléphoneTextBox
             // 
@@ -261,46 +232,28 @@
             this.téléphoneTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.téléphoneTextBox.Name = "téléphoneTextBox";
             this.téléphoneTextBox.Size = new System.Drawing.Size(343, 26);
-            this.téléphoneTextBox.TabIndex = 18;
-            // 
-            // titreTextBox
-            // 
-            this.titreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lecteurBindingSource, "titre", true));
-            this.titreTextBox.Location = new System.Drawing.Point(150, 14);
-            this.titreTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.titreTextBox.Name = "titreTextBox";
-            this.titreTextBox.Size = new System.Drawing.Size(343, 26);
-            this.titreTextBox.TabIndex = 20;
-            // 
-            // villeTextBox
-            // 
-            this.villeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lecteurBindingSource, "ville", true));
-            this.villeTextBox.Location = new System.Drawing.Point(313, 86);
-            this.villeTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.villeTextBox.Name = "villeTextBox";
-            this.villeTextBox.Size = new System.Drawing.Size(180, 26);
-            this.villeTextBox.TabIndex = 22;
+            this.téléphoneTextBox.TabIndex = 5;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(codePostalLabel);
+            this.panel1.Controls.Add(this.codePostalComboBox);
+            this.panel1.Controls.Add(villeLabel);
+            this.panel1.Controls.Add(this.villeComboBox);
+            this.panel1.Controls.Add(this.titreComboBox);
             this.panel1.Controls.Add(duréeEmpruntsLabel);
             this.panel1.Controls.Add(this.duréeEmpruntsTextBox);
-            this.panel1.Controls.Add(this.titreTextBox);
             this.panel1.Controls.Add(dernierEmpruntLabel);
             this.panel1.Controls.Add(commentairesLabel);
             this.panel1.Controls.Add(this.dernierEmpruntDateTimePicker);
             this.panel1.Controls.Add(finAdhésionLabel);
-            this.panel1.Controls.Add(codePostalLabel);
             this.panel1.Controls.Add(this.finAdhésionDateTimePicker);
             this.panel1.Controls.Add(this.commentairesTextBox);
             this.panel1.Controls.Add(adresseLabel);
             this.panel1.Controls.Add(débutAdhésionLabel);
-            this.panel1.Controls.Add(this.codePostalTextBox);
             this.panel1.Controls.Add(this.débutAdhésionDateTimePicker);
             this.panel1.Controls.Add(titreLabel);
             this.panel1.Controls.Add(this.adresseTextBox);
-            this.panel1.Controls.Add(this.villeTextBox);
-            this.panel1.Controls.Add(villeLabel);
             this.panel1.Controls.Add(this.téléphoneTextBox);
             this.panel1.Controls.Add(mailLabel);
             this.panel1.Controls.Add(téléphoneLabel);
@@ -317,7 +270,7 @@
             this.duréeEmpruntsTextBox.Location = new System.Drawing.Point(149, 193);
             this.duréeEmpruntsTextBox.Name = "duréeEmpruntsTextBox";
             this.duréeEmpruntsTextBox.Size = new System.Drawing.Size(100, 26);
-            this.duréeEmpruntsTextBox.TabIndex = 23;
+            this.duréeEmpruntsTextBox.TabIndex = 7;
             // 
             // infoLecteurDataGridView
             // 
@@ -386,6 +339,57 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
+            // titreComboBox
+            // 
+            this.titreComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.titreComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.titreComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lecteurBindingSource, "titre", true));
+            this.titreComboBox.FormattingEnabled = true;
+            this.titreComboBox.Location = new System.Drawing.Point(150, 15);
+            this.titreComboBox.Name = "titreComboBox";
+            this.titreComboBox.Size = new System.Drawing.Size(343, 28);
+            this.titreComboBox.TabIndex = 1;
+            // 
+            // villeLabel
+            // 
+            villeLabel.AutoSize = true;
+            villeLabel.Location = new System.Drawing.Point(259, 89);
+            villeLabel.Name = "villeLabel";
+            villeLabel.Size = new System.Drawing.Size(38, 20);
+            villeLabel.TabIndex = 24;
+            villeLabel.Text = "ville:";
+            // 
+            // villeComboBox
+            // 
+            this.villeComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.villeComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.villeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lecteurBindingSource, "ville", true));
+            this.villeComboBox.FormattingEnabled = true;
+            this.villeComboBox.Location = new System.Drawing.Point(303, 86);
+            this.villeComboBox.Name = "villeComboBox";
+            this.villeComboBox.Size = new System.Drawing.Size(190, 28);
+            this.villeComboBox.TabIndex = 4;
+            // 
+            // codePostalLabel
+            // 
+            codePostalLabel.AutoSize = true;
+            codePostalLabel.Location = new System.Drawing.Point(16, 89);
+            codePostalLabel.Name = "codePostalLabel";
+            codePostalLabel.Size = new System.Drawing.Size(96, 20);
+            codePostalLabel.TabIndex = 25;
+            codePostalLabel.Text = "code Postal:";
+            // 
+            // codePostalComboBox
+            // 
+            this.codePostalComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.codePostalComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.codePostalComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lecteurBindingSource, "codePostal", true));
+            this.codePostalComboBox.FormattingEnabled = true;
+            this.codePostalComboBox.Location = new System.Drawing.Point(149, 86);
+            this.codePostalComboBox.Name = "codePostalComboBox";
+            this.codePostalComboBox.Size = new System.Drawing.Size(100, 28);
+            this.codePostalComboBox.TabIndex = 3;
+            // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "nom";
@@ -443,15 +447,12 @@
 
         private System.Windows.Forms.BindingSource lecteurBindingSource;
         private System.Windows.Forms.TextBox adresseTextBox;
-        private System.Windows.Forms.TextBox codePostalTextBox;
         private System.Windows.Forms.TextBox commentairesTextBox;
         private System.Windows.Forms.DateTimePicker débutAdhésionDateTimePicker;
         private System.Windows.Forms.DateTimePicker dernierEmpruntDateTimePicker;
         private System.Windows.Forms.DateTimePicker finAdhésionDateTimePicker;
         private System.Windows.Forms.TextBox mailTextBox;
         private System.Windows.Forms.TextBox téléphoneTextBox;
-        private System.Windows.Forms.TextBox titreTextBox;
-        private System.Windows.Forms.TextBox villeTextBox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.BindingSource infoLecteurBindingSource;
         private System.Windows.Forms.DataGridView infoLecteurDataGridView;
@@ -464,5 +465,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.Button btnListeEmprunts;
         private System.Windows.Forms.TextBox duréeEmpruntsTextBox;
+        private System.Windows.Forms.ComboBox titreComboBox;
+        private System.Windows.Forms.ComboBox villeComboBox;
+        private System.Windows.Forms.ComboBox codePostalComboBox;
     }
 }

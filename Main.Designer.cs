@@ -34,11 +34,23 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.pnlCirculation = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnAddLecteur = new System.Windows.Forms.Button();
+            this.btnChercherNotice = new System.Windows.Forms.Button();
             this.btnCirculation = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearchCirculation = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvResultNotice = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnEnregistrerNotice = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAddNotice = new System.Windows.Forms.Button();
+            this.btnSearchNotices = new System.Windows.Forms.Button();
+            this.txtNotice = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.titreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.auteurDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.éditeurDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,25 +61,17 @@
             this.collectionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.isbnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noticeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnEnregistrerNotice = new System.Windows.Forms.Button();
             this.ctrlNotices1 = new wfBiblio.ctrlNotices();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnAddNotice = new System.Windows.Forms.Button();
-            this.btnSearchNotices = new System.Windows.Forms.Button();
-            this.txtNotice = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblResult = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultNotice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.noticeBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.noticeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -75,8 +79,9 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.ImageList = this.imageList1;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(5);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1924, 1061);
@@ -87,10 +92,11 @@
             this.tabPage1.BackColor = System.Drawing.Color.LightGray;
             this.tabPage1.Controls.Add(this.pnlCirculation);
             this.tabPage1.Controls.Add(this.panel4);
+            this.tabPage1.ImageIndex = 0;
             this.tabPage1.Location = new System.Drawing.Point(4, 40);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(5);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(5);
             this.tabPage1.Size = new System.Drawing.Size(1916, 1017);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Circulation";
@@ -100,7 +106,7 @@
             this.pnlCirculation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCirculation.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlCirculation.Location = new System.Drawing.Point(5, 103);
-            this.pnlCirculation.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pnlCirculation.Margin = new System.Windows.Forms.Padding(5);
             this.pnlCirculation.Name = "pnlCirculation";
             this.pnlCirculation.Size = new System.Drawing.Size(1906, 909);
             this.pnlCirculation.TabIndex = 5;
@@ -108,20 +114,44 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Beige;
+            this.panel4.Controls.Add(this.btnAddLecteur);
+            this.panel4.Controls.Add(this.btnChercherNotice);
             this.panel4.Controls.Add(this.btnCirculation);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.txtSearchCirculation);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(5, 5);
-            this.panel4.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel4.Margin = new System.Windows.Forms.Padding(5);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1906, 98);
             this.panel4.TabIndex = 4;
             // 
+            // btnAddLecteur
+            // 
+            this.btnAddLecteur.Location = new System.Drawing.Point(1600, 19);
+            this.btnAddLecteur.Margin = new System.Windows.Forms.Padding(5);
+            this.btnAddLecteur.Name = "btnAddLecteur";
+            this.btnAddLecteur.Size = new System.Drawing.Size(218, 42);
+            this.btnAddLecteur.TabIndex = 4;
+            this.btnAddLecteur.Text = "Ajouter lecteur";
+            this.btnAddLecteur.UseVisualStyleBackColor = true;
+            this.btnAddLecteur.Click += new System.EventHandler(this.btnAddLecteur_Click);
+            // 
+            // btnChercherNotice
+            // 
+            this.btnChercherNotice.Location = new System.Drawing.Point(1366, 20);
+            this.btnChercherNotice.Margin = new System.Windows.Forms.Padding(5);
+            this.btnChercherNotice.Name = "btnChercherNotice";
+            this.btnChercherNotice.Size = new System.Drawing.Size(224, 42);
+            this.btnChercherNotice.TabIndex = 3;
+            this.btnChercherNotice.Text = "Chercher notice";
+            this.btnChercherNotice.UseVisualStyleBackColor = true;
+            this.btnChercherNotice.Click += new System.EventHandler(this.btnChercherNotice_Click);
+            // 
             // btnCirculation
             // 
             this.btnCirculation.Location = new System.Drawing.Point(1140, 20);
-            this.btnCirculation.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnCirculation.Margin = new System.Windows.Forms.Padding(5);
             this.btnCirculation.Name = "btnCirculation";
             this.btnCirculation.Size = new System.Drawing.Size(133, 42);
             this.btnCirculation.TabIndex = 2;
@@ -135,14 +165,14 @@
             this.label1.Location = new System.Drawing.Point(46, 26);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(422, 31);
+            this.label1.Size = new System.Drawing.Size(420, 31);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Rechercher lecteur, exemplaire....";
+            this.label1.Text = "Rechercher lecteur, code barre....";
             // 
             // txtSearchCirculation
             // 
             this.txtSearchCirculation.Location = new System.Drawing.Point(588, 22);
-            this.txtSearchCirculation.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtSearchCirculation.Margin = new System.Windows.Forms.Padding(5);
             this.txtSearchCirculation.Name = "txtSearchCirculation";
             this.txtSearchCirculation.Size = new System.Drawing.Size(498, 38);
             this.txtSearchCirculation.TabIndex = 1;
@@ -153,10 +183,11 @@
             this.tabPage2.Controls.Add(this.dgvResultNotice);
             this.tabPage2.Controls.Add(this.panel2);
             this.tabPage2.Controls.Add(this.panel1);
+            this.tabPage2.ImageIndex = 1;
             this.tabPage2.Location = new System.Drawing.Point(4, 40);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(5);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(5);
             this.tabPage2.Size = new System.Drawing.Size(1916, 1017);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Notices";
@@ -181,7 +212,7 @@
             this.dgvResultNotice.DataSource = this.noticeBindingSource;
             this.dgvResultNotice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvResultNotice.Location = new System.Drawing.Point(5, 117);
-            this.dgvResultNotice.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dgvResultNotice.Margin = new System.Windows.Forms.Padding(5);
             this.dgvResultNotice.Name = "dgvResultNotice";
             this.dgvResultNotice.ReadOnly = true;
             this.dgvResultNotice.RowHeadersVisible = false;
@@ -190,6 +221,105 @@
             this.dgvResultNotice.Size = new System.Drawing.Size(994, 895);
             this.dgvResultNotice.TabIndex = 1;
             this.dgvResultNotice.SelectionChanged += new System.EventHandler(this.dgvResultNotice_SelectionChanged);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.ctrlNotices1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(999, 117);
+            this.panel2.Margin = new System.Windows.Forms.Padding(5);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(912, 895);
+            this.panel2.TabIndex = 3;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btnEnregistrerNotice);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 799);
+            this.panel3.Margin = new System.Windows.Forms.Padding(5);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(912, 96);
+            this.panel3.TabIndex = 0;
+            // 
+            // btnEnregistrerNotice
+            // 
+            this.btnEnregistrerNotice.Location = new System.Drawing.Point(708, 20);
+            this.btnEnregistrerNotice.Margin = new System.Windows.Forms.Padding(5);
+            this.btnEnregistrerNotice.Name = "btnEnregistrerNotice";
+            this.btnEnregistrerNotice.Size = new System.Drawing.Size(178, 53);
+            this.btnEnregistrerNotice.TabIndex = 4;
+            this.btnEnregistrerNotice.Text = "Enregistrer";
+            this.btnEnregistrerNotice.UseVisualStyleBackColor = true;
+            this.btnEnregistrerNotice.Click += new System.EventHandler(this.btnEnregistrerNotice_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lblResult);
+            this.panel1.Controls.Add(this.btnAddNotice);
+            this.panel1.Controls.Add(this.btnSearchNotices);
+            this.panel1.Controls.Add(this.txtNotice);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(5, 5);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1906, 112);
+            this.panel1.TabIndex = 0;
+            // 
+            // btnAddNotice
+            // 
+            this.btnAddNotice.Location = new System.Drawing.Point(1280, 25);
+            this.btnAddNotice.Margin = new System.Windows.Forms.Padding(5);
+            this.btnAddNotice.Name = "btnAddNotice";
+            this.btnAddNotice.Size = new System.Drawing.Size(178, 53);
+            this.btnAddNotice.TabIndex = 3;
+            this.btnAddNotice.Text = "Ajouter";
+            this.btnAddNotice.UseVisualStyleBackColor = true;
+            this.btnAddNotice.Click += new System.EventHandler(this.btnAddNotice_Click);
+            // 
+            // btnSearchNotices
+            // 
+            this.btnSearchNotices.Location = new System.Drawing.Point(1036, 25);
+            this.btnSearchNotices.Margin = new System.Windows.Forms.Padding(5);
+            this.btnSearchNotices.Name = "btnSearchNotices";
+            this.btnSearchNotices.Size = new System.Drawing.Size(178, 53);
+            this.btnSearchNotices.TabIndex = 2;
+            this.btnSearchNotices.Text = "Chercher";
+            this.btnSearchNotices.UseVisualStyleBackColor = true;
+            this.btnSearchNotices.Click += new System.EventHandler(this.btnSearchNotices_Click);
+            // 
+            // txtNotice
+            // 
+            this.txtNotice.Location = new System.Drawing.Point(404, 31);
+            this.txtNotice.Margin = new System.Windows.Forms.Padding(5);
+            this.txtNotice.Name = "txtNotice";
+            this.txtNotice.Size = new System.Drawing.Size(600, 38);
+            this.txtNotice.TabIndex = 1;
+            this.txtNotice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNotice_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(34, 31);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(349, 31);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Chercher par titre, auteur....";
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "business_contact-96.png");
+            this.imageList1.Images.SetKeyName(1, "fine_print-96.png");
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // titreDataGridViewTextBoxColumn
             // 
@@ -258,106 +388,23 @@
             // 
             this.noticeBindingSource.DataSource = typeof(wfBiblio.Notice);
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.ctrlNotices1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(999, 117);
-            this.panel2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(912, 895);
-            this.panel2.TabIndex = 3;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btnEnregistrerNotice);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 799);
-            this.panel3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(912, 96);
-            this.panel3.TabIndex = 0;
-            // 
-            // btnEnregistrerNotice
-            // 
-            this.btnEnregistrerNotice.Location = new System.Drawing.Point(708, 20);
-            this.btnEnregistrerNotice.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.btnEnregistrerNotice.Name = "btnEnregistrerNotice";
-            this.btnEnregistrerNotice.Size = new System.Drawing.Size(178, 53);
-            this.btnEnregistrerNotice.TabIndex = 4;
-            this.btnEnregistrerNotice.Text = "Enregistrer";
-            this.btnEnregistrerNotice.UseVisualStyleBackColor = true;
-            this.btnEnregistrerNotice.Click += new System.EventHandler(this.btnEnregistrerNotice_Click);
-            // 
             // ctrlNotices1
             // 
             this.ctrlNotices1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ctrlNotices1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctrlNotices1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ctrlNotices1.Location = new System.Drawing.Point(0, 0);
             this.ctrlNotices1.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.ctrlNotices1.Name = "ctrlNotices1";
             this.ctrlNotices1.Size = new System.Drawing.Size(912, 895);
             this.ctrlNotices1.TabIndex = 2;
             // 
-            // panel1
+            // lblResult
             // 
-            this.panel1.Controls.Add(this.btnAddNotice);
-            this.panel1.Controls.Add(this.btnSearchNotices);
-            this.panel1.Controls.Add(this.txtNotice);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(5, 5);
-            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1906, 112);
-            this.panel1.TabIndex = 0;
-            // 
-            // btnAddNotice
-            // 
-            this.btnAddNotice.Location = new System.Drawing.Point(1280, 25);
-            this.btnAddNotice.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.btnAddNotice.Name = "btnAddNotice";
-            this.btnAddNotice.Size = new System.Drawing.Size(178, 53);
-            this.btnAddNotice.TabIndex = 3;
-            this.btnAddNotice.Text = "Ajouter";
-            this.btnAddNotice.UseVisualStyleBackColor = true;
-            this.btnAddNotice.Click += new System.EventHandler(this.btnAddNotice_Click);
-            // 
-            // btnSearchNotices
-            // 
-            this.btnSearchNotices.Location = new System.Drawing.Point(1036, 25);
-            this.btnSearchNotices.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.btnSearchNotices.Name = "btnSearchNotices";
-            this.btnSearchNotices.Size = new System.Drawing.Size(178, 53);
-            this.btnSearchNotices.TabIndex = 2;
-            this.btnSearchNotices.Text = "Chercher";
-            this.btnSearchNotices.UseVisualStyleBackColor = true;
-            this.btnSearchNotices.Click += new System.EventHandler(this.btnSearchNotices_Click);
-            // 
-            // txtNotice
-            // 
-            this.txtNotice.Location = new System.Drawing.Point(404, 31);
-            this.txtNotice.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.txtNotice.Name = "txtNotice";
-            this.txtNotice.Size = new System.Drawing.Size(600, 38);
-            this.txtNotice.TabIndex = 1;
-            this.txtNotice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNotice_KeyPress);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(34, 31);
-            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(349, 31);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Chercher par titre, auteur....";
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.lblResult.AutoSize = true;
+            this.lblResult.Location = new System.Drawing.Point(34, 76);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(0, 31);
+            this.lblResult.TabIndex = 4;
             // 
             // Main
             // 
@@ -377,11 +424,11 @@
             this.panel4.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultNotice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.noticeBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.noticeBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -417,6 +464,10 @@
         private System.Windows.Forms.Button btnCirculation;
         private System.Windows.Forms.Panel pnlCirculation;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button btnAddLecteur;
+        private System.Windows.Forms.Button btnChercherNotice;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Label lblResult;
     }
 }
 
