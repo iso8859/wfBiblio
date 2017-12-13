@@ -16,5 +16,13 @@ namespace wfBiblio
         {
             InitializeComponent();
         }
+
+        public delegate void RetourHandler(ctrlPret ctrl);
+        public event RetourHandler RetourEvent;
+        private void btnRetour_Click(object sender, EventArgs e)
+        {
+            if (RetourEvent != null)
+                RetourEvent(this);
+        }
     }
 }

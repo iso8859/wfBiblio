@@ -89,7 +89,7 @@ namespace wfBiblio
                                     Builders<Emprunt>.Filter.Eq(a => a.etat, 1))
                                 ).ToList();
                             if (tmp2 != null && tmp2.Count > 0)
-                                AffichageLecteur(tmp2[0].idLecteur);
+                                AffichageLecteur(Lecteur.TrouverLecteurParId(tmp2[0].idLecteur));
                         }
                         else
                             MessageBox.Show("Erreur interne 1");
@@ -107,7 +107,7 @@ namespace wfBiblio
                 if (lr.Count>0)
                 {
                     if (lr.Count == 1)
-                        AffichageLecteur(lr[0].infoLecteur._id);
+                        AffichageLecteur(lr[0]);
                     else
                     {
                         ctrlChoixLecteur choix = new ctrlChoixLecteur() { Dock = DockStyle.Fill };
@@ -125,13 +125,13 @@ namespace wfBiblio
 
         private void Choix_ChoixLecteurEvent(LecteurResult lecteur)
         {
-            AffichageLecteur(lecteur.infoLecteur._id);
+            AffichageLecteur(lecteur);
         }
 
-        private void AffichageLecteur(ObjectId lecteurId)
+        private void AffichageLecteur(LecteurResult lecteur)
         {
             ctrlCirculation circ = new ctrlCirculation() { Dock = DockStyle.Fill };
-            circ.Init(lecteurId);
+            circ.Init(lecteur);
             pnlCirculation.Controls.Clear();
             pnlCirculation.Controls.Add(circ);
         }

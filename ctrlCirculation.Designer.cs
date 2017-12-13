@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.lblTitre = new System.Windows.Forms.Label();
             this.lblPrenom = new System.Windows.Forms.Label();
             this.lblNom = new System.Windows.Forms.Label();
@@ -41,7 +42,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btnEdit = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -57,51 +57,69 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(669, 84);
+            this.panel1.Size = new System.Drawing.Size(1041, 122);
             this.panel1.TabIndex = 0;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEdit.Location = new System.Drawing.Point(873, 67);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(142, 38);
+            this.btnEdit.TabIndex = 6;
+            this.btnEdit.Text = "Modifier";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // lblTitre
             // 
             this.lblTitre.AutoSize = true;
             this.lblTitre.BackColor = System.Drawing.Color.Lavender;
             this.lblTitre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblTitre.Location = new System.Drawing.Point(404, 16);
+            this.lblTitre.Location = new System.Drawing.Point(628, 23);
+            this.lblTitre.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblTitre.Name = "lblTitre";
-            this.lblTitre.Size = new System.Drawing.Size(2, 22);
+            this.lblTitre.Size = new System.Drawing.Size(2, 31);
             this.lblTitre.TabIndex = 5;
             // 
             // lblPrenom
             // 
             this.lblPrenom.AutoSize = true;
-            this.lblPrenom.Location = new System.Drawing.Point(111, 46);
+            this.lblPrenom.Location = new System.Drawing.Point(173, 67);
+            this.lblPrenom.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblPrenom.Name = "lblPrenom";
-            this.lblPrenom.Size = new System.Drawing.Size(0, 20);
+            this.lblPrenom.Size = new System.Drawing.Size(0, 29);
             this.lblPrenom.TabIndex = 3;
             // 
             // lblNom
             // 
             this.lblNom.AutoSize = true;
-            this.lblNom.Location = new System.Drawing.Point(111, 16);
+            this.lblNom.Location = new System.Drawing.Point(173, 23);
+            this.lblNom.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblNom.Name = "lblNom";
-            this.lblNom.Size = new System.Drawing.Size(0, 20);
+            this.lblNom.Size = new System.Drawing.Size(0, 29);
             this.lblNom.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 46);
+            this.label2.Location = new System.Drawing.Point(22, 67);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 20);
+            this.label2.Size = new System.Drawing.Size(98, 29);
             this.label2.TabIndex = 1;
             this.label2.Text = "Prénom";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 16);
+            this.label1.Location = new System.Drawing.Point(22, 23);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 20);
+            this.label1.Size = new System.Drawing.Size(65, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nom";
             // 
@@ -111,16 +129,18 @@
             this.panel2.Controls.Add(this.txtNewExplaire);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 84);
+            this.panel2.Location = new System.Drawing.Point(0, 122);
+            this.panel2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(669, 69);
+            this.panel2.Size = new System.Drawing.Size(1041, 100);
             this.panel2.TabIndex = 1;
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(460, 21);
+            this.btnOK.Location = new System.Drawing.Point(716, 30);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 26);
+            this.btnOK.Size = new System.Drawing.Size(117, 38);
             this.btnOK.TabIndex = 2;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -128,55 +148,47 @@
             // 
             // txtNewExplaire
             // 
-            this.txtNewExplaire.Location = new System.Drawing.Point(166, 21);
+            this.txtNewExplaire.Location = new System.Drawing.Point(310, 30);
+            this.txtNewExplaire.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtNewExplaire.Name = "txtNewExplaire";
-            this.txtNewExplaire.Size = new System.Drawing.Size(256, 26);
+            this.txtNewExplaire.Size = new System.Drawing.Size(344, 35);
             this.txtNewExplaire.TabIndex = 1;
             this.txtNewExplaire.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNewExplaire_KeyPress);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 24);
+            this.label3.Location = new System.Drawing.Point(39, 35);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 20);
+            this.label3.Size = new System.Drawing.Size(261, 29);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Scan exemplaire";
+            this.label3.Text = "Code barre exemplaire";
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 153);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 222);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(669, 324);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1041, 470);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // btnEdit
-            // 
-            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.Location = new System.Drawing.Point(561, 46);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(91, 26);
-            this.btnEdit.TabIndex = 6;
-            this.btnEdit.Text = "Modifier";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
             // ctrlCirculation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.Name = "ctrlCirculation";
-            this.Size = new System.Drawing.Size(669, 477);
+            this.Size = new System.Drawing.Size(1041, 692);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

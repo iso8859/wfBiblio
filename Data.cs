@@ -70,6 +70,17 @@ namespace wfBiblio
         public string localisation { get; set; }
         [BsonExtraElements]
         public BsonDocument indexes { get; set; }
+
+        public List<Emprunt> TrouverEmprunt()
+        {
+            var collEmprunt = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Emprunt>("Emprunt");
+            return collEmprunt.Find(
+                Builders<Emprunt>.Filter.And(
+                    Builders<Emprunt>.Filter.Eq(a => a.idLecteur, lecteurId),
+                    Builders<Emprunt>.Filter.Eq(a => a.etat, 1)
+                    )
+                ).ToList();
+        }
     }
 
     public class Lecteur
@@ -86,8 +97,14 @@ namespace wfBiblio
         public DateTime dernierEmprunt { get; set; }
         public string localisation { get; set; }
         public string commentaires { get; set; }
+        public int duréeEmprunts { get; set; }
         [BsonExtraElements]
         public BsonDocument indexes { get; set; }
+
+        public Lecteur()
+        {
+            duréeEmprunts = 21;
+        }
 
         public static LecteurResult TrouverLecteurParId(ObjectId id)
         {

@@ -19,16 +19,12 @@ namespace wfBiblio
             InitializeComponent();
         }
 
-        public void Init(ObjectId lecteur)
+        public void Init(LecteurResult lr)
         {
-            LecteurResult lr = Lecteur.TrouverLecteurParId(lecteur);
-            if (lr != null)
-            {
-                var db = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio");
-                infoLecteurBindingSource.DataSource = db.GetCollection<InfoLecteur>("InfoLecteur").Find(a => a.lecteurId == lr.lecteur._id).ToList();
-                lecteurBindingSource.DataSource = new List<Lecteur>() { lr.lecteur };
-                lecteurBindingSource.Position = 0;
-            }
+            var db = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio");
+            infoLecteurBindingSource.DataSource = db.GetCollection<InfoLecteur>("InfoLecteur").Find(a => a.lecteurId == lr.lecteur._id).ToList();
+            lecteurBindingSource.DataSource = new List<Lecteur>() { lr.lecteur };
+            lecteurBindingSource.Position = 0;
         }
 
         private void infoLecteurBindingSource_AddingNew(object sender, AddingNewEventArgs e)
@@ -51,6 +47,24 @@ namespace wfBiblio
                 il.lecteurId = lecteur._id;
                 db.GetCollection<InfoLecteur>("InfoLecteur").ReplaceOne(x => x._id == il._id, il, ops);
             }
+            DialogResult = DialogResult.OK;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+        }
+
+        // List<Emprunt> TrouverEmpruntLecteur
+
+        private void btnListeEmprunts_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
