@@ -14,7 +14,7 @@ namespace wfBiblio
     {
         public static void Importer()
         {
-            var lines = Csv.CsvReader.ReadFromStream(new System.IO.StreamReader(@"I:\Dropbox\Public\Mediathèque2000\Cocteau\biblio.csv", Encoding.UTF8).BaseStream);
+            var lines = Csv.CsvReader.ReadFromStream(new System.IO.StreamReader(@"C:\Users\remi\Dropbox\Public\Mediathèque2000\Cocteau\biblio.csv", Encoding.UTF8).BaseStream);
             var collNotice = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
             foreach (var line in lines)
             {
@@ -58,7 +58,7 @@ namespace wfBiblio
                 collNotice.InsertOne(notice);
             }
 
-            lines = Csv.CsvReader.ReadFromStream(new System.IO.StreamReader(@"I:\Dropbox\Public\Mediathèque2000\Cocteau\adhérents.csv", Encoding.UTF8).BaseStream);
+            lines = Csv.CsvReader.ReadFromStream(new System.IO.StreamReader(@"C:\Users\remi\Dropbox\Public\Mediathèque2000\Cocteau\adhérents.csv", Encoding.UTF8).BaseStream);
             var db = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio");
             Dictionary<string, List<InfoLecteur>> tmp = new Dictionary<string, List<InfoLecteur>>();
             Dictionary<string, Lecteur> lecteurs = new Dictionary<string, Lecteur>();

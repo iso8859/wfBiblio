@@ -83,6 +83,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.LightGray;
             this.tabPage1.Controls.Add(this.pnlCirculation);
             this.tabPage1.Controls.Add(this.panel4);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
@@ -91,7 +92,6 @@
             this.tabPage1.Size = new System.Drawing.Size(1279, 682);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Circulation";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // pnlCirculation
             // 
