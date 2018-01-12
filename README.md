@@ -9,6 +9,7 @@ Temps de formation 5 minutes.
 * Gestion des classes ou groupes de lecteurs.
 * Isolation des lecteurs et des exemplaires par localisation.
 
+![Quelques vidéos de présentation](https://iso8859.github.io/)
 
 TODO:
 
