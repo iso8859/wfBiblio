@@ -60,5 +60,10 @@ namespace wfBiblio
             DialogResult = DialogResult.Cancel;
         }
 
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+                btnSearch_Click(null, null);
+        }
     }
 }

@@ -32,7 +32,7 @@ namespace wfBiblio
 
         private void infoLecteurBindingSource_AddingNew(object sender, AddingNewEventArgs e)
         {
-            e.NewObject = new InfoLecteur();
+            e.NewObject = new InfoLecteur() { _id = ObjectId.GenerateNewId() };
         }
 
         private void btnOK_Click(object sender, EventArgs e)
