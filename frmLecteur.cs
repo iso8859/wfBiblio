@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,9 +61,33 @@ namespace wfBiblio
 
         // List<Emprunt> TrouverEmpruntLecteur
 
-        private void btnListeEmprunts_Click(object sender, EventArgs e)
+        private void btnListeEmprunts_Click(object sender, EventArgs ea)
         {
-            MessageBox.Show("Cela ne fonctionne pas encore");
+            if (saveFileDialog1.ShowDialog()== DialogResult.OK)
+            {
+                using (StreamWriter sw = new StreamWriter(saveFileDialog1.FileName, false, Encoding.Default))
+                {
+                    sw.WriteLine("Groupe;Nom;Prénom;Titre;Auteur;Date Emprunt;Date Retour;Exemplaire");
+                    var db = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio");
+                    var collNotice = db.GetCollection<Notice>("Notice");
+
+                    lecteurBindingSource.EndEdit();
+                    Lecteur lecteur = ((List<Lecteur>)lecteurBindingSource.DataSource)[0];
+                    foreach (InfoLecteur il in db.GetCollection<InfoLecteur>("InfoLecteur").Find(a => a.lecteurId == lecteur._id).ToList())
+                    {
+                        foreach (Emprunt emprunt in il.TrouverEmprunt())
+                        {
+                            List<Notice> tmp = collNotice.Find(new BsonDocument("exemplaires._id", emprunt.IdExemplaire)).ToList();
+                            if (tmp != null && tmp.Count > 0)
+                            {
+                                Exemplaire ex = tmp[0].exemplaires.Find(a => a._id == emprunt.IdExemplaire);
+                                sw.WriteLine($"{lecteur.titre};{il.nom};{il.prénom};{tmp[0].titre};{tmp[0].auteur};{emprunt.dateEmprunt.ToString("dd/MM/yyyy")};{emprunt.dateRetourPrévue.ToString("dd/MM/yyyy")};'{ex.codeBarre}");
+                            }
+                        }
+                    }
+                }
+                System.Diagnostics.Process.Start("explorer.exe", "/select,\"" + saveFileDialog1.FileName + "\"");
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

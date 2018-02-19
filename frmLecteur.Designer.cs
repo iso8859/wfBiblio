@@ -41,6 +41,7 @@
             System.Windows.Forms.Label villeLabel;
             System.Windows.Forms.Label codePostalLabel;
             this.adresseTextBox = new System.Windows.Forms.TextBox();
+            this.lecteurBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.commentairesTextBox = new System.Windows.Forms.TextBox();
             this.débutAdhésionDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.dernierEmpruntDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -48,21 +49,21 @@
             this.mailTextBox = new System.Windows.Forms.TextBox();
             this.téléphoneTextBox = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.codePostalComboBox = new System.Windows.Forms.ComboBox();
+            this.villeComboBox = new System.Windows.Forms.ComboBox();
+            this.titreComboBox = new System.Windows.Forms.ComboBox();
             this.duréeEmpruntsTextBox = new System.Windows.Forms.TextBox();
             this.infoLecteurDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.infoLecteurBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnListeEmprunts = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
-            this.titreComboBox = new System.Windows.Forms.ComboBox();
-            this.villeComboBox = new System.Windows.Forms.ComboBox();
-            this.codePostalComboBox = new System.Windows.Forms.ComboBox();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.infoLecteurBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lecteurBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             adresseLabel = new System.Windows.Forms.Label();
             commentairesLabel = new System.Windows.Forms.Label();
             débutAdhésionLabel = new System.Windows.Forms.Label();
@@ -74,11 +75,11 @@
             duréeEmpruntsLabel = new System.Windows.Forms.Label();
             villeLabel = new System.Windows.Forms.Label();
             codePostalLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.lecteurBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infoLecteurDataGridView)).BeginInit();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infoLecteurBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lecteurBindingSource)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // adresseLabel
@@ -170,6 +171,24 @@
             duréeEmpruntsLabel.TabIndex = 22;
             duréeEmpruntsLabel.Text = "durée Emprunts:";
             // 
+            // villeLabel
+            // 
+            villeLabel.AutoSize = true;
+            villeLabel.Location = new System.Drawing.Point(259, 89);
+            villeLabel.Name = "villeLabel";
+            villeLabel.Size = new System.Drawing.Size(38, 20);
+            villeLabel.TabIndex = 24;
+            villeLabel.Text = "ville:";
+            // 
+            // codePostalLabel
+            // 
+            codePostalLabel.AutoSize = true;
+            codePostalLabel.Location = new System.Drawing.Point(16, 89);
+            codePostalLabel.Name = "codePostalLabel";
+            codePostalLabel.Size = new System.Drawing.Size(96, 20);
+            codePostalLabel.TabIndex = 25;
+            codePostalLabel.Text = "code Postal:";
+            // 
             // adresseTextBox
             // 
             this.adresseTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lecteurBindingSource, "adresse", true));
@@ -178,6 +197,10 @@
             this.adresseTextBox.Name = "adresseTextBox";
             this.adresseTextBox.Size = new System.Drawing.Size(343, 26);
             this.adresseTextBox.TabIndex = 2;
+            // 
+            // lecteurBindingSource
+            // 
+            this.lecteurBindingSource.DataSource = typeof(wfBiblio.Lecteur);
             // 
             // commentairesTextBox
             // 
@@ -264,6 +287,39 @@
             this.panel1.Size = new System.Drawing.Size(916, 257);
             this.panel1.TabIndex = 23;
             // 
+            // codePostalComboBox
+            // 
+            this.codePostalComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.codePostalComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.codePostalComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lecteurBindingSource, "codePostal", true));
+            this.codePostalComboBox.FormattingEnabled = true;
+            this.codePostalComboBox.Location = new System.Drawing.Point(149, 86);
+            this.codePostalComboBox.Name = "codePostalComboBox";
+            this.codePostalComboBox.Size = new System.Drawing.Size(100, 28);
+            this.codePostalComboBox.TabIndex = 3;
+            // 
+            // villeComboBox
+            // 
+            this.villeComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.villeComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.villeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lecteurBindingSource, "ville", true));
+            this.villeComboBox.FormattingEnabled = true;
+            this.villeComboBox.Location = new System.Drawing.Point(303, 86);
+            this.villeComboBox.Name = "villeComboBox";
+            this.villeComboBox.Size = new System.Drawing.Size(190, 28);
+            this.villeComboBox.TabIndex = 4;
+            // 
+            // titreComboBox
+            // 
+            this.titreComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.titreComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.titreComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lecteurBindingSource, "titre", true));
+            this.titreComboBox.FormattingEnabled = true;
+            this.titreComboBox.Location = new System.Drawing.Point(150, 15);
+            this.titreComboBox.Name = "titreComboBox";
+            this.titreComboBox.Size = new System.Drawing.Size(343, 28);
+            this.titreComboBox.TabIndex = 1;
+            // 
             // duréeEmpruntsTextBox
             // 
             this.duréeEmpruntsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lecteurBindingSource, "duréeEmprunts", true));
@@ -287,6 +343,32 @@
             this.infoLecteurDataGridView.Size = new System.Drawing.Size(916, 311);
             this.infoLecteurDataGridView.TabIndex = 23;
             // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "nom";
+            this.dataGridViewTextBoxColumn3.HeaderText = "nom";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 250;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "prénom";
+            this.dataGridViewTextBoxColumn4.HeaderText = "prénom";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 250;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "commentaires";
+            this.dataGridViewTextBoxColumn5.HeaderText = "commentaires";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 350;
+            // 
+            // infoLecteurBindingSource
+            // 
+            this.infoLecteurBindingSource.DataSource = typeof(wfBiblio.InfoLecteur);
+            this.infoLecteurBindingSource.AddingNew += new System.ComponentModel.AddingNewEventHandler(this.infoLecteurBindingSource_AddingNew);
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.btnListeEmprunts);
@@ -301,11 +383,11 @@
             // 
             // btnListeEmprunts
             // 
-            this.btnListeEmprunts.Location = new System.Drawing.Point(607, 20);
+            this.btnListeEmprunts.Location = new System.Drawing.Point(584, 20);
             this.btnListeEmprunts.Name = "btnListeEmprunts";
-            this.btnListeEmprunts.Size = new System.Drawing.Size(158, 32);
+            this.btnListeEmprunts.Size = new System.Drawing.Size(181, 32);
             this.btnListeEmprunts.TabIndex = 3;
-            this.btnListeEmprunts.Text = "Editer les emprunts";
+            this.btnListeEmprunts.Text = "Exporter les emprunts";
             this.btnListeEmprunts.UseVisualStyleBackColor = true;
             this.btnListeEmprunts.Click += new System.EventHandler(this.btnListeEmprunts_Click);
             // 
@@ -339,86 +421,11 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // titreComboBox
+            // saveFileDialog1
             // 
-            this.titreComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.titreComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.titreComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lecteurBindingSource, "titre", true));
-            this.titreComboBox.FormattingEnabled = true;
-            this.titreComboBox.Location = new System.Drawing.Point(150, 15);
-            this.titreComboBox.Name = "titreComboBox";
-            this.titreComboBox.Size = new System.Drawing.Size(343, 28);
-            this.titreComboBox.TabIndex = 1;
-            // 
-            // villeLabel
-            // 
-            villeLabel.AutoSize = true;
-            villeLabel.Location = new System.Drawing.Point(259, 89);
-            villeLabel.Name = "villeLabel";
-            villeLabel.Size = new System.Drawing.Size(38, 20);
-            villeLabel.TabIndex = 24;
-            villeLabel.Text = "ville:";
-            // 
-            // villeComboBox
-            // 
-            this.villeComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.villeComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.villeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lecteurBindingSource, "ville", true));
-            this.villeComboBox.FormattingEnabled = true;
-            this.villeComboBox.Location = new System.Drawing.Point(303, 86);
-            this.villeComboBox.Name = "villeComboBox";
-            this.villeComboBox.Size = new System.Drawing.Size(190, 28);
-            this.villeComboBox.TabIndex = 4;
-            // 
-            // codePostalLabel
-            // 
-            codePostalLabel.AutoSize = true;
-            codePostalLabel.Location = new System.Drawing.Point(16, 89);
-            codePostalLabel.Name = "codePostalLabel";
-            codePostalLabel.Size = new System.Drawing.Size(96, 20);
-            codePostalLabel.TabIndex = 25;
-            codePostalLabel.Text = "code Postal:";
-            // 
-            // codePostalComboBox
-            // 
-            this.codePostalComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.codePostalComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.codePostalComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lecteurBindingSource, "codePostal", true));
-            this.codePostalComboBox.FormattingEnabled = true;
-            this.codePostalComboBox.Location = new System.Drawing.Point(149, 86);
-            this.codePostalComboBox.Name = "codePostalComboBox";
-            this.codePostalComboBox.Size = new System.Drawing.Size(100, 28);
-            this.codePostalComboBox.TabIndex = 3;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "nom";
-            this.dataGridViewTextBoxColumn3.HeaderText = "nom";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 250;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "prénom";
-            this.dataGridViewTextBoxColumn4.HeaderText = "prénom";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 250;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "commentaires";
-            this.dataGridViewTextBoxColumn5.HeaderText = "commentaires";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 350;
-            // 
-            // infoLecteurBindingSource
-            // 
-            this.infoLecteurBindingSource.DataSource = typeof(wfBiblio.InfoLecteur);
-            this.infoLecteurBindingSource.AddingNew += new System.ComponentModel.AddingNewEventHandler(this.infoLecteurBindingSource_AddingNew);
-            // 
-            // lecteurBindingSource
-            // 
-            this.lecteurBindingSource.DataSource = typeof(wfBiblio.Lecteur);
+            this.saveFileDialog1.DefaultExt = "*.csv";
+            this.saveFileDialog1.Filter = "Fichier CSV|*.csv";
+            this.saveFileDialog1.Title = "Exporter les emprunts vers Excel";
             // 
             // frmLecteur
             // 
@@ -433,12 +440,12 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmLecteur";
             this.Text = "Lecteur";
+            ((System.ComponentModel.ISupportInitialize)(this.lecteurBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infoLecteurDataGridView)).EndInit();
-            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.infoLecteurBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lecteurBindingSource)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -468,5 +475,6 @@
         private System.Windows.Forms.ComboBox titreComboBox;
         private System.Windows.Forms.ComboBox villeComboBox;
         private System.Windows.Forms.ComboBox codePostalComboBox;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

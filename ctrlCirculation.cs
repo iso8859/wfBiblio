@@ -58,6 +58,10 @@ namespace wfBiblio
                     flowLayoutPanel1.Controls.Add(p);
                 }
             }
+            if (flowLayoutPanel1.Controls.Count > 1)
+                lblExemplaires.Text = $"{flowLayoutPanel1.Controls.Count} emprunts";
+            else
+                lblExemplaires.Text = $"{flowLayoutPanel1.Controls.Count} emprunt";
         }
 
         private void P_RetourEvent(ctrlPret ctrl)

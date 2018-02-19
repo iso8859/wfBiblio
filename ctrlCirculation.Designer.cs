@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblGroupe = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
             this.lblPrenom = new System.Windows.Forms.Label();
             this.lblNom = new System.Windows.Forms.Label();
@@ -41,8 +43,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lblGroupe = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblExemplaires = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -63,6 +64,25 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1041, 122);
             this.panel1.TabIndex = 0;
+            // 
+            // lblGroupe
+            // 
+            this.lblGroupe.AutoSize = true;
+            this.lblGroupe.Location = new System.Drawing.Point(173, 12);
+            this.lblGroupe.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblGroupe.Name = "lblGroupe";
+            this.lblGroupe.Size = new System.Drawing.Size(0, 29);
+            this.lblGroupe.TabIndex = 8;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(22, 12);
+            this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(94, 29);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Groupe";
             // 
             // btnEdit
             // 
@@ -116,6 +136,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lblExemplaires);
             this.panel2.Controls.Add(this.btnOK);
             this.panel2.Controls.Add(this.txtNewExplaire);
             this.panel2.Controls.Add(this.label3);
@@ -158,6 +179,7 @@
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 222);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -169,24 +191,13 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // lblGroupe
+            // lblExemplaires
             // 
-            this.lblGroupe.AutoSize = true;
-            this.lblGroupe.Location = new System.Drawing.Point(173, 12);
-            this.lblGroupe.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lblGroupe.Name = "lblGroupe";
-            this.lblGroupe.Size = new System.Drawing.Size(0, 29);
-            this.lblGroupe.TabIndex = 8;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(22, 12);
-            this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(94, 29);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Groupe";
+            this.lblExemplaires.AutoSize = true;
+            this.lblExemplaires.Location = new System.Drawing.Point(883, 35);
+            this.lblExemplaires.Name = "lblExemplaires";
+            this.lblExemplaires.Size = new System.Drawing.Size(0, 29);
+            this.lblExemplaires.TabIndex = 3;
             // 
             // ctrlCirculation
             // 
@@ -223,5 +234,6 @@
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Label lblGroupe;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblExemplaires;
     }
 }

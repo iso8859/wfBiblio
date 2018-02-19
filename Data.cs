@@ -76,7 +76,7 @@ namespace wfBiblio
             var collEmprunt = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Emprunt>("Emprunt");
             return collEmprunt.Find(
                 Builders<Emprunt>.Filter.And(
-                    Builders<Emprunt>.Filter.Eq(a => a.idLecteur, lecteurId),
+                    Builders<Emprunt>.Filter.Eq(a => a.idLecteur, _id),
                     Builders<Emprunt>.Filter.Eq(a => a.etat, 1)
                     )
                 ).ToList();
