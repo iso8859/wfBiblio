@@ -123,7 +123,7 @@ namespace wfBiblio
             List<LecteurResult> result = new List<LecteurResult>();
             var db = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio");
             var s = new MongoDB.Bson.BsonRegularExpression(search, "/i");
-            foreach(InfoLecteur il in db.GetCollection<InfoLecteur>("InfoLecteur").Find(
+            foreach (InfoLecteur il in db.GetCollection<InfoLecteur>("InfoLecteur").Find(
                 Builders<InfoLecteur>.Filter.And(
                     Builders<InfoLecteur>.Filter.Eq(a => a.localisation, Properties.Settings.Default.Localisation),
                     Builders<InfoLecteur>.Filter.Or(
@@ -143,13 +143,37 @@ namespace wfBiblio
             }
 
             // Rechercher par titre
-            foreach (Lecteur lecteur in db.GetCollection<Lecteur>("Lecteur").Find(Builders<Lecteur>.Filter.Regex(a=>a.titre, s)).ToList())
+            foreach (Lecteur lecteur in db.GetCollection<Lecteur>("Lecteur").Find(Builders<Lecteur>.Filter.Regex(a => a.titre, s)).ToList())
             {
                 foreach (InfoLecteur il in db.GetCollection<InfoLecteur>("InfoLecteur").Find(Builders<InfoLecteur>.Filter.Eq(a => a.lecteurId, lecteur._id)).ToList())
                 {
                     if (result.Find(a => a.infoLecteur._id == il._id) == null)
                         result.Add(new LecteurResult() { infoLecteur = il, lecteur = lecteur });
                 }
+            }
+
+            result.Sort((a, b) => {
+                if (a.infoLecteur.nom.ToLower() != b.infoLecteur.nom.ToLower())
+                    return a.infoLecteur.nom.ToLower().CompareTo(b.infoLecteur.nom.ToLower());
+                else
+                    return a.infoLecteur.prénom.ToLower().CompareTo(b.infoLecteur.prénom.ToLower());
+            });
+
+            return result;
+        }
+
+        public static List<LecteurResult> TrouverLecteursParGroupe(InfoLecteur ilParent)
+        {
+            List<LecteurResult> result = new List<LecteurResult>();
+            var db = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio");
+            foreach (InfoLecteur il in db.GetCollection<InfoLecteur>("InfoLecteur").Find(Builders<InfoLecteur>.Filter.Eq(a => a.lecteurId, ilParent.lecteurId)).ToList())
+            {
+                LecteurResult lr = new LecteurResult()
+                {
+                    infoLecteur = il,
+                    lecteur = db.GetCollection<Lecteur>("Lecteur").Find(Builders<Lecteur>.Filter.Eq(a => a._id, il.lecteurId)).FirstOrDefault()
+                };
+                result.Add(lr);
             }
 
             result.Sort((a, b) => {

@@ -23,7 +23,7 @@ namespace wfBiblio
         public void Init(LecteurResult lecteur)
         {
             m_lecteur = lecteur;
-            lblGroupe.Text = lecteur.lecteur.titre;
+            llGroupe.Text = lecteur.lecteur.titre;
             lblNom.Text = lecteur.infoLecteur.nom;
             lblPrenom.Text = lecteur.infoLecteur.prénom;
             FillPrêts();
@@ -83,7 +83,7 @@ namespace wfBiblio
             var collNotice = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
             var collEmprunt = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Emprunt>("Emprunt");
             List<Notice> tmp = collNotice.Find(new BsonDocument("exemplaires.codeBarre", txtNewExplaire.Text)).ToList();
-            if (tmp!=null && tmp.Count==1)
+            if (tmp != null && tmp.Count == 1)
             {
                 // Cet exemplaire est-il disponible?
                 List<Emprunt> emprunts = collEmprunt.Find(
@@ -92,7 +92,7 @@ namespace wfBiblio
                             Builders<Emprunt>.Filter.Eq(a => a.etat, 1)
                             )
                     ).ToList();
-                if (emprunts == null || emprunts.Count==0)
+                if (emprunts == null || emprunts.Count == 0)
                 {
                     // L'ajouter pour ce lecteur
                     Emprunt emprunt = new Emprunt()
@@ -125,6 +125,8 @@ namespace wfBiblio
                     }
                 }
             }
+            else
+                MessageBox.Show("Ce code exemplaire n'existe pas.", "Erreur");
             txtNewExplaire.SelectAll();
         }
 
@@ -141,6 +143,16 @@ namespace wfBiblio
                 l.Init(m_lecteur);
                 l.ShowDialog();
             }
+        }
+
+        public delegate void AfficherGroupeDelegate(LecteurResult lr);
+        public event AfficherGroupeDelegate AfficherGroupeEvent;
+
+        private void llGroupe_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            // Revenir sur l'écran de recherche et afficher les membres du groupe
+            if (AfficherGroupeEvent != null)
+                AfficherGroupeEvent(m_lecteur);
         }
     }
 }

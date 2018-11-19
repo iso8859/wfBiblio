@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblGroupe = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
             this.lblPrenom = new System.Windows.Forms.Label();
@@ -38,12 +37,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblExemplaires = new System.Windows.Forms.Label();
             this.btnOK = new System.Windows.Forms.Button();
             this.txtNewExplaire = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lblExemplaires = new System.Windows.Forms.Label();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.llGroupe = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -51,7 +52,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.GhostWhite;
-            this.panel1.Controls.Add(this.lblGroupe);
+            this.panel1.Controls.Add(this.llGroupe);
+            this.panel1.Controls.Add(this.btnPrint);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.btnEdit);
             this.panel1.Controls.Add(this.lblPrenom);
@@ -64,15 +66,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1041, 122);
             this.panel1.TabIndex = 0;
-            // 
-            // lblGroupe
-            // 
-            this.lblGroupe.AutoSize = true;
-            this.lblGroupe.Location = new System.Drawing.Point(173, 12);
-            this.lblGroupe.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lblGroupe.Name = "lblGroupe";
-            this.lblGroupe.Size = new System.Drawing.Size(0, 29);
-            this.lblGroupe.TabIndex = 8;
             // 
             // label5
             // 
@@ -87,7 +80,7 @@
             // btnEdit
             // 
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.Location = new System.Drawing.Point(873, 67);
+            this.btnEdit.Location = new System.Drawing.Point(727, 75);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(142, 38);
@@ -108,10 +101,11 @@
             // lblNom
             // 
             this.lblNom.AutoSize = true;
+            this.lblNom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblNom.Location = new System.Drawing.Point(173, 48);
             this.lblNom.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblNom.Name = "lblNom";
-            this.lblNom.Size = new System.Drawing.Size(0, 29);
+            this.lblNom.Size = new System.Drawing.Size(2, 31);
             this.lblNom.TabIndex = 2;
             // 
             // label2
@@ -146,6 +140,14 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1041, 100);
             this.panel2.TabIndex = 1;
+            // 
+            // lblExemplaires
+            // 
+            this.lblExemplaires.AutoSize = true;
+            this.lblExemplaires.Location = new System.Drawing.Point(905, 33);
+            this.lblExemplaires.Name = "lblExemplaires";
+            this.lblExemplaires.Size = new System.Drawing.Size(0, 29);
+            this.lblExemplaires.TabIndex = 3;
             // 
             // btnOK
             // 
@@ -191,13 +193,26 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // lblExemplaires
+            // btnPrint
             // 
-            this.lblExemplaires.AutoSize = true;
-            this.lblExemplaires.Location = new System.Drawing.Point(883, 35);
-            this.lblExemplaires.Name = "lblExemplaires";
-            this.lblExemplaires.Size = new System.Drawing.Size(0, 29);
-            this.lblExemplaires.TabIndex = 3;
+            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrint.Location = new System.Drawing.Point(879, 75);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(142, 38);
+            this.btnPrint.TabIndex = 9;
+            this.btnPrint.Text = "Imprimer";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // llGroupe
+            // 
+            this.llGroupe.AutoSize = true;
+            this.llGroupe.Location = new System.Drawing.Point(168, 12);
+            this.llGroupe.Name = "llGroupe";
+            this.llGroupe.Size = new System.Drawing.Size(0, 29);
+            this.llGroupe.TabIndex = 10;
+            this.llGroupe.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llGroupe_LinkClicked);
             // 
             // ctrlCirculation
             // 
@@ -232,8 +247,9 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Label lblGroupe;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblExemplaires;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.LinkLabel llGroupe;
     }
 }

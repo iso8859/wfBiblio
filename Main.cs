@@ -34,6 +34,7 @@ namespace wfBiblio
                 Builders<Notice>.Filter.Or(
                     Builders<Notice>.Filter.Regex(a => a.auteur, new MongoDB.Bson.BsonRegularExpression(txtNotice.Text, "/i")),
                     Builders<Notice>.Filter.Regex(a => a.titre, new MongoDB.Bson.BsonRegularExpression(txtNotice.Text, "/i")),
+                    Builders<Notice>.Filter.Regex(a => a.éditeur, new MongoDB.Bson.BsonRegularExpression(txtNotice.Text, "/i")),
                     new BsonDocument("exemplaires.codeBarre", txtNotice.Text)
                     )
                 ).Limit(100);
@@ -139,8 +140,19 @@ namespace wfBiblio
         {
             ctrlCirculation circ = new ctrlCirculation() { Dock = DockStyle.Fill };
             circ.Init(lecteur);
+            circ.AfficherGroupeEvent += Circ_AfficherGroupeEvent;
             pnlCirculation.Controls.Clear();
             pnlCirculation.Controls.Add(circ);
+        }
+
+        private void Circ_AfficherGroupeEvent(LecteurResult lr)
+        {
+            // Retrouver les membres du groupe
+            ctrlChoixLecteur choix = new ctrlChoixLecteur() { Dock = DockStyle.Fill };
+            choix.Init(Lecteur.TrouverLecteursParGroupe(lr.infoLecteur));
+            choix.ChoixLecteurEvent += Choix_ChoixLecteurEvent;
+            pnlCirculation.Controls.Clear();
+            pnlCirculation.Controls.Add(choix);
         }
 
         private void txtSearchCirculation_KeyPress(object sender, KeyPressEventArgs e)
@@ -167,6 +179,11 @@ namespace wfBiblio
                 lecteur.Init(new LecteurResult() { lecteur = new Lecteur() { _id = ObjectId.GenerateNewId(), débutAdhésion = DateTime.Now, finAdhésion = DateTime.Now.AddYears(1), dernierEmprunt = new DateTime(2000, 1, 1), duréeEmprunts = 21 } });
                 lecteur.ShowDialog();
             }
+        }
+
+        private void txtSearchCirculation_Click(object sender, EventArgs e)
+        {
+            txtSearchCirculation.SelectAll();
         }
     }
 }

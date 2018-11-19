@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace wfBiblio
 {
@@ -26,15 +28,33 @@ namespace wfBiblio
         {
             if (list == null || list.Count == 0)
                 MessageBox.Show("Pas de réponse");
-            else if (list.Count == 1)
-                ctrlNotices1.SetNotice(list[0]);
             else
             {
-                using (frmResultSearch frs = new frmResultSearch())
+                var coll = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
+                if (list.Count == 1)
                 {
-                    frs.Init(list);
-                    if (frs.ShowDialog() == DialogResult.OK)
-                        ctrlNotices1.SetNotice(list[frs.m_notice]);
+                    // L'exemplaire est-il déjà en base?
+                    long exist = coll.Find(Builders<Notice>.Filter.Eq(a => a.isbn, list[0].isbn)).Count();
+                    if (exist > 0)
+                        MessageBox.Show($"Cette avec notice avec l'ISBN {list[0].isbn} existe déjà.");
+                    else
+                        ctrlNotices1.SetNotice(list[0]);
+                }
+                else
+                {
+                    using (frmResultSearch frs = new frmResultSearch())
+                    {
+                        frs.Init(list);
+                        if (frs.ShowDialog() == DialogResult.OK)
+                        {
+                            // L'exemplaire est-il déjà en base?
+                            long exist = coll.Find(Builders<Notice>.Filter.Eq(a => a.isbn, list[frs.m_notice].isbn)).Count();
+                            if (exist > 0)
+                                MessageBox.Show($"Cette avec notice avec l'ISBN {list[frs.m_notice].isbn} existe déjà.");
+                            else
+                                ctrlNotices1.SetNotice(list[frs.m_notice]);
+                        }
+                    }
                 }
             }
         }

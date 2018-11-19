@@ -107,9 +107,16 @@ namespace consoleBnf.query
                     complémentTitre = t1.SelectSingleNode("mxc:datafield[@tag='200' and @ind1='1']/mxc:subfield[@code='e']", nsmgr)?.InnerText,
                     auteur = t1.SelectSingleNode("mxc:datafield[@tag='200' and @ind1='1']/mxc:subfield[@code='f']", nsmgr)?.InnerText,
                     éditeur = t1.SelectSingleNode("mxc:datafield[@tag='210']/mxc:subfield[@code='c']", nsmgr)?.InnerText,
+                    collection = t1.SelectSingleNode("mxc:datafield[@tag='225']/mxc:subfield[@code='a']", nsmgr)?.InnerText,
                     isbn = t1.SelectSingleNode("mxc:datafield[@tag='073']/mxc:subfield[@code='a']", nsmgr)?.InnerText,
                     année = t1.SelectSingleNode("mxc:datafield[@tag='210']/mxc:subfield[@code='d']", nsmgr)?.InnerText
                 };
+                if (string.IsNullOrEmpty(result.éditeur))
+                    result.éditeur = t1.SelectSingleNode("mxc:datafield[@tag='219']/mxc:subfield[@code='c']", nsmgr)?.InnerText;
+                if (string.IsNullOrEmpty(result.année))
+                    result.année = t1.SelectSingleNode("mxc:datafield[@tag='219']/mxc:subfield[@code='d']", nsmgr)?.InnerText;
+                if (string.IsNullOrEmpty(result.collection))
+                    result.collection = t1.SelectSingleNode("mxc:datafield[@tag='210']/mxc:subfield[@code='c']", nsmgr)?.InnerText;
                 yield return result;
             }
         }

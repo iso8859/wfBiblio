@@ -45,6 +45,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnEnregistrerNotice = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblResult = new System.Windows.Forms.Label();
             this.btnAddNotice = new System.Windows.Forms.Button();
             this.btnSearchNotices = new System.Windows.Forms.Button();
             this.txtNotice = new System.Windows.Forms.TextBox();
@@ -62,7 +63,6 @@
             this.isbnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noticeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ctrlNotices1 = new wfBiblio.ctrlNotices();
-            this.lblResult = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -176,6 +176,7 @@
             this.txtSearchCirculation.Name = "txtSearchCirculation";
             this.txtSearchCirculation.Size = new System.Drawing.Size(498, 38);
             this.txtSearchCirculation.TabIndex = 1;
+            this.txtSearchCirculation.Click += new System.EventHandler(this.txtSearchCirculation_Click);
             this.txtSearchCirculation.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchCirculation_KeyPress);
             // 
             // tabPage2
@@ -218,7 +219,7 @@
             this.dgvResultNotice.RowHeadersVisible = false;
             this.dgvResultNotice.RowTemplate.Height = 50;
             this.dgvResultNotice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvResultNotice.Size = new System.Drawing.Size(994, 895);
+            this.dgvResultNotice.Size = new System.Drawing.Size(994, 896);
             this.dgvResultNotice.TabIndex = 1;
             this.dgvResultNotice.SelectionChanged += new System.EventHandler(this.dgvResultNotice_SelectionChanged);
             // 
@@ -230,14 +231,14 @@
             this.panel2.Location = new System.Drawing.Point(999, 117);
             this.panel2.Margin = new System.Windows.Forms.Padding(5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(912, 895);
+            this.panel2.Size = new System.Drawing.Size(912, 896);
             this.panel2.TabIndex = 3;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.btnEnregistrerNotice);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 799);
+            this.panel3.Location = new System.Drawing.Point(0, 800);
             this.panel3.Margin = new System.Windows.Forms.Padding(5);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(912, 96);
@@ -267,6 +268,14 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1906, 112);
             this.panel1.TabIndex = 0;
+            // 
+            // lblResult
+            // 
+            this.lblResult.AutoSize = true;
+            this.lblResult.Location = new System.Drawing.Point(34, 76);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(0, 31);
+            this.lblResult.TabIndex = 4;
             // 
             // btnAddNotice
             // 
@@ -395,16 +404,8 @@
             this.ctrlNotices1.Location = new System.Drawing.Point(0, 0);
             this.ctrlNotices1.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.ctrlNotices1.Name = "ctrlNotices1";
-            this.ctrlNotices1.Size = new System.Drawing.Size(912, 895);
+            this.ctrlNotices1.Size = new System.Drawing.Size(912, 896);
             this.ctrlNotices1.TabIndex = 2;
-            // 
-            // lblResult
-            // 
-            this.lblResult.AutoSize = true;
-            this.lblResult.Location = new System.Drawing.Point(34, 76);
-            this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(0, 31);
-            this.lblResult.TabIndex = 4;
             // 
             // Main
             // 
