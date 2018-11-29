@@ -68,6 +68,9 @@ namespace wfBiblio
         public string prénom { get; set; }
         public string commentaires { get; set; }
         public string localisation { get; set; }
+        public DateTime dateSuppression { get; set; }
+        [BsonIgnore]
+        public int nombreDemprunts { get; set; }
         [BsonExtraElements]
         public BsonDocument indexes { get; set; }
 

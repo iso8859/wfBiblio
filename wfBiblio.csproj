@@ -88,6 +88,12 @@
       <DependentUpon>ctrlPret.cs</DependentUpon>
     </Compile>
     <Compile Include="Data.cs" />
+    <Compile Include="frmImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImport.Designer.cs">
+      <DependentUpon>frmImport.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLecteur.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,7 @@
     <Compile Include="SRU\NoticeCriteria.cs" />
     <Compile Include="SRU\NoticeQuery.cs" />
     <Compile Include="SRU\QueryBuilder.cs" />
+    <Compile Include="Toolbox.cs" />
     <EmbeddedResource Include="ctrlChoixLecteur.resx">
       <DependentUpon>ctrlChoixLecteur.cs</DependentUpon>
     </EmbeddedResource>
@@ -140,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ctrlPret.resx">
       <DependentUpon>ctrlPret.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImport.resx">
+      <DependentUpon>frmImport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLecteur.resx">
       <DependentUpon>frmLecteur.cs</DependentUpon>

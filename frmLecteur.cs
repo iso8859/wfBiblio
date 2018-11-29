@@ -20,12 +20,42 @@ namespace wfBiblio
             InitializeComponent();
         }
 
-        public void Init(LecteurResult lr)
+        int m_total = 0;
+        LecteurResult m_lr = null;
+
+        void RefreshLecteursList()
         {
             var db = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio");
-            infoLecteurBindingSource.DataSource = db.GetCollection<InfoLecteur>("InfoLecteur").Find(a => a.lecteurId == lr.lecteur._id).ToList();
+            var infoLecteurs = db.GetCollection<InfoLecteur>("InfoLecteur").Find(a => a.lecteurId == m_lr.lecteur._id).ToList();
+            // Compléter le nombre d'emprunts
+            BsonArray lecteurList = new BsonArray();
+            foreach (InfoLecteur il in infoLecteurs)
+                lecteurList.Add(il._id);
+            var emprunts = db.GetCollection<Emprunt>("Emprunt").Find(
+                Builders<Emprunt>.Filter.And(
+                    Builders<Emprunt>.Filter.In("idLecteur", lecteurList),
+                    Builders<Emprunt>.Filter.Eq("etat", 1))).ToList();
+            foreach (Emprunt e in emprunts)
+            {
+                var t = infoLecteurs.Find(a => a._id == e.idLecteur);
+                if (t != null)
+                {
+                    t.nombreDemprunts++;
+                    m_total++;
+                }
+            }
+            infoLecteurBindingSource.DataSource = infoLecteurs;
+            lblTotal.Text = string.Format(lblTotal.Tag.ToString(), m_total);
+        }
+
+        public void Init(LecteurResult lr)
+        {
+            m_lr = lr;
+            RefreshLecteursList();
+
             lecteurBindingSource.DataSource = new List<Lecteur>() { lr.lecteur };
             lecteurBindingSource.Position = 0;
+            var db = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio");
             titreComboBox.DataSource = db.GetCollection<Lecteur>("Lecteur").Distinct<string>("titre", "{}").ToList();
             villeComboBox.DataSource = db.GetCollection<Lecteur>("Lecteur").Distinct<string>("ville", "{}").ToList();
             codePostalComboBox.DataSource = db.GetCollection<Lecteur>("Lecteur").Distinct<string>("codePostal", "{}").ToList();
@@ -90,9 +120,56 @@ namespace wfBiblio
             }
         }
 
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            using (frmImport import = new frmImport())
+            {
+                var tmp = import.ShowDialog();
+                switch (tmp)
+                {
+                    case DialogResult.OK:
+                        break;
+                    case DialogResult.Yes:
+                        break;
+                }
+            }
+        }
+
+        private void supprimerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int total = 0;
+            int users = 0;
+            BsonArray ids = new BsonArray();
+            foreach (DataGridViewCell cell in infoLecteurDataGridView.SelectedCells)
+            {
+                InfoLecteur il = infoLecteurDataGridView.Rows[cell.RowIndex].DataBoundItem as InfoLecteur;
+                if (il != null)
+                {
+                    total += il.nombreDemprunts;
+                    ids.Add(il._id);
+                }
+                users++;
+            }
+            if (total > 0)
+                MessageBox.Show(toolTip1.GetToolTip(label1));
+            else
+            {
+                if (MessageBox.Show(($"Confirmez-vous la suppression de {users} membre") + (users > 1 ? "s." : "." + "\r\nC'est irréverssible."), "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    var db = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio");
+                    var infoLecteur = db.GetCollection<InfoLecteur>("InfoLecteur").UpdateMany(
+                        Builders<InfoLecteur>.Filter.In("_id", ids),
+                        Builders<InfoLecteur>.Update.Set(a => a.lecteurId, ObjectId.Empty).CurrentDate(a => a.dateSuppression)
+                        );
+                    RefreshLecteursList();
+                }
+            }
+        }
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Cela ne fonctionne pas encore");
         }
+
     }
 }
