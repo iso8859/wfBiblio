@@ -30,10 +30,15 @@ namespace wfBiblio
             using (System.IO.StringReader sr = new System.IO.StringReader(txtInput.Text))
             {
                 string line = sr.ReadLine();
-                var separator = Parsing.GetHeaderSeparator(line);
-                var items = Parsing.SmartSplit(line, separator);
-                for (int i = 0; i < items.Count; i++)
-                    dgvSelection.Rows.Add(new object[] { $"Colonne {i + 1}", m_colDest[0], items[i] });
+                if (line != null)
+                {
+                    var separator = Parsing.GetHeaderSeparator(line);
+                    var items = Parsing.SmartSplit(line, separator);
+                    for (int i = 0; i < items.Count; i++)
+                        dgvSelection.Rows.Add(new object[] { $"Colonne {i + 1}", m_colDest[0], items[i] });
+                }
+                else
+                    MessageBox.Show("Fichier vide.");
             }
         }
 

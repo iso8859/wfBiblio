@@ -21,7 +21,7 @@ namespace wfBiblio
         {
             foreach (var lecteur in lecteurs)
             {
-                LinkLabel ll = new LinkLabel() { Text = $"{lecteur.infoLecteur.nom} {lecteur.infoLecteur.prénom} ({lecteur.lecteur.titre})", Tag = lecteur, AutoSize = true, BackColor = System.Drawing.Color.AliceBlue, BorderStyle = BorderStyle.FixedSingle, Padding = new Padding(5) };
+                LinkLabel ll = new LinkLabel() { Text = $"{lecteur.infoLecteur.nom??""} {lecteur.infoLecteur.prénom??""} ({lecteur.lecteur.titre??""})", Tag = lecteur, AutoSize = true, BackColor = System.Drawing.Color.AliceBlue, BorderStyle = BorderStyle.FixedSingle, Padding = new Padding(5) };
                 ll.Click += Ll_Click;
                 flowLayoutPanel1.Controls.Add(ll);
             }

@@ -156,6 +156,8 @@ namespace wfBiblio
             }
 
             result.Sort((a, b) => {
+                a.infoLecteur.nom = a.infoLecteur.nom ?? "";
+                b.infoLecteur.nom = b.infoLecteur.nom ?? "";
                 if (a.infoLecteur.nom.ToLower() != b.infoLecteur.nom.ToLower())
                     return a.infoLecteur.nom.ToLower().CompareTo(b.infoLecteur.nom.ToLower());
                 else
