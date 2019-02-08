@@ -68,6 +68,8 @@ namespace wfBiblio
         public string prénom { get; set; }
         public string commentaires { get; set; }
         public string localisation { get; set; }
+        [BsonDefaultValue(false)]
+        public bool deleted { get; set; }
         public DateTime dateSuppression { get; set; }
         [BsonIgnore]
         public int nombreDemprunts { get; set; }
@@ -101,6 +103,9 @@ namespace wfBiblio
         public string localisation { get; set; }
         public string commentaires { get; set; }
         public int duréeEmprunts { get; set; }
+        [BsonDefaultValue(false)]
+        public bool deleted { get; set; }
+        public DateTime dateSuppression { get; set; }
         [BsonExtraElements]
         public BsonDocument indexes { get; set; }
 
@@ -114,10 +119,10 @@ namespace wfBiblio
             var db = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio");
             LecteurResult result = new LecteurResult()
             {
-                infoLecteur = db.GetCollection<InfoLecteur>("InfoLecteur").Find(Builders<InfoLecteur>.Filter.Eq(a => a._id, id)).FirstOrDefault()
+                infoLecteur = db.GetCollection<InfoLecteur>("InfoLecteur").Find(a => a._id == id && a.deleted == false).FirstOrDefault()
             };
             if (result.infoLecteur != null)
-                result.lecteur = db.GetCollection<Lecteur>("Lecteur").Find(Builders<Lecteur>.Filter.Eq(a => a._id, result.infoLecteur.lecteurId)).FirstOrDefault();
+                result.lecteur = db.GetCollection<Lecteur>("Lecteur").Find(a => a._id == result.infoLecteur.lecteurId && a.deleted == false).FirstOrDefault();
             return result;
         }
 
@@ -140,7 +145,7 @@ namespace wfBiblio
                 LecteurResult lr = new LecteurResult()
                 {
                     infoLecteur = il,
-                    lecteur = db.GetCollection<Lecteur>("Lecteur").Find(Builders<Lecteur>.Filter.Eq(a => a._id, il.lecteurId)).FirstOrDefault()
+                    lecteur = db.GetCollection<Lecteur>("Lecteur").Find(a => a._id == il.lecteurId).FirstOrDefault()
                 };
                 result.Add(lr);
             }
@@ -148,9 +153,9 @@ namespace wfBiblio
             // Rechercher par titre
             foreach (Lecteur lecteur in db.GetCollection<Lecteur>("Lecteur").Find(Builders<Lecteur>.Filter.Regex(a => a.titre, s)).ToList())
             {
-                foreach (InfoLecteur il in db.GetCollection<InfoLecteur>("InfoLecteur").Find(Builders<InfoLecteur>.Filter.Eq(a => a.lecteurId, lecteur._id)).ToList())
+                foreach (InfoLecteur il in db.GetCollection<InfoLecteur>("InfoLecteur").Find(a => a.lecteurId == lecteur._id).ToList())
                 {
-                    if (result.Find(a => a.infoLecteur._id == il._id) == null)
+                    if (il.deleted == false && result.Find(a => a.infoLecteur._id == il._id) == null)
                         result.Add(new LecteurResult() { infoLecteur = il, lecteur = lecteur });
                 }
             }
@@ -169,12 +174,12 @@ namespace wfBiblio
         {
             List<LecteurResult> result = new List<LecteurResult>();
             var db = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio");
-            foreach (InfoLecteur il in db.GetCollection<InfoLecteur>("InfoLecteur").Find(Builders<InfoLecteur>.Filter.Eq(a => a.lecteurId, ilParent.lecteurId)).ToList())
+            foreach (InfoLecteur il in db.GetCollection<InfoLecteur>("InfoLecteur").Find(a => a.lecteurId == ilParent.lecteurId && a.deleted == false).ToList())
             {
                 LecteurResult lr = new LecteurResult()
                 {
                     infoLecteur = il,
-                    lecteur = db.GetCollection<Lecteur>("Lecteur").Find(Builders<Lecteur>.Filter.Eq(a => a._id, il.lecteurId)).FirstOrDefault()
+                    lecteur = db.GetCollection<Lecteur>("Lecteur").Find(a => a._id == il.lecteurId).FirstOrDefault()
                 };
                 result.Add(lr);
             }

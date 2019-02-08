@@ -128,8 +128,42 @@ namespace wfBiblio
                 switch (tmp)
                 {
                     case DialogResult.OK:
+                        if (import.m_append != null)
+                        {
+                            foreach (var item in import.m_append)
+                                infoLecteurBindingSource.Add(new InfoLecteur() { _id = ObjectId.GenerateNewId(), nom = item.Item1, prénom = item.Item2 });
+                        }
                         break;
                     case DialogResult.Yes:
+                        if (import.m_replace != null)
+                        {
+                            int total = 0;
+                            int users = 0;
+                            BsonArray ids = new BsonArray();
+                            foreach (DataGridViewRow row in infoLecteurDataGridView.Rows)
+                            {
+                                InfoLecteur il = row.DataBoundItem as InfoLecteur;
+                                if (il != null)
+                                {
+                                    total += il.nombreDemprunts;
+                                    ids.Add(il._id);
+                                }
+                                users++;
+                            }
+                            if (total > 0)
+                                MessageBox.Show(toolTip1.GetToolTip(label1));
+                            else
+                            {
+                                var db = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio");
+                                db.GetCollection<InfoLecteur>("InfoLecteur").UpdateMany(
+                                    Builders<InfoLecteur>.Filter.In("_id", ids),
+                                    Builders<InfoLecteur>.Update.Set(a => a.lecteurId, ObjectId.Empty).CurrentDate(a => a.dateSuppression).Set(a => a.deleted, true)
+                                    );
+                                infoLecteurBindingSource.Clear();
+                                foreach (var item in import.m_replace)
+                                    infoLecteurBindingSource.Add(new InfoLecteur() { _id = ObjectId.GenerateNewId(), nom = item.Item1, prénom = item.Item2 });
+                            }
+                        }
                         break;
                 }
             }
@@ -157,9 +191,9 @@ namespace wfBiblio
                 if (MessageBox.Show(($"Confirmez-vous la suppression de {users} membre") + (users > 1 ? "s." : "." + "\r\nC'est irréverssible."), "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     var db = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio");
-                    var infoLecteur = db.GetCollection<InfoLecteur>("InfoLecteur").UpdateMany(
+                    db.GetCollection<InfoLecteur>("InfoLecteur").UpdateMany(
                         Builders<InfoLecteur>.Filter.In("_id", ids),
-                        Builders<InfoLecteur>.Update.Set(a => a.lecteurId, ObjectId.Empty).CurrentDate(a => a.dateSuppression)
+                        Builders<InfoLecteur>.Update.Set(a => a.lecteurId, ObjectId.Empty).CurrentDate(a => a.dateSuppression).Set(a => a.deleted, true)
                         );
                     RefreshLecteursList();
                 }
@@ -168,7 +202,37 @@ namespace wfBiblio
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Cela ne fonctionne pas encore");
+            int total = 0;
+            int users = 0;
+            BsonArray ids = new BsonArray();
+            foreach (DataGridViewRow row in infoLecteurDataGridView.Rows)
+            {
+                InfoLecteur il = row.DataBoundItem as InfoLecteur;
+                if (il != null)
+                {
+                    total += il.nombreDemprunts;
+                    ids.Add(il._id);
+                }
+                users++;
+            }
+            if (total > 0)
+                MessageBox.Show(toolTip1.GetToolTip(label1));
+            else
+            {
+                if (MessageBox.Show("Confirmez-vous la suppression du groupe?\r\nC'est action est irréverssible.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    var db = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio");
+                    db.GetCollection<InfoLecteur>("InfoLecteur").UpdateMany(
+                        Builders<InfoLecteur>.Filter.In("_id", ids),
+                        Builders<InfoLecteur>.Update.Set(a => a.lecteurId, ObjectId.Empty).CurrentDate(a => a.dateSuppression).Set(a => a.deleted, true)
+                        );
+                    db.GetCollection<Lecteur>("Lecteur").UpdateOne(
+                        a => a._id == m_lr.lecteur._id,
+                        Builders<Lecteur>.Update.CurrentDate(a => a.dateSuppression).Set(a => a.deleted, true)
+                        );
+                    Close();
+                }
+            }
         }
 
     }

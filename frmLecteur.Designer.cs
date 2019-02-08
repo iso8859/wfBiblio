@@ -463,11 +463,11 @@
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.Location = new System.Drawing.Point(597, 20);
+            this.btnDelete.Location = new System.Drawing.Point(552, 20);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(125, 32);
+            this.btnDelete.Size = new System.Drawing.Size(170, 32);
             this.btnDelete.TabIndex = 2;
-            this.btnDelete.Text = "Supprimer";
+            this.btnDelete.Text = "Supprimer le groupe";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
