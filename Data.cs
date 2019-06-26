@@ -119,10 +119,10 @@ namespace wfBiblio
             var db = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio");
             LecteurResult result = new LecteurResult()
             {
-                infoLecteur = db.GetCollection<InfoLecteur>("InfoLecteur").Find(a => a._id == id && a.deleted == false).FirstOrDefault()
+                infoLecteur = db.GetCollection<InfoLecteur>("InfoLecteur").Find(a => a._id == id /*&& a.deleted == false*/).FirstOrDefault()
             };
             if (result.infoLecteur != null)
-                result.lecteur = db.GetCollection<Lecteur>("Lecteur").Find(a => a._id == result.infoLecteur.lecteurId && a.deleted == false).FirstOrDefault();
+                result.lecteur = db.GetCollection<Lecteur>("Lecteur").Find(a => a._id == result.infoLecteur.lecteurId /*&& a.deleted == false*/).FirstOrDefault();
             return result;
         }
 
