@@ -17,9 +17,11 @@ Pouvoir savoir si un livre a déjà était lu par un lecteur.
 
 Pouvoir taper le titre d'un livre lors d'un emprunt (bib sans douchette ou douchette en panne)
 
-Faire un inventaire rapide avec un PC portable + douchette
+Faire un inventaire rapide avec un PC portable + douchette (mode inventaire avec mise en attente des livres non dispo sur la BNF)
 
-Marquer un livre comme manquant lors d'un retour (livre sortis mais absent de la base)
+Marquer un livre comme manquant lors d'un retour (livre sortis mais absent de la base => panier des livres à ajouter)
+
+Pouvoir ajouter des livres lors de l'emprunt sans quitter le mode emprunt
 
 Changer supprimer par désherbage
 
