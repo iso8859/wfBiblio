@@ -36,7 +36,7 @@ namespace wfBiblio
                     // L'exemplaire est-il déjà en base?
                     long exist = coll.Find(Builders<Notice>.Filter.Eq(a => a.isbn, list[0].isbn)).Count();
                     if (exist > 0)
-                        MessageBox.Show($"Cette avec notice avec l'ISBN {list[0].isbn} existe déjà.");
+                        MessageBox.Show($"Cette notice avec l'ISBN {list[0].isbn} existe déjà.");
                     else
                         ctrlNotices1.SetNotice(list[0]);
                 }
@@ -50,7 +50,7 @@ namespace wfBiblio
                             // L'exemplaire est-il déjà en base?
                             long exist = coll.Find(Builders<Notice>.Filter.Eq(a => a.isbn, list[frs.m_notice].isbn)).Count();
                             if (exist > 0)
-                                MessageBox.Show($"Cette avec notice avec l'ISBN {list[frs.m_notice].isbn} existe déjà.");
+                                MessageBox.Show($"Cette notice avec l'ISBN {list[frs.m_notice].isbn} existe déjà.");
                             else
                                 ctrlNotices1.SetNotice(list[frs.m_notice]);
                         }

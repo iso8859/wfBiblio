@@ -63,7 +63,7 @@ namespace wfBiblio
     public class InfoLecteur
     {
         public ObjectId _id { get; set; }
-        public ObjectId lecteurId { get; set; }
+        public ObjectId lecteurId { get; set; } // Lecteur._id
         public string nom { get; set; }
         public string prénom { get; set; }
         public string commentaires { get; set; }
@@ -176,14 +176,17 @@ namespace wfBiblio
         {
             List<LecteurResult> result = new List<LecteurResult>();
             var db = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio");
-            foreach (InfoLecteur il in db.GetCollection<InfoLecteur>("InfoLecteur").Find(a => a.lecteurId == ilParent.lecteurId && a.deleted == false).ToList())
+            foreach (InfoLecteur il in db.GetCollection<InfoLecteur>("InfoLecteur").Find(a => a.lecteurId == ilParent.lecteurId).ToList())
             {
-                LecteurResult lr = new LecteurResult()
+                if (!il.deleted)
                 {
-                    infoLecteur = il,
-                    lecteur = db.GetCollection<Lecteur>("Lecteur").Find(a => a._id == il.lecteurId).FirstOrDefault()
-                };
-                result.Add(lr);
+                    LecteurResult lr = new LecteurResult()
+                    {
+                        infoLecteur = il,
+                        lecteur = db.GetCollection<Lecteur>("Lecteur").Find(a => a._id == il.lecteurId).FirstOrDefault()
+                    };
+                    result.Add(lr);
+                }
             }
 
             result.Sort((a, b) => {

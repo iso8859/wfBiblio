@@ -53,7 +53,19 @@ namespace wfBiblio
                     p.txtExemplaire.Text = tmp[0].exemplaires.Find(a => a._id == e.IdExemplaire).codeBarre;
                     p.txtDatepret.Text = e.dateEmprunt.ToString("dd/MM/yyyy");
                     p.txtDateRetour.Text = e.dateRetourPrévue.ToString("dd/MM/yyyy");
-                    p.Tag = tmp[0];
+                    p.Tag = e.IdExemplaire;
+                    p.RetourEvent += P_RetourEvent;
+                    flowLayoutPanel1.Controls.Add(p);
+                }
+                else
+                {
+                    ctrlPret p = new ctrlPret();
+                    p.txtTitre.Text = "!!Sans notice";
+                    p.txtAuteur.Text = "N/A";
+                    p.txtExemplaire.Text = "N/A";
+                    p.txtDatepret.Text = e.dateEmprunt.ToString("dd/MM/yyyy");
+                    p.txtDateRetour.Text = e.dateRetourPrévue.ToString("dd/MM/yyyy");
+                    p.Tag = ObjectId.Empty;
                     p.RetourEvent += P_RetourEvent;
                     flowLayoutPanel1.Controls.Add(p);
                 }
@@ -66,9 +78,38 @@ namespace wfBiblio
 
         private void P_RetourEvent(ctrlPret ctrl)
         {
-            Notice notice = ctrl.Tag as Notice;
-            txtNewExplaire.Text = notice.isbn;
-            btnOK_Click(null, null);
+            // Notice notice = ctrl.Tag as Notice;
+            var collNotice = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
+            ObjectId exemplaireId = (ObjectId)ctrl.Tag;
+            if (exemplaireId == ObjectId.Empty) // Supprimer directement
+            {
+                var collEmprunt = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Emprunt>("Emprunt");
+                List<Emprunt> emprunts = collEmprunt.Find(
+                        Builders<Emprunt>.Filter.And(
+                            Builders<Emprunt>.Filter.Eq(a => a.idLecteur, m_lecteur.infoLecteur._id),
+                            Builders<Emprunt>.Filter.Eq(a => a.etat, 1)
+                            )
+                    ).ToList();
+                foreach (Emprunt e in emprunts)
+                {
+                    List<Notice> tmp = collNotice.Find(new BsonDocument("exemplaires._id", e.IdExemplaire)).ToList();
+                    if (tmp == null || tmp.Count == 0)
+                    {
+                        collEmprunt.UpdateOne(Builders<Emprunt>.Filter.Eq(a => a._id, emprunts[0]._id),
+                            Builders<Emprunt>.Update.Set(a => a.etat, 2).CurrentDate(a => a.dateRetourEffective));
+                    }
+                }
+                FillPrêts();
+            }
+            else
+            {
+                List<Notice> tmp = collNotice.Find(new BsonDocument("exemplaires._id", exemplaireId)).ToList();
+                if (tmp != null && tmp.Count > 0)
+                {
+                    txtNewExplaire.Text = tmp[0].exemplaires.Find(a => a._id == exemplaireId).codeBarre;
+                    btnOK_Click(null, null);
+                }
+            }
         }
 
         private void txtNewExplaire_KeyPress(object sender, KeyPressEventArgs e)

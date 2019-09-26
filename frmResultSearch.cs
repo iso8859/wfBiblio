@@ -25,11 +25,12 @@ namespace wfBiblio
             dt.Columns.Add("Titre");
             dt.Columns.Add("Auteur");
             dt.Columns.Add("Editeur");
+            dt.Columns.Add("isbn");
             dt.Columns.Add("Année");
             foreach (Notice n in list)
             {
                 var row = dt.NewRow();
-                row.ItemArray = new object[] { n.titre, n.auteur, n.éditeur, n.année };
+                row.ItemArray = new object[] { n.titre, n.auteur, n.éditeur, n.isbn, n.année };
                 dt.Rows.Add(row);
             }
             dgvNotices.DataSource = dt;
@@ -50,6 +51,27 @@ namespace wfBiblio
             timer1.Stop();
             dgvNotices.AutoResizeRows();
             dgvNotices.AutoResizeColumns();
+        }
+
+        private void Copy(string colonne)
+        {
+            if (dgvNotices.SelectedRows.Count == 1)
+                Clipboard.SetText(dgvNotices.SelectedRows[0].Cells[colonne].Value.ToString());
+        }
+
+        private void copierTitreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Copy("Titre");
+        }
+
+        private void copierAuteurToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Copy("Auteur");
+        }
+
+        private void copierIsbnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Copy("isbn");
         }
     }
 }

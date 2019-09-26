@@ -52,6 +52,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.titreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.auteurDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.éditeurDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +64,7 @@
             this.isbnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noticeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ctrlNotices1 = new wfBiblio.ctrlNotices();
+            this.ctrlCorriger1 = new wfBiblio.ctrlCorriger();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -71,6 +73,7 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.noticeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,6 +81,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.ImageList = this.imageList1;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -219,7 +223,7 @@
             this.dgvResultNotice.RowHeadersVisible = false;
             this.dgvResultNotice.RowTemplate.Height = 50;
             this.dgvResultNotice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvResultNotice.Size = new System.Drawing.Size(994, 896);
+            this.dgvResultNotice.Size = new System.Drawing.Size(994, 895);
             this.dgvResultNotice.TabIndex = 1;
             this.dgvResultNotice.SelectionChanged += new System.EventHandler(this.dgvResultNotice_SelectionChanged);
             // 
@@ -231,14 +235,14 @@
             this.panel2.Location = new System.Drawing.Point(999, 117);
             this.panel2.Margin = new System.Windows.Forms.Padding(5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(912, 896);
+            this.panel2.Size = new System.Drawing.Size(912, 895);
             this.panel2.TabIndex = 3;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.btnEnregistrerNotice);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 800);
+            this.panel3.Location = new System.Drawing.Point(0, 799);
             this.panel3.Margin = new System.Windows.Forms.Padding(5);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(912, 96);
@@ -324,11 +328,23 @@
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "business_contact-96.png");
             this.imageList1.Images.SetKeyName(1, "fine_print-96.png");
+            this.imageList1.Images.SetKeyName(2, "iconfinder_tools_599559.png");
             // 
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.ctrlCorriger1);
+            this.tabPage3.ImageIndex = 2;
+            this.tabPage3.Location = new System.Drawing.Point(4, 40);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1916, 1017);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "A corriger";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // titreDataGridViewTextBoxColumn
             // 
@@ -404,8 +420,18 @@
             this.ctrlNotices1.Location = new System.Drawing.Point(0, 0);
             this.ctrlNotices1.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.ctrlNotices1.Name = "ctrlNotices1";
-            this.ctrlNotices1.Size = new System.Drawing.Size(912, 896);
+            this.ctrlNotices1.Size = new System.Drawing.Size(912, 895);
             this.ctrlNotices1.TabIndex = 2;
+            // 
+            // ctrlCorriger1
+            // 
+            this.ctrlCorriger1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ctrlCorriger1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctrlCorriger1.Location = new System.Drawing.Point(0, 0);
+            this.ctrlCorriger1.Margin = new System.Windows.Forms.Padding(7);
+            this.ctrlCorriger1.Name = "ctrlCorriger1";
+            this.ctrlCorriger1.Size = new System.Drawing.Size(1916, 1017);
+            this.ctrlCorriger1.TabIndex = 0;
             // 
             // Main
             // 
@@ -429,6 +455,7 @@
             this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.noticeBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -469,6 +496,8 @@
         private System.Windows.Forms.Button btnChercherNotice;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Label lblResult;
+        private System.Windows.Forms.TabPage tabPage3;
+        private ctrlCorriger ctrlCorriger1;
     }
 }
 

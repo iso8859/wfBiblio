@@ -92,7 +92,9 @@ namespace consoleBnf.query
             var tmp = content.Result;
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(tmp);
-
+#if DEBUG
+            Console.WriteLine(tmp);
+#endif
             XPathNavigator nav = doc.CreateNavigator();
             XmlNamespaceManager nsmgr = new XmlNamespaceManager(nav.NameTable);
             nsmgr.AddNamespace("srw", @"http://www.loc.gov/zing/srw/");
@@ -117,7 +119,8 @@ namespace consoleBnf.query
                     result.année = t1.SelectSingleNode("mxc:datafield[@tag='219']/mxc:subfield[@code='d']", nsmgr)?.InnerText;
                 if (string.IsNullOrEmpty(result.collection))
                     result.collection = t1.SelectSingleNode("mxc:datafield[@tag='210']/mxc:subfield[@code='c']", nsmgr)?.InnerText;
-                yield return result;
+                if (!string.IsNullOrWhiteSpace(result.isbn))
+                    yield return result;
             }
         }
 
