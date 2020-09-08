@@ -40,6 +40,17 @@ namespace wfBiblio
         public BsonDocument indexes { get; set; }
     }
 
+    public class Desherbage
+    {
+        public ObjectId _id { get; set; }
+        public ObjectId idNotice { get; set; }
+        public DateTime dt { get; set; }
+        public string titre { get; set; }
+        public string auteur { get; set; }
+        public string cote { get; set; }
+        public string codeBarre { get; set; }
+    }
+
     public class Emprunt
     {
         public ObjectId _id { get; set; }

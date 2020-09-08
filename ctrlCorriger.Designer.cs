@@ -30,10 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.dgvNotices = new System.Windows.Forms.DataGridView();
-            this.ctrlNotices1 = new wfBiblio.ctrlNotices();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,13 +41,14 @@
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noticeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.supprimerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.noticeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ctrlNotices1 = new wfBiblio.ctrlNotices();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNotices)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.noticeBindingSource)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.noticeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -61,15 +61,6 @@
             this.panel1.Size = new System.Drawing.Size(1302, 56);
             this.panel1.TabIndex = 1;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(289, 29);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Notices sans exemplaires";
-            // 
             // btnSearch
             // 
             this.btnSearch.Location = new System.Drawing.Point(327, 9);
@@ -79,6 +70,15 @@
             this.btnSearch.Text = "Chercher";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(289, 29);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Notices sans exemplaires";
             // 
             // dgvNotices
             // 
@@ -104,19 +104,9 @@
             this.dgvNotices.RowHeadersVisible = false;
             this.dgvNotices.RowTemplate.Height = 26;
             this.dgvNotices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvNotices.Size = new System.Drawing.Size(399, 547);
+            this.dgvNotices.Size = new System.Drawing.Size(399, 652);
             this.dgvNotices.TabIndex = 2;
             this.dgvNotices.SelectionChanged += new System.EventHandler(this.dgvNotices_SelectionChanged);
-            // 
-            // ctrlNotices1
-            // 
-            this.ctrlNotices1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.ctrlNotices1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctrlNotices1.Location = new System.Drawing.Point(399, 56);
-            this.ctrlNotices1.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
-            this.ctrlNotices1.Name = "ctrlNotices1";
-            this.ctrlNotices1.Size = new System.Drawing.Size(903, 547);
-            this.ctrlNotices1.TabIndex = 3;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -174,23 +164,33 @@
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             this.dataGridViewTextBoxColumn12.ReadOnly = true;
             // 
-            // noticeBindingSource
-            // 
-            this.noticeBindingSource.DataSource = typeof(wfBiblio.Notice);
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.supprimerToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(130, 26);
             // 
             // supprimerToolStripMenuItem
             // 
             this.supprimerToolStripMenuItem.Name = "supprimerToolStripMenuItem";
-            this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.supprimerToolStripMenuItem.Text = "Supprimer";
             this.supprimerToolStripMenuItem.Click += new System.EventHandler(this.supprimerToolStripMenuItem_Click);
+            // 
+            // noticeBindingSource
+            // 
+            this.noticeBindingSource.DataSource = typeof(wfBiblio.Notice);
+            // 
+            // ctrlNotices1
+            // 
+            this.ctrlNotices1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.ctrlNotices1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctrlNotices1.Location = new System.Drawing.Point(399, 56);
+            this.ctrlNotices1.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
+            this.ctrlNotices1.Name = "ctrlNotices1";
+            this.ctrlNotices1.Size = new System.Drawing.Size(903, 652);
+            this.ctrlNotices1.TabIndex = 3;
             // 
             // ctrlCorriger
             // 
@@ -200,14 +200,14 @@
             this.Controls.Add(this.ctrlNotices1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.Margin = new System.Windows.Forms.Padding(7);
             this.Name = "ctrlCorriger";
-            this.Size = new System.Drawing.Size(1302, 603);
+            this.Size = new System.Drawing.Size(1302, 708);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNotices)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.noticeBindingSource)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.noticeBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

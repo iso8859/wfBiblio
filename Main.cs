@@ -67,12 +67,13 @@ namespace wfBiblio
 
         private void btnEnregistrerNotice_Click(object sender, EventArgs e)
         {
-            Notice notice = ctrlNotices1.GetNotice();
-            if (notice != null)
-            {
-                var coll = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
-                coll.ReplaceOne(Builders<Notice>.Filter.Eq(a => a._id, notice._id), notice);
-            }
+            ctrlNotices1.Enregistrer();
+            //Notice notice = ctrlNotices1.GetNotice();
+            //if (notice != null)
+            //{
+            //    var coll = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
+            //    coll.ReplaceOne(Builders<Notice>.Filter.Eq(a => a._id, notice._id), notice);
+            //}
         }
 
         private void btnCirculation_Click(object sender, EventArgs e)

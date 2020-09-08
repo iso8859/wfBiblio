@@ -43,6 +43,7 @@ namespace wfBiblio
 
         public void SetNotice(Notice notice)
         {
+            desherbages.Clear();
             timer1.Stop();
             pictureBox1.Image = null;
             noticeBindingSource.Clear();
@@ -66,6 +67,7 @@ namespace wfBiblio
             return ((List<Notice>)noticeBindingSource.DataSource)[0];
         }
 
+        List<Desherbage> desherbages = new List<Desherbage>();
         public void Enregistrer()
         {
             Notice notice = GetNotice();
@@ -73,11 +75,17 @@ namespace wfBiblio
             {
                 if (notice.exemplaires == null)
                     notice.exemplaires = new List<Exemplaire>();
-                if (notice.exemplaires.Count == 0)
-                    notice.exemplaires.Add(new Exemplaire() { _id = MongoDB.Bson.ObjectId.GenerateNewId(), codeBarre = notice.isbn, localisation = Properties.Settings.Default.Localisation });
+                //if (notice.exemplaires.Count == 0)
+                //    notice.exemplaires.Add(new Exemplaire() { _id = MongoDB.Bson.ObjectId.GenerateNewId(), codeBarre = notice.isbn, localisation = Properties.Settings.Default.Localisation });
 
                 var coll = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
                 coll.ReplaceOne(a => a._id == notice._id, notice, new UpdateOptions() { IsUpsert = true });
+                if (desherbages.Count>0)
+                {
+                    var coll2 = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Desherbage>("Desherbage");
+                    coll2.InsertMany(desherbages);
+                    desherbages.Clear();
+                }
             }
         }
 
@@ -134,8 +142,18 @@ namespace wfBiblio
                     Notice notice = GetNotice();
                     if (notice.exemplaires == null)
                         notice.exemplaires = new List<Exemplaire>();
-                    notice.exemplaires.Remove(notice.exemplaires.Find(a => a._id == id));
+                    var ex = notice.exemplaires.Find(a => a._id == id);
+                    notice.exemplaires.Remove(ex);
                     RemplirExemplaires(notice);
+                    desherbages.Add(new Desherbage()
+                    {
+                        idNotice = notice._id,
+                        auteur = notice.auteur,
+                        codeBarre = ex.codeBarre,
+                        cote = ex.cote,
+                        dt = DateTime.Now,
+                        titre = notice.titre,
+                    });
                 }
             }
         }
