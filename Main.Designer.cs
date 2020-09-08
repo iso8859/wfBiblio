@@ -50,9 +50,11 @@
             this.btnSearchNotices = new System.Windows.Forms.Button();
             this.txtNotice = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.dgvDesherbage = new System.Windows.Forms.DataGridView();
             this.titreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.auteurDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.éditeurDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,6 +76,8 @@
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDesherbage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.noticeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,6 +86,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.ImageList = this.imageList1;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -223,7 +228,7 @@
             this.dgvResultNotice.RowHeadersVisible = false;
             this.dgvResultNotice.RowTemplate.Height = 50;
             this.dgvResultNotice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvResultNotice.Size = new System.Drawing.Size(994, 895);
+            this.dgvResultNotice.Size = new System.Drawing.Size(994, 896);
             this.dgvResultNotice.TabIndex = 1;
             this.dgvResultNotice.SelectionChanged += new System.EventHandler(this.dgvResultNotice_SelectionChanged);
             // 
@@ -235,14 +240,14 @@
             this.panel2.Location = new System.Drawing.Point(999, 117);
             this.panel2.Margin = new System.Windows.Forms.Padding(5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(912, 895);
+            this.panel2.Size = new System.Drawing.Size(912, 896);
             this.panel2.TabIndex = 3;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.btnEnregistrerNotice);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 799);
+            this.panel3.Location = new System.Drawing.Point(0, 800);
             this.panel3.Margin = new System.Windows.Forms.Padding(5);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(912, 96);
@@ -322,6 +327,17 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Chercher par titre, auteur....";
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.ctrlCorriger1);
+            this.tabPage3.ImageIndex = 2;
+            this.tabPage3.Location = new System.Drawing.Point(4, 40);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1916, 1017);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "A corriger";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
@@ -335,16 +351,27 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // tabPage3
+            // tabPage4
             // 
-            this.tabPage3.Controls.Add(this.ctrlCorriger1);
-            this.tabPage3.ImageIndex = 2;
-            this.tabPage3.Location = new System.Drawing.Point(4, 40);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1916, 1017);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "A corriger";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPage4.Controls.Add(this.dgvDesherbage);
+            this.tabPage4.Location = new System.Drawing.Point(4, 40);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(1916, 1017);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Desherbage";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // dgvDesherbage
+            // 
+            this.dgvDesherbage.AllowUserToAddRows = false;
+            this.dgvDesherbage.AllowUserToDeleteRows = false;
+            this.dgvDesherbage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDesherbage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDesherbage.Location = new System.Drawing.Point(0, 0);
+            this.dgvDesherbage.Name = "dgvDesherbage";
+            this.dgvDesherbage.RowTemplate.Height = 30;
+            this.dgvDesherbage.Size = new System.Drawing.Size(1916, 1017);
+            this.dgvDesherbage.TabIndex = 0;
             // 
             // titreDataGridViewTextBoxColumn
             // 
@@ -420,7 +447,7 @@
             this.ctrlNotices1.Location = new System.Drawing.Point(0, 0);
             this.ctrlNotices1.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.ctrlNotices1.Name = "ctrlNotices1";
-            this.ctrlNotices1.Size = new System.Drawing.Size(912, 895);
+            this.ctrlNotices1.Size = new System.Drawing.Size(912, 896);
             this.ctrlNotices1.TabIndex = 2;
             // 
             // ctrlCorriger1
@@ -430,7 +457,7 @@
             this.ctrlCorriger1.Location = new System.Drawing.Point(0, 0);
             this.ctrlCorriger1.Margin = new System.Windows.Forms.Padding(7);
             this.ctrlCorriger1.Name = "ctrlCorriger1";
-            this.ctrlCorriger1.Size = new System.Drawing.Size(1916, 1017);
+            this.ctrlCorriger1.Size = new System.Drawing.Size(1916, 1018);
             this.ctrlCorriger1.TabIndex = 0;
             // 
             // Main
@@ -445,6 +472,7 @@
             this.Name = "Main";
             this.Text = "wfBiblio";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Main_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -456,6 +484,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tabPage3.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDesherbage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.noticeBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -498,6 +528,8 @@
         private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.TabPage tabPage3;
         private ctrlCorriger ctrlCorriger1;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.DataGridView dgvDesherbage;
     }
 }
 

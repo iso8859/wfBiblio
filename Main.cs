@@ -186,5 +186,15 @@ namespace wfBiblio
         {
             txtSearchCirculation.SelectAll();
         }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            var collDesherbage = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Desherbage>("Desherbage");
+            var l = collDesherbage.Find(_ => true).SortByDescending(bson => bson.dt).ToList();
+            dgvDesherbage.DataSource = l;
+            dgvDesherbage.AutoResizeColumns();
+            dgvDesherbage.Columns["_id"].Visible = false;
+            dgvDesherbage.Columns["idNotice"].Visible = false;
+        }
     }
 }
