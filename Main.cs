@@ -62,7 +62,13 @@ namespace wfBiblio
         private void btnAddNotice_Click(object sender, EventArgs e)
         {
             using (var frm = new frmAjouterNotice())
-                frm.ShowDialog();
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    dgvResultNotice.DataSource = new List<Notice>() { frm.m_lastNotice };
+                    dgvResultNotice.AutoResizeColumns();
+                }
+            }
         }
 
         private void btnEnregistrerNotice_Click(object sender, EventArgs e)

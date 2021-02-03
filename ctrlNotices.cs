@@ -68,7 +68,7 @@ namespace wfBiblio
         }
 
         List<Desherbage> desherbages = new List<Desherbage>();
-        public void Enregistrer()
+        public Notice Enregistrer()
         {
             Notice notice = GetNotice();
             if (notice != null)
@@ -87,6 +87,7 @@ namespace wfBiblio
                     desherbages.Clear();
                 }
             }
+            return notice;
         }
 
         private void timer1_Tick(object sender, EventArgs e)

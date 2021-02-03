@@ -69,10 +69,20 @@ namespace wfBiblio
             GestionAjout(consoleBnf.query.NoticeQuery.GetNotice2(consoleBnf.query.QueryFilter.Anywhere, consoleBnf.query.QueryFilterType.Any, txtSearch2.Text).ToList());
         }
 
+        public Notice m_lastNotice;
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            ctrlNotices1.Enregistrer();
-            DialogResult = DialogResult.OK;
+            bool exit = true;
+            Notice notice = ctrlNotices1.Enregistrer();
+            if (notice.exemplaires == null || notice.exemplaires.Count == 0)
+                exit = (MessageBox.Show("Aucun exemplaire associé à la notice.\r\nVoulez-vous corriger ?", "Exemplaires", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No);
+            if (exit)
+                MessageBox.Show("Notice crée.");
+            if (exit)
+            {
+                m_lastNotice = notice;
+                DialogResult = DialogResult.OK;
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
