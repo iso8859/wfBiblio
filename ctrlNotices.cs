@@ -79,7 +79,10 @@ namespace wfBiblio
                 //    notice.exemplaires.Add(new Exemplaire() { _id = MongoDB.Bson.ObjectId.GenerateNewId(), codeBarre = notice.isbn, localisation = Properties.Settings.Default.Localisation });
 
                 var coll = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
-                coll.ReplaceOne(a => a._id == notice._id, notice, new UpdateOptions() { IsUpsert = true });
+                if (notice._id == ObjectId.Empty)
+                    coll.InsertOne(notice);
+                else
+                    coll.ReplaceOne(a => a._id == notice._id, notice, new UpdateOptions() { IsUpsert = true });
                 if (desherbages.Count>0)
                 {
                     var coll2 = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Desherbage>("Desherbage");
