@@ -80,7 +80,7 @@ namespace wfBiblio
 
                 var coll = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
                 coll.ReplaceOne(a => a._id == notice._id, notice, new UpdateOptions() { IsUpsert = true });
-                if (desherbages.Count>0)
+                if (desherbages.Count > 0)
                 {
                     var coll2 = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Desherbage>("Desherbage");
                     coll2.InsertMany(desherbages);
@@ -122,7 +122,7 @@ namespace wfBiblio
             using (var frm = new frmrExemplaire() { Text = "Ajouter un exemplaire" })
             {
                 Notice notice = GetNotice();
-                frm.SetExemplaire(new Exemplaire() { _id = MongoDB.Bson.ObjectId.GenerateNewId(), localisation = Properties.Settings.Default.Localisation, codeBarre = notice.isbn });
+                frm.SetExemplaire(new Exemplaire() { _id = MongoDB.Bson.ObjectId.GenerateNewId(), localisation = Properties.Settings.Default.Localisation, codeBarre = notice.isbn, dtCreation = DateTime.Now.ToUniversalTime() });
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     if (notice.exemplaires == null)

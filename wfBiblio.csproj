@@ -86,6 +86,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ctrlAttente.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctrlAttente.Designer.cs">
+      <DependentUpon>ctrlAttente.cs</DependentUpon>
+    </Compile>
     <Compile Include="ctrlChoixLecteur.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -162,6 +168,9 @@
     <Compile Include="SRU\NoticeQuery.cs" />
     <Compile Include="SRU\QueryBuilder.cs" />
     <Compile Include="Toolbox.cs" />
+    <EmbeddedResource Include="ctrlAttente.resx">
+      <DependentUpon>ctrlAttente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ctrlChoixLecteur.resx">
       <DependentUpon>ctrlChoixLecteur.cs</DependentUpon>
     </EmbeddedResource>

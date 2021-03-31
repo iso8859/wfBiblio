@@ -11,18 +11,27 @@ namespace wfBiblio
 {
     public class Exemplaire
     {
+        public Exemplaire()
+        {
+
+        }
         public ObjectId _id { get; set; }
         public string cote { get; set; }
         public string codeBarre { get; set; }
         public string localisation { get; set; }
         public string commentaires { get; set; }
         public string info { get; set; }
+        public DateTime dtCreation { get; set; }
         [BsonExtraElements]
         public BsonDocument indexes { get; set; }
     }
 
     public class Notice
     {
+        public Notice()
+        {
+
+        }
         public ObjectId _id { get; set; }
         public string titre { get; set; }
         public string complémentTitre { get; set; }

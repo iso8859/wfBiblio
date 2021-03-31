@@ -51,7 +51,8 @@ namespace wfBiblio
                         {
                             _id = MongoDB.Bson.ObjectId.GenerateNewId(),
                             localisation = Properties.Settings.Default.Localisation,
-                            codeBarre = isbn
+                            codeBarre = isbn,
+                            dtCreation = DateTime.Now.ToUniversalTime()
                         }
                     }
                 };
