@@ -236,6 +236,7 @@
     <Content Include=".gitignore" />
     <Content Include="ExempleReponse.xml" />
     <Content Include="if_book_173163.ico" />
+    <Content Include="isbn.txt" />
     <None Include="Resources\if_icon-30-book_315151.ico" />
     <None Include="Resources\if_basics-15_296819.ico" />
     <None Include="Resources\if_basics-16_296818.ico" />
