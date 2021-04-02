@@ -31,191 +31,176 @@ namespace wfBiblio
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtISBN = new System.Windows.Forms.TextBox();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnAddAll = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.noticeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.isbnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnGoogle = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.txtISBN = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dgvAttente = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ajouterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.supprimerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtLog = new System.Windows.Forms.TextBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.noticeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAttente)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.btnAddAll);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtISBN);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(999, 59);
-            this.panel1.TabIndex = 0;
+            this.panel1.Size = new System.Drawing.Size(1075, 88);
+            this.panel1.TabIndex = 2;
             // 
-            // label1
+            // btnAddAll
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(180, 29);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "ISBN en attente";
+            this.btnAddAll.Location = new System.Drawing.Point(862, 11);
+            this.btnAddAll.Name = "btnAddAll";
+            this.btnAddAll.Size = new System.Drawing.Size(185, 38);
+            this.btnAddAll.TabIndex = 3;
+            this.btnAddAll.Text = "Tout ajouter";
+            this.btnAddAll.UseVisualStyleBackColor = true;
+            this.btnAddAll.Click += new System.EventHandler(this.btnAddAll_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(24, 14);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(375, 29);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "En attente de validation pour ajout";
+            // 
+            // txtISBN
+            // 
+            this.txtISBN.Location = new System.Drawing.Point(604, 11);
+            this.txtISBN.Name = "txtISBN";
+            this.txtISBN.Size = new System.Drawing.Size(239, 35);
+            this.txtISBN.TabIndex = 2;
+            this.txtISBN.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtISBN_KeyDown);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(333, 14);
+            this.label2.Location = new System.Drawing.Point(456, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(142, 29);
             this.label2.TabIndex = 1;
             this.label2.Text = "Scan rapide";
             // 
-            // txtISBN
+            // dgvAttente
             // 
-            this.txtISBN.Location = new System.Drawing.Point(481, 11);
-            this.txtISBN.Name = "txtISBN";
-            this.txtISBN.Size = new System.Drawing.Size(239, 35);
-            this.txtISBN.TabIndex = 2;
+            this.dgvAttente.AllowUserToAddRows = false;
+            this.dgvAttente.AllowUserToDeleteRows = false;
+            this.dgvAttente.AllowUserToOrderColumns = true;
+            this.dgvAttente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAttente.ContextMenuStrip = this.contextMenuStrip1;
+            this.dgvAttente.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvAttente.Location = new System.Drawing.Point(0, 181);
+            this.dgvAttente.Name = "dgvAttente";
+            this.dgvAttente.ReadOnly = true;
+            this.dgvAttente.RowHeadersVisible = false;
+            this.dgvAttente.RowTemplate.Height = 35;
+            this.dgvAttente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAttente.Size = new System.Drawing.Size(1075, 471);
+            this.dgvAttente.TabIndex = 3;
             // 
-            // splitContainer1
+            // label1
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(24, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(232, 20);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Clic droit pour ajouter/supprimer";
             // 
-            // splitContainer1.Panel1
+            // contextMenuStrip1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
-            this.splitContainer1.Panel1.Controls.Add(this.panel1);
+            this.contextMenuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ajouterToolStripMenuItem,
+            this.supprimerToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(155, 56);
             // 
-            // splitContainer1.Panel2
+            // ajouterToolStripMenuItem
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.panel2);
-            this.splitContainer1.Size = new System.Drawing.Size(999, 652);
-            this.splitContainer1.SplitterDistance = 354;
-            this.splitContainer1.TabIndex = 1;
+            this.ajouterToolStripMenuItem.Name = "ajouterToolStripMenuItem";
+            this.ajouterToolStripMenuItem.Size = new System.Drawing.Size(154, 26);
+            this.ajouterToolStripMenuItem.Text = "Ajouter";
             // 
-            // panel2
+            // supprimerToolStripMenuItem
             // 
-            this.panel2.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(999, 59);
-            this.panel2.TabIndex = 1;
+            this.supprimerToolStripMenuItem.Name = "supprimerToolStripMenuItem";
+            this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(154, 26);
+            this.supprimerToolStripMenuItem.Text = "Supprimer";
             // 
-            // label4
+            // txtLog
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(4, 12);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(525, 29);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Notices trouvées, en attente d\'ajout à l\'inventaire";
+            this.txtLog.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtLog.Location = new System.Drawing.Point(0, 88);
+            this.txtLog.Multiline = true;
+            this.txtLog.Name = "txtLog";
+            this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtLog.Size = new System.Drawing.Size(1075, 93);
+            this.txtLog.TabIndex = 5;
             // 
-            // button1
+            // backgroundWorker1
             // 
-            this.button1.Location = new System.Drawing.Point(535, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(185, 38);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Tout ajouter";
-            this.button1.UseVisualStyleBackColor = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
-            // dataGridView1
+            // timer1
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.isbnDataGridViewTextBoxColumn,
-            this.btnEdit,
-            this.btnGoogle});
-            this.dataGridView1.DataSource = this.noticeBindingSource;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 59);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(999, 295);
-            this.dataGridView1.TabIndex = 1;
-            // 
-            // noticeBindingSource
-            // 
-            this.noticeBindingSource.DataSource = typeof(wfBiblio.Notice);
-            // 
-            // isbnDataGridViewTextBoxColumn
-            // 
-            this.isbnDataGridViewTextBoxColumn.DataPropertyName = "isbn";
-            this.isbnDataGridViewTextBoxColumn.HeaderText = "isbn";
-            this.isbnDataGridViewTextBoxColumn.Name = "isbnDataGridViewTextBoxColumn";
-            this.isbnDataGridViewTextBoxColumn.ReadOnly = true;
-            this.isbnDataGridViewTextBoxColumn.Width = 300;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.HeaderText = "Modifier";
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.ReadOnly = true;
-            this.btnEdit.Width = 120;
-            // 
-            // btnGoogle
-            // 
-            this.btnGoogle.HeaderText = "Google";
-            this.btnGoogle.Name = "btnGoogle";
-            this.btnGoogle.ReadOnly = true;
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 500;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // ctrlAttente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.dgvAttente);
+            this.Controls.Add(this.txtLog);
+            this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.Margin = new System.Windows.Forms.Padding(7);
             this.Name = "ctrlAttente";
-            this.Size = new System.Drawing.Size(999, 652);
+            this.Size = new System.Drawing.Size(1075, 652);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.noticeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAttente)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnAddAll;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtISBN;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn isbnDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn btnEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn btnGoogle;
-        private System.Windows.Forms.BindingSource noticeBindingSource;
+        private System.Windows.Forms.DataGridView dgvAttente;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem ajouterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem supprimerToolStripMenuItem;
+        private System.Windows.Forms.TextBox txtLog;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
     }
 }

@@ -47,6 +47,11 @@ namespace wfBiblio
         public List<Exemplaire> exemplaires { get; set; }
         [BsonExtraElements]
         public BsonDocument indexes { get; set; }
+
+        public Notice Clone()
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<Notice>(Newtonsoft.Json.JsonConvert.SerializeObject(this));
+        }
     }
 
     public class Desherbage

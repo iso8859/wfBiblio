@@ -38,6 +38,7 @@
             this.ctrlNotices1 = new wfBiblio.ctrlNotices();
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -136,6 +137,10 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
             // frmAjouterNotice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -169,5 +174,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSearch2;
         private System.Windows.Forms.TextBox txtSearch2;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

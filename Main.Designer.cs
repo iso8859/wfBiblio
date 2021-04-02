@@ -61,13 +61,15 @@
             this.btnSearchNotices = new System.Windows.Forms.Button();
             this.txtNotice = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.ctrlAttente1 = new wfBiblio.ctrlAttente();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.ctrlCorriger1 = new wfBiblio.ctrlCorriger();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.dgvDesherbage = new System.Windows.Forms.DataGridView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -77,6 +79,8 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDesherbage)).BeginInit();
@@ -406,6 +410,36 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Chercher par titre, auteur....";
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.panel5);
+            this.tabPage5.ImageIndex = 3;
+            this.tabPage5.Location = new System.Drawing.Point(4, 40);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(1916, 1017);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "En attente";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.ctrlAttente1);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1916, 1017);
+            this.panel5.TabIndex = 0;
+            // 
+            // ctrlAttente1
+            // 
+            this.ctrlAttente1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ctrlAttente1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctrlAttente1.Location = new System.Drawing.Point(0, 0);
+            this.ctrlAttente1.Margin = new System.Windows.Forms.Padding(7);
+            this.ctrlAttente1.Name = "ctrlAttente1";
+            this.ctrlAttente1.Size = new System.Drawing.Size(1916, 1017);
+            this.ctrlAttente1.TabIndex = 0;
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.ctrlCorriger1);
@@ -463,16 +497,6 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // tabPage5
-            // 
-            this.tabPage5.ImageIndex = 3;
-            this.tabPage5.Location = new System.Drawing.Point(4, 40);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1916, 1017);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "En attente";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
@@ -497,6 +521,8 @@
             this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDesherbage)).EndInit();
@@ -544,6 +570,8 @@
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.DataGridView dgvDesherbage;
         private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Panel panel5;
+        private ctrlAttente ctrlAttente1;
     }
 }
 

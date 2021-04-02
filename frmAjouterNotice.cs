@@ -95,5 +95,10 @@ namespace wfBiblio
             if (e.KeyChar == (char)13)
                 btnSearch_Click(null, null);
         }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
     }
 }
