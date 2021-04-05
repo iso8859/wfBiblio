@@ -34,7 +34,7 @@ namespace wfBiblio
                 if (list.Count == 1)
                 {
                     // L'exemplaire est-il déjà en base?
-                    long exist = coll.Find(Builders<Notice>.Filter.Eq(a => a.isbn, list[0].isbn)).Count();
+                    long exist = coll.Find(Builders<Notice>.Filter.Eq(a => a.isbn, list[0].isbn)).CountDocuments();
                     if (exist > 0)
                         MessageBox.Show($"Cette notice avec l'ISBN {list[0].isbn} existe déjà.");
                     else
@@ -48,7 +48,7 @@ namespace wfBiblio
                         if (frs.ShowDialog() == DialogResult.OK)
                         {
                             // L'exemplaire est-il déjà en base?
-                            long exist = coll.Find(Builders<Notice>.Filter.Eq(a => a.isbn, list[frs.m_notice].isbn)).Count();
+                            long exist = coll.Find(Builders<Notice>.Filter.Eq(a => a.isbn, list[frs.m_notice].isbn)).CountDocuments();
                             if (exist > 0)
                                 MessageBox.Show($"Cette notice avec l'ISBN {list[frs.m_notice].isbn} existe déjà.");
                             else
@@ -77,9 +77,8 @@ namespace wfBiblio
             if (notice.exemplaires == null || notice.exemplaires.Count == 0)
                 exit = (MessageBox.Show("Aucun exemplaire associé à la notice.\r\nVoulez-vous corriger ?", "Exemplaires", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No);
             if (exit)
-                MessageBox.Show("Notice crée.");
-            if (exit)
             {
+                MessageBox.Show("Notice crée.");
                 m_lastNotice = notice;
                 DialogResult = DialogResult.OK;
             }

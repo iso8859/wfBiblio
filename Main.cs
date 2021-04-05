@@ -119,7 +119,7 @@ namespace wfBiblio
             {
                 // Cherche le lecteur
                 List<LecteurResult> lr = Lecteur.TrouverLecteursParSearch(txtSearchCirculation.Text);
-                if (lr.Count>0)
+                if (lr.Count > 0)
                 {
                     if (lr.Count == 1)
                         AffichageLecteur(lr[0]);
@@ -133,7 +133,10 @@ namespace wfBiblio
                     }
                 }
                 else
+                {
+                    pnlCirculation.Controls.Clear();
                     MessageBox.Show("Pas de lecteur à ce nom");
+                }
             }
             txtSearchCirculation.SelectAll();
         }
@@ -148,6 +151,7 @@ namespace wfBiblio
             ctrlCirculation circ = new ctrlCirculation() { Dock = DockStyle.Fill };
             circ.Init(lecteur);
             circ.AfficherGroupeEvent += Circ_AfficherGroupeEvent;
+            circ.RafraichirRecherche = () => { btnCirculation_Click(null, null); };
             pnlCirculation.Controls.Clear();
             pnlCirculation.Controls.Add(circ);
         }
@@ -193,7 +197,7 @@ namespace wfBiblio
             txtSearchCirculation.SelectAll();
         }
 
-        private void Main_Load(object sender, EventArgs e)
+        private void LoadDesherbage()
         {
             var collDesherbage = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Desherbage>("Desherbage");
             var l = collDesherbage.Find(_ => true).SortByDescending(bson => bson.dt).ToList();
@@ -201,6 +205,16 @@ namespace wfBiblio
             dgvDesherbage.AutoResizeColumns();
             dgvDesherbage.Columns["_id"].Visible = false;
             dgvDesherbage.Columns["idNotice"].Visible = false;
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabPage1)
+                pnlCirculation.Controls.Clear();
+            if (tabControl1.SelectedTab == tabPage5)
+                ctrlAttente1.Init();
+            if (tabControl1.SelectedTab == tabPage4)
+                LoadDesherbage();
         }
     }
 }

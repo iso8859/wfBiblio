@@ -167,7 +167,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label1;
         private ctrlNotices ctrlNotices1;
         private System.Windows.Forms.Button btnCreate;
@@ -175,5 +174,6 @@
         private System.Windows.Forms.Button btnSearch2;
         private System.Windows.Forms.TextBox txtSearch2;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        public System.Windows.Forms.TextBox txtSearch;
     }
 }

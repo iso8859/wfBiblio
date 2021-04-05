@@ -159,6 +159,7 @@ namespace wfBiblio
             foreach (InfoLecteur il in db.GetCollection<InfoLecteur>("InfoLecteur").Find(
                 Builders<InfoLecteur>.Filter.And(
                     Builders<InfoLecteur>.Filter.Eq(a => a.localisation, Properties.Settings.Default.Localisation),
+                    Builders<InfoLecteur>.Filter.Eq(a=>a.deleted, false),
                     Builders<InfoLecteur>.Filter.Or(
                         Builders<InfoLecteur>.Filter.Regex(a => a.nom, s),
                         Builders<InfoLecteur>.Filter.Regex(a => a.prénom, s),

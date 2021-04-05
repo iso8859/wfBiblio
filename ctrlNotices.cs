@@ -82,7 +82,7 @@ namespace wfBiblio
                 if (notice._id == ObjectId.Empty)
                     coll.InsertOne(notice);
                 else
-                    coll.ReplaceOne(a => a._id == notice._id, notice, new UpdateOptions() { IsUpsert = true });
+                    coll.ReplaceOne(a => a._id == notice._id, notice, new ReplaceOptions() { IsUpsert = true });
                 if (desherbages.Count>0)
                 {
                     var coll2 = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Desherbage>("Desherbage");

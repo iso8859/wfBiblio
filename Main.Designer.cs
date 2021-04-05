@@ -62,7 +62,6 @@
             this.txtNotice = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.ctrlAttente1 = new wfBiblio.ctrlAttente();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.ctrlCorriger1 = new wfBiblio.ctrlCorriger();
@@ -80,7 +79,6 @@
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabPage5.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDesherbage)).BeginInit();
@@ -101,6 +99,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1924, 1061);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -412,7 +411,7 @@
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.panel5);
+            this.tabPage5.Controls.Add(this.ctrlAttente1);
             this.tabPage5.ImageIndex = 3;
             this.tabPage5.Location = new System.Drawing.Point(4, 40);
             this.tabPage5.Name = "tabPage5";
@@ -420,15 +419,6 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "En attente";
             this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.ctrlAttente1);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1916, 1017);
-            this.panel5.TabIndex = 0;
             // 
             // ctrlAttente1
             // 
@@ -479,7 +469,7 @@
             this.dgvDesherbage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDesherbage.Location = new System.Drawing.Point(0, 0);
             this.dgvDesherbage.Name = "dgvDesherbage";
-            this.dgvDesherbage.RowTemplate.Height = 30;
+            this.dgvDesherbage.RowTemplate.Height = 35;
             this.dgvDesherbage.Size = new System.Drawing.Size(1916, 1017);
             this.dgvDesherbage.TabIndex = 0;
             // 
@@ -509,7 +499,6 @@
             this.Name = "Main";
             this.Text = "wfBiblio";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Main_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -522,7 +511,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tabPage5.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDesherbage)).EndInit();
@@ -570,7 +558,6 @@
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.DataGridView dgvDesherbage;
         private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.Panel panel5;
         private ctrlAttente ctrlAttente1;
     }
 }

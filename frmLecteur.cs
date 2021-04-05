@@ -73,7 +73,7 @@ namespace wfBiblio
             var db = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio");
             Lecteur lecteur = ((List<Lecteur>)lecteurBindingSource.DataSource)[0];
             lecteur.localisation = Properties.Settings.Default.Localisation;
-            var ops = new UpdateOptions { IsUpsert = true };
+            var ops = new ReplaceOptions { IsUpsert = true };
             db.GetCollection<Lecteur>("Lecteur").ReplaceOne(x => x._id == lecteur._id, lecteur, ops);
             foreach (InfoLecteur il in (List<InfoLecteur>)infoLecteurBindingSource.DataSource)
             {

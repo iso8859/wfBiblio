@@ -121,8 +121,8 @@ namespace wfBiblio
         private void btnOK_Click(object sender, EventArgs e)
         {
             // Ajouter ou supprimer un exemplaire
-            var collNotice = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
-            var collEmprunt = new MongoDB.Driver.MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Emprunt>("Emprunt");
+            var collNotice = new MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Notice>("Notice");
+            var collEmprunt = new MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Emprunt>("Emprunt");
             List<Notice> tmp = collNotice.Find(new BsonDocument("exemplaires.codeBarre", txtNewExplaire.Text)).ToList();
             if (tmp != null && tmp.Count == 1)
             {
@@ -167,7 +167,21 @@ namespace wfBiblio
                 }
             }
             else
-                MessageBox.Show("Ce code exemplaire n'existe pas.", "Erreur");
+            {
+                if (MessageBox.Show("Ce code exemplaire n'existe pas.\r\nVoulez-vous quand même le prêter et l'ajouter à l'inventaire plus tard ?", "Erreur", MessageBoxButtons.YesNo)==DialogResult.Yes)
+                {
+                    Emprunt emprunt = new Emprunt()
+                    {
+                        idLecteur = m_lecteur.infoLecteur._id,
+                        //IdExemplaire = tmp[0].exemplaires.Find(a => a.codeBarre == txtNewExplaire.Text)._id,
+                        etat = 1,
+                        dateEmprunt = DateTime.Now,
+                        dateRetourPrévue = DateTime.Now.AddDays(21)
+                    };
+                    Notice notice = new Notice() { isbn = txtNewExplaire.Text, indexes = new BsonDocument("ajouterLecteur", emprunt.ToBsonDocument()).Add("Status", ctrlAttente.A_TRAITER) };
+                    new MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio").GetCollection<Notice>("NoticeAttente").InsertOne(notice);
+                }
+            }
             txtNewExplaire.SelectAll();
         }
 
@@ -177,12 +191,14 @@ namespace wfBiblio
             txtNewExplaire.Focus();
         }
 
+        public Action RafraichirRecherche;
         private void btnEdit_Click(object sender, EventArgs e)
         {
             using (frmLecteur l = new frmLecteur())
             {
                 l.Init(m_lecteur);
                 l.ShowDialog();
+                RafraichirRecherche?.Invoke();
             }
         }
 
