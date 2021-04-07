@@ -78,6 +78,7 @@ namespace wfBiblio
         }
         void AddIsbn(string isbn)
         {
+            timer1.Stop();
             Notice notice = new Notice() { isbn = isbn };
             m_db.GetCollection<Notice>("NoticeAttente").InsertOne(notice);
             AddOrUpdate(notice);
@@ -91,6 +92,17 @@ namespace wfBiblio
                 AddIsbn(txtISBN.Text);
                 txtISBN.Text = "";
                 txtISBN.Focus();
+            }
+            else if (e.KeyCode==Keys.V && e.Modifiers==Keys.Control)
+            {
+                using (System.IO.StringReader sr = new System.IO.StringReader(Clipboard.GetText()))
+                {
+                    string i = "";
+                    while ((i = sr.ReadLine()) != null)
+                        AddIsbn(i);
+                    txtISBN.Text = "";
+                    txtISBN.Focus();
+                }
             }
         }
 
@@ -114,6 +126,8 @@ namespace wfBiblio
             }
             if (notice != null)
             {
+                if (notice.indexes == null)
+                    notice.indexes = new BsonDocument();
                 // Déjà à l'inventaire ?
                 var notice2 = db.GetCollection<Notice>("Notice").Find(_ => _.isbn == notice.isbn).FirstOrDefault();
                 if (notice2 != null)
@@ -142,8 +156,6 @@ namespace wfBiblio
                 }
                 else
                 {
-                    if (notice.indexes == null)
-                        notice.indexes = new BsonDocument();
                     var results = consoleBnf.query.NoticeQuery.GetNotice2(consoleBnf.query.QueryFilter.Isbn, consoleBnf.query.QueryFilterType.All, notice.isbn.Replace("-", "")).ToList();
                     if (results.Count == 1)
                     {
