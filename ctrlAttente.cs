@@ -284,8 +284,13 @@ namespace wfBiblio
             List<DataGridViewRow> toDelete = new List<DataGridViewRow>();
             foreach (DataGridViewRow row in dgvAttente.SelectedRows)
                 toDelete.Add(row);
+            var db = new MongoClient(Properties.Settings.Default.MongoDB).GetDatabase("wfBiblio");
             foreach (DataGridViewRow row in toDelete)
+            {
+                ObjectId id = (ObjectId)row.Cells["_id"].Value;
                 dgvAttente.Rows.Remove(row);
+                db.GetCollection<Notice>("NoticeAttente").DeleteOne(_ => _._id == id);
+            }
         }
     }
 }
