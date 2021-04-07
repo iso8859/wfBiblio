@@ -102,7 +102,7 @@ namespace wfBiblio
             this.txtISBN.Location = new System.Drawing.Point(604, 11);
             this.txtISBN.Name = "txtISBN";
             this.txtISBN.Size = new System.Drawing.Size(239, 35);
-            this.txtISBN.TabIndex = 2;
+            this.txtISBN.TabIndex = 1;
             this.txtISBN.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtISBN_KeyDown);
             // 
             // label2
