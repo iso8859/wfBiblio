@@ -37,6 +37,7 @@ namespace wfBiblio
             dgvAttente.DataSource = m_dt;
             foreach (Notice notice in m_db.GetCollection<Notice>("NoticeAttente").Find(_ => true).ToList())
                 AddOrUpdate(notice);
+            txtISBN.Focus();
             timer1.Start();
         }
 
@@ -246,12 +247,17 @@ namespace wfBiblio
                 Notice existing = db.GetCollection<Notice>("Notice").Find(_ => _.isbn == notice.isbn).FirstOrDefault();
                 if (existing == null)
                 {
-                    IntegrerEmprunt(notice);
-                    notice.indexes = null;
-                    db.GetCollection<Notice>("Notice").InsertOne(notice);
-                    db.GetCollection<Notice>("NoticeAttente").DeleteOne(_ => _._id == id);
-                    toDelete.Add(row);
-                    AddLog($"Notice ajoutée {notice.isbn} => {notice.titre} - {notice.auteur}");
+                    if (!string.IsNullOrEmpty(notice.titre) && !string.IsNullOrEmpty(notice.auteur))
+                    {
+                        IntegrerEmprunt(notice);
+                        notice.indexes = null;
+                        db.GetCollection<Notice>("Notice").InsertOne(notice);
+                        db.GetCollection<Notice>("NoticeAttente").DeleteOne(_ => _._id == id);
+                        toDelete.Add(row);
+                        AddLog($"Notice ajoutée {notice.isbn} => {notice.titre} - {notice.auteur}");
+                    }
+                    else
+                        AddLog($"Notice manque titre/auteur {notice.isbn}.");
                 }
                 else
                 {
