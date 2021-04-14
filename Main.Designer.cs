@@ -97,7 +97,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(5);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1924, 1061);
+            this.tabControl1.Size = new System.Drawing.Size(1125, 1005);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -111,7 +111,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(5);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(5);
-            this.tabPage1.Size = new System.Drawing.Size(1916, 1017);
+            this.tabPage1.Size = new System.Drawing.Size(1117, 961);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Circulation";
             // 
@@ -122,7 +122,7 @@
             this.pnlCirculation.Location = new System.Drawing.Point(5, 103);
             this.pnlCirculation.Margin = new System.Windows.Forms.Padding(5);
             this.pnlCirculation.Name = "pnlCirculation";
-            this.pnlCirculation.Size = new System.Drawing.Size(1906, 909);
+            this.pnlCirculation.Size = new System.Drawing.Size(1107, 853);
             this.pnlCirculation.TabIndex = 5;
             // 
             // panel4
@@ -137,7 +137,7 @@
             this.panel4.Location = new System.Drawing.Point(5, 5);
             this.panel4.Margin = new System.Windows.Forms.Padding(5);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1906, 98);
+            this.panel4.Size = new System.Drawing.Size(1107, 98);
             this.panel4.TabIndex = 4;
             // 
             // btnAddLecteur
@@ -203,7 +203,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(5);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(5);
-            this.tabPage2.Size = new System.Drawing.Size(1916, 1017);
+            this.tabPage2.Size = new System.Drawing.Size(1117, 961);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Notices";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -233,7 +233,7 @@
             this.dgvResultNotice.RowHeadersVisible = false;
             this.dgvResultNotice.RowTemplate.Height = 50;
             this.dgvResultNotice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvResultNotice.Size = new System.Drawing.Size(994, 895);
+            this.dgvResultNotice.Size = new System.Drawing.Size(195, 839);
             this.dgvResultNotice.TabIndex = 1;
             this.dgvResultNotice.SelectionChanged += new System.EventHandler(this.dgvResultNotice_SelectionChanged);
             // 
@@ -309,17 +309,17 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.ctrlNotices1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(999, 117);
+            this.panel2.Location = new System.Drawing.Point(200, 117);
             this.panel2.Margin = new System.Windows.Forms.Padding(5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(912, 895);
+            this.panel2.Size = new System.Drawing.Size(912, 839);
             this.panel2.TabIndex = 3;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.btnEnregistrerNotice);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 799);
+            this.panel3.Location = new System.Drawing.Point(0, 743);
             this.panel3.Margin = new System.Windows.Forms.Padding(5);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(912, 96);
@@ -343,7 +343,7 @@
             this.ctrlNotices1.Location = new System.Drawing.Point(0, 0);
             this.ctrlNotices1.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.ctrlNotices1.Name = "ctrlNotices1";
-            this.ctrlNotices1.Size = new System.Drawing.Size(912, 895);
+            this.ctrlNotices1.Size = new System.Drawing.Size(912, 839);
             this.ctrlNotices1.TabIndex = 2;
             // 
             // panel1
@@ -357,7 +357,7 @@
             this.panel1.Location = new System.Drawing.Point(5, 5);
             this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1906, 112);
+            this.panel1.Size = new System.Drawing.Size(1107, 112);
             this.panel1.TabIndex = 0;
             // 
             // lblResult
@@ -370,10 +370,10 @@
             // 
             // btnAddNotice
             // 
-            this.btnAddNotice.Location = new System.Drawing.Point(1280, 25);
+            this.btnAddNotice.Location = new System.Drawing.Point(735, 63);
             this.btnAddNotice.Margin = new System.Windows.Forms.Padding(5);
             this.btnAddNotice.Name = "btnAddNotice";
-            this.btnAddNotice.Size = new System.Drawing.Size(178, 53);
+            this.btnAddNotice.Size = new System.Drawing.Size(178, 39);
             this.btnAddNotice.TabIndex = 3;
             this.btnAddNotice.Text = "Ajouter";
             this.btnAddNotice.UseVisualStyleBackColor = true;
@@ -381,10 +381,10 @@
             // 
             // btnSearchNotices
             // 
-            this.btnSearchNotices.Location = new System.Drawing.Point(1036, 25);
+            this.btnSearchNotices.Location = new System.Drawing.Point(735, 11);
             this.btnSearchNotices.Margin = new System.Windows.Forms.Padding(5);
             this.btnSearchNotices.Name = "btnSearchNotices";
-            this.btnSearchNotices.Size = new System.Drawing.Size(178, 53);
+            this.btnSearchNotices.Size = new System.Drawing.Size(178, 42);
             this.btnSearchNotices.TabIndex = 2;
             this.btnSearchNotices.Text = "Chercher";
             this.btnSearchNotices.UseVisualStyleBackColor = true;
@@ -392,17 +392,17 @@
             // 
             // txtNotice
             // 
-            this.txtNotice.Location = new System.Drawing.Point(404, 31);
+            this.txtNotice.Location = new System.Drawing.Point(369, 31);
             this.txtNotice.Margin = new System.Windows.Forms.Padding(5);
             this.txtNotice.Name = "txtNotice";
-            this.txtNotice.Size = new System.Drawing.Size(600, 38);
+            this.txtNotice.Size = new System.Drawing.Size(328, 38);
             this.txtNotice.TabIndex = 1;
             this.txtNotice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNotice_KeyPress);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(34, 31);
+            this.label3.Location = new System.Drawing.Point(0, 31);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(349, 31);
@@ -415,7 +415,7 @@
             this.tabPage5.ImageIndex = 3;
             this.tabPage5.Location = new System.Drawing.Point(4, 40);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1916, 1017);
+            this.tabPage5.Size = new System.Drawing.Size(1117, 961);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "En attente";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -427,7 +427,7 @@
             this.ctrlAttente1.Location = new System.Drawing.Point(0, 0);
             this.ctrlAttente1.Margin = new System.Windows.Forms.Padding(7);
             this.ctrlAttente1.Name = "ctrlAttente1";
-            this.ctrlAttente1.Size = new System.Drawing.Size(1916, 1017);
+            this.ctrlAttente1.Size = new System.Drawing.Size(1117, 961);
             this.ctrlAttente1.TabIndex = 0;
             // 
             // tabPage3
@@ -436,7 +436,7 @@
             this.tabPage3.ImageIndex = 2;
             this.tabPage3.Location = new System.Drawing.Point(4, 40);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1916, 1017);
+            this.tabPage3.Size = new System.Drawing.Size(1117, 961);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "A corriger";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -448,7 +448,7 @@
             this.ctrlCorriger1.Location = new System.Drawing.Point(0, 0);
             this.ctrlCorriger1.Margin = new System.Windows.Forms.Padding(7);
             this.ctrlCorriger1.Name = "ctrlCorriger1";
-            this.ctrlCorriger1.Size = new System.Drawing.Size(1916, 1017);
+            this.ctrlCorriger1.Size = new System.Drawing.Size(1117, 961);
             this.ctrlCorriger1.TabIndex = 0;
             // 
             // tabPage4
@@ -456,7 +456,7 @@
             this.tabPage4.Controls.Add(this.dgvDesherbage);
             this.tabPage4.Location = new System.Drawing.Point(4, 40);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1916, 1017);
+            this.tabPage4.Size = new System.Drawing.Size(1117, 961);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Desherbage";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -470,7 +470,7 @@
             this.dgvDesherbage.Location = new System.Drawing.Point(0, 0);
             this.dgvDesherbage.Name = "dgvDesherbage";
             this.dgvDesherbage.RowTemplate.Height = 35;
-            this.dgvDesherbage.Size = new System.Drawing.Size(1916, 1017);
+            this.dgvDesherbage.Size = new System.Drawing.Size(1117, 961);
             this.dgvDesherbage.TabIndex = 0;
             // 
             // imageList1
@@ -491,7 +491,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1924, 1061);
+            this.ClientSize = new System.Drawing.Size(1125, 1005);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
