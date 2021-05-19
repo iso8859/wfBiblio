@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="MongoDB" Type="System.String" Scope="User">
-      <Value Profile="(Default)">mongodb://127.0.0.1</Value>
+      <Value Profile="(Default)">mongodb://192.168.2.160</Value>
     </Setting>
     <Setting Name="Localisation" Type="System.String" Scope="User">
       <Value Profile="(Default)">Centre Social Cocteau</Value>

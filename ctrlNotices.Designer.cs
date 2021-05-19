@@ -40,6 +40,7 @@
             System.Windows.Forms.Label isbnLabel;
             System.Windows.Forms.Label titreLabel;
             this.annéeTextBox = new System.Windows.Forms.TextBox();
+            this.noticeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.auteurTextBox = new System.Windows.Forms.TextBox();
             this.autresAuteursTextBox = new System.Windows.Forms.TextBox();
             this.collectionTextBox = new System.Windows.Forms.TextBox();
@@ -55,7 +56,6 @@
             this.btnSupprimerExeplaire = new System.Windows.Forms.Button();
             this.btnAjouterExemplaire = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.noticeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             annéeLabel = new System.Windows.Forms.Label();
             auteurLabel = new System.Windows.Forms.Label();
             autresAuteursLabel = new System.Windows.Forms.Label();
@@ -66,9 +66,9 @@
             éditeurLabel = new System.Windows.Forms.Label();
             isbnLabel = new System.Windows.Forms.Label();
             titreLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.noticeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvExemplaires)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.noticeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // annéeLabel
@@ -175,16 +175,20 @@
             // 
             this.annéeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.noticeBindingSource, "année", true));
             this.annéeTextBox.Location = new System.Drawing.Point(192, 336);
-            this.annéeTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.annéeTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.annéeTextBox.Name = "annéeTextBox";
             this.annéeTextBox.Size = new System.Drawing.Size(175, 38);
             this.annéeTextBox.TabIndex = 7;
+            // 
+            // noticeBindingSource
+            // 
+            this.noticeBindingSource.DataSource = typeof(wfBiblio.Notice);
             // 
             // auteurTextBox
             // 
             this.auteurTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.noticeBindingSource, "auteur", true));
             this.auteurTextBox.Location = new System.Drawing.Point(156, 138);
-            this.auteurTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.auteurTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.auteurTextBox.Name = "auteurTextBox";
             this.auteurTextBox.Size = new System.Drawing.Size(701, 38);
             this.auteurTextBox.TabIndex = 3;
@@ -193,7 +197,7 @@
             // 
             this.autresAuteursTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.noticeBindingSource, "autresAuteurs", true));
             this.autresAuteursTextBox.Location = new System.Drawing.Point(292, 188);
-            this.autresAuteursTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.autresAuteursTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.autresAuteursTextBox.Name = "autresAuteursTextBox";
             this.autresAuteursTextBox.Size = new System.Drawing.Size(566, 38);
             this.autresAuteursTextBox.TabIndex = 4;
@@ -202,7 +206,7 @@
             // 
             this.collectionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.noticeBindingSource, "collection", true));
             this.collectionTextBox.Location = new System.Drawing.Point(192, 237);
-            this.collectionTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.collectionTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.collectionTextBox.Name = "collectionTextBox";
             this.collectionTextBox.Size = new System.Drawing.Size(665, 38);
             this.collectionTextBox.TabIndex = 5;
@@ -211,18 +215,18 @@
             // 
             this.commentairesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.noticeBindingSource, "commentaires", true));
             this.commentairesTextBox.Location = new System.Drawing.Point(414, 436);
-            this.commentairesTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.commentairesTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.commentairesTextBox.Multiline = true;
             this.commentairesTextBox.Name = "commentairesTextBox";
             this.commentairesTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.commentairesTextBox.Size = new System.Drawing.Size(443, 130);
+            this.commentairesTextBox.Size = new System.Drawing.Size(443, 78);
             this.commentairesTextBox.TabIndex = 10;
             // 
             // complémentTitreTextBox
             // 
             this.complémentTitreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.noticeBindingSource, "complémentTitre", true));
             this.complémentTitreTextBox.Location = new System.Drawing.Point(292, 87);
-            this.complémentTitreTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.complémentTitreTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.complémentTitreTextBox.Name = "complémentTitreTextBox";
             this.complémentTitreTextBox.Size = new System.Drawing.Size(566, 38);
             this.complémentTitreTextBox.TabIndex = 2;
@@ -231,7 +235,7 @@
             // 
             this.dateAchatTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.noticeBindingSource, "dateAchat", true));
             this.dateAchatTextBox.Location = new System.Drawing.Point(580, 336);
-            this.dateAchatTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dateAchatTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.dateAchatTextBox.Name = "dateAchatTextBox";
             this.dateAchatTextBox.Size = new System.Drawing.Size(175, 38);
             this.dateAchatTextBox.TabIndex = 8;
@@ -240,7 +244,7 @@
             // 
             this.éditeurTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.noticeBindingSource, "éditeur", true));
             this.éditeurTextBox.Location = new System.Drawing.Point(162, 287);
-            this.éditeurTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.éditeurTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.éditeurTextBox.Name = "éditeurTextBox";
             this.éditeurTextBox.Size = new System.Drawing.Size(696, 38);
             this.éditeurTextBox.TabIndex = 6;
@@ -249,7 +253,7 @@
             // 
             this.isbnTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.noticeBindingSource, "isbn", true));
             this.isbnTextBox.Location = new System.Drawing.Point(192, 386);
-            this.isbnTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.isbnTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.isbnTextBox.Name = "isbnTextBox";
             this.isbnTextBox.Size = new System.Drawing.Size(562, 38);
             this.isbnTextBox.TabIndex = 9;
@@ -258,7 +262,7 @@
             // 
             this.titreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.noticeBindingSource, "titre", true));
             this.titreTextBox.Location = new System.Drawing.Point(123, 34);
-            this.titreTextBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.titreTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.titreTextBox.Name = "titreTextBox";
             this.titreTextBox.Size = new System.Drawing.Size(735, 38);
             this.titreTextBox.TabIndex = 1;
@@ -270,7 +274,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(414, 583);
+            this.label1.Location = new System.Drawing.Point(414, 532);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(167, 31);
@@ -282,22 +286,22 @@
             this.dgvExemplaires.AllowUserToAddRows = false;
             this.dgvExemplaires.AllowUserToDeleteRows = false;
             this.dgvExemplaires.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvExemplaires.Location = new System.Drawing.Point(421, 632);
-            this.dgvExemplaires.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dgvExemplaires.Location = new System.Drawing.Point(421, 581);
+            this.dgvExemplaires.Margin = new System.Windows.Forms.Padding(5);
             this.dgvExemplaires.MultiSelect = false;
             this.dgvExemplaires.Name = "dgvExemplaires";
             this.dgvExemplaires.ReadOnly = true;
             this.dgvExemplaires.RowHeadersVisible = false;
             this.dgvExemplaires.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvExemplaires.Size = new System.Drawing.Size(439, 194);
+            this.dgvExemplaires.Size = new System.Drawing.Size(439, 124);
             this.dgvExemplaires.TabIndex = 22;
             this.dgvExemplaires.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExemplaires_CellDoubleClick);
             // 
             // btnSupprimerExeplaire
             // 
             this.btnSupprimerExeplaire.BackgroundImage = global::wfBiblio.Properties.Resources.if_basics_16_296818;
-            this.btnSupprimerExeplaire.Location = new System.Drawing.Point(640, 576);
-            this.btnSupprimerExeplaire.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnSupprimerExeplaire.Location = new System.Drawing.Point(640, 525);
+            this.btnSupprimerExeplaire.Margin = new System.Windows.Forms.Padding(5);
             this.btnSupprimerExeplaire.Name = "btnSupprimerExeplaire";
             this.btnSupprimerExeplaire.Size = new System.Drawing.Size(35, 39);
             this.btnSupprimerExeplaire.TabIndex = 24;
@@ -307,8 +311,8 @@
             // btnAjouterExemplaire
             // 
             this.btnAjouterExemplaire.BackgroundImage = global::wfBiblio.Properties.Resources.if_basics_15_296819;
-            this.btnAjouterExemplaire.Location = new System.Drawing.Point(592, 575);
-            this.btnAjouterExemplaire.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnAjouterExemplaire.Location = new System.Drawing.Point(592, 524);
+            this.btnAjouterExemplaire.Margin = new System.Windows.Forms.Padding(5);
             this.btnAjouterExemplaire.Name = "btnAjouterExemplaire";
             this.btnAjouterExemplaire.Size = new System.Drawing.Size(38, 39);
             this.btnAjouterExemplaire.TabIndex = 23;
@@ -319,15 +323,11 @@
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Location = new System.Drawing.Point(66, 496);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(276, 283);
+            this.pictureBox1.Size = new System.Drawing.Size(276, 209);
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
-            // 
-            // noticeBindingSource
-            // 
-            this.noticeBindingSource.DataSource = typeof(wfBiblio.Notice);
             // 
             // ctrlNotices
             // 
@@ -361,10 +361,10 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.Name = "ctrlNotices";
-            this.Size = new System.Drawing.Size(903, 848);
+            this.Size = new System.Drawing.Size(903, 709);
+            ((System.ComponentModel.ISupportInitialize)(this.noticeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvExemplaires)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.noticeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
