@@ -166,6 +166,8 @@ namespace wfBiblio
                     }
                 }
             }
+            else if (tmp.Count!=null && tmp.Count>1)
+                MessageBox.Show($"Ce code exemplaire existe {tmp.Count} fois.\r\nCorrigez la base");
             else
             {
                 if (MessageBox.Show("Ce code exemplaire n'existe pas.\r\nVoulez-vous quand même le prêter et l'ajouter à l'inventaire plus tard ?", "Erreur", MessageBoxButtons.YesNo)==DialogResult.Yes)

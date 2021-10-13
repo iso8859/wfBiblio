@@ -53,7 +53,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1167, 125);
+            this.panel1.Size = new System.Drawing.Size(1121, 125);
             this.panel1.TabIndex = 0;
             // 
             // btnSearch2
@@ -111,12 +111,12 @@
             this.ctrlNotices1.Location = new System.Drawing.Point(0, 126);
             this.ctrlNotices1.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.ctrlNotices1.Name = "ctrlNotices1";
-            this.ctrlNotices1.Size = new System.Drawing.Size(790, 793);
+            this.ctrlNotices1.Size = new System.Drawing.Size(790, 672);
             this.ctrlNotices1.TabIndex = 1;
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(418, 950);
+            this.btnCreate.Location = new System.Drawing.Point(70, 809);
             this.btnCreate.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(117, 51);
@@ -128,7 +128,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(632, 950);
+            this.btnCancel.Location = new System.Drawing.Point(215, 809);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(117, 51);
@@ -145,7 +145,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1167, 1018);
+            this.ClientSize = new System.Drawing.Size(1121, 880);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.ctrlNotices1);
